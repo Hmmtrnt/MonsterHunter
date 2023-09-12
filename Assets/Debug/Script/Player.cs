@@ -59,6 +59,17 @@ public class Player : MonoBehaviour
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
 
+        // ダッシュ
+        if(Input.GetKeyDown("joystick button 5"))
+        {
+            _speed = 10.0f;
+        }
+        // 元のスピードに戻す
+        if(Input.GetKeyUp("joystick button 5"))
+        {
+            _speed = 5.0f;
+        }
+
         // カメラの向きを基準にした正面方向のベクトル
         _cameraFront = Vector3.Scale(_camera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
         // 移動
