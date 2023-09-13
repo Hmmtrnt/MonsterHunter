@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     private Vector3 _moveZ;
     private Vector3 _cameraFront;
 
+    // 回避先の座標
+    private Vector3 _targetPosition;
+
     // プレイヤーのスピード
     [SerializeField] private float _speed = 5.0f;
     [SerializeField] private float _gravity = 10.0f;
@@ -26,11 +29,16 @@ public class Player : MonoBehaviour
     private float _horizontal;
     private float _vertical;
 
+    // 回避しているかどうか
+    private bool _isAvoid;
+
     // Start is called before the first frame update
     void Start()
     {
         //_rigidbody = GetComponent<Rigidbody>();
         _characterController = GetComponent<CharacterController>();
+
+        _isAvoid = false;
     }
 
     // Update is called once per frame
@@ -53,7 +61,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    // プレイヤーの動き
+    // 移動
     private void Move()
     {
         _horizontal = Input.GetAxis("Horizontal");
@@ -85,5 +93,24 @@ public class Player : MonoBehaviour
         _characterController.Move(_moveDirection * Time.deltaTime);
 
         //_rigidbody.AddForce(_horizontal, 0, _vertical, ForceMode.Force);
+    }
+
+    // 回避処理
+    private void Avoid()
+    {
+        // 回避ボタン押したとき
+        if(Input.GetKeyDown("joystick button 0"))
+        {
+            _isAvoid = true;
+        }
+
+        // 回避中ではないときには飛ばす
+        if (!_isAvoid) return;
+
+
+        _targetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5f);
+
+        transform.position = Vector3.SmoothDamp(transform.position, _targetPosition, ref Vector3.zero, _time);
+        
     }
 }
