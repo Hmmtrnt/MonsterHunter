@@ -21,9 +21,13 @@ public class Player : MonoBehaviour
     // 回避先の座標
     private Vector3 _targetPosition;
 
+    // 速度
+    private Vector3 _velocity = Vector3.zero;
+
     // プレイヤーのスピード
     [SerializeField] private float _speed = 5.0f;
     [SerializeField] private float _gravity = 10.0f;
+    [SerializeField] private float _time = 1.0f;
 
     // ゲームパッドスティックの入力状態の変数
     private float _horizontal;
@@ -44,6 +48,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Avoid();
         Move();
     }
 
@@ -101,6 +106,7 @@ public class Player : MonoBehaviour
         // 回避ボタン押したとき
         if(Input.GetKeyDown("joystick button 0"))
         {
+            _targetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5f);
             _isAvoid = true;
         }
 
@@ -108,9 +114,13 @@ public class Player : MonoBehaviour
         if (!_isAvoid) return;
 
 
-        _targetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5f);
 
-        transform.position = Vector3.SmoothDamp(transform.position, _targetPosition, ref Vector3.zero, _time);
+
+        transform.position = Vector3.SmoothDamp(transform.position, _targetPosition, ref _velocity, _time);
         
+        if(transform.position == _targetPosition)
+        {
+            _isAvoid=false;
+        }
     }
 }
