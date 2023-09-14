@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // プレイヤーのRigidbody取得
-    //private Rigidbody _rigidbody;
+    // プレイヤーのインスタンス
+    Player _instance;
 
     // キャラクターコントローラー
     private CharacterController _characterController;
@@ -36,17 +36,23 @@ public class Player : MonoBehaviour
     private float _horizontal;
     private float _vertical;
 
-
-
-    // -----------------------------------------------------------
-    // Debug用変数
     // 回避しているかどうか
-    private bool _isAvoid;
+    public bool _isAvoid;
 
     // 回避しているフレーム数
     private int _AvoidFlame;
 
-    // -----------------------------------------------------------
+    private void Awake()
+    {
+        if(_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -87,7 +93,7 @@ public class Player : MonoBehaviour
         _vertical = Input.GetAxis("Vertical");
 
         // ダッシュ
-        if(Input.GetKeyDown("joystick button 5"))
+        if(Input.GetKey("joystick button 5"))
         {
             _speed = 10.0f;
         }
