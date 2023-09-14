@@ -35,24 +35,7 @@ public class Stamina : MonoBehaviour
     // スタミナのUIの大きさを変更
     private void UpdateScaleStamina()
     {
-        //if (!Input.GetKey("joystick button 5"))
-        //{
-        //    _currentStamina = _currentStamina + _recoveryStamina;
-        //    if (_currentStamina >= _maxStamina)
-        //    {
-        //        _currentStamina = _maxStamina;
-        //    }
-        //}
-        //else if(Input.GetKey("joystick button 5"))
-        //{
-        //    if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0) return;
-        //    _currentStamina = _currentStamina - _decreaseStamina;
-        //    if (_currentStamina <= _minStamina)
-        //    {
-        //        _currentStamina = _minStamina;
-        //    }
-        //}
-
+        // ダッシュするとスタミナが徐々に減る
         if (Input.GetKey("joystick button 5") && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
         {
             _currentStamina = _currentStamina - _decreaseStamina;
@@ -67,6 +50,16 @@ public class Stamina : MonoBehaviour
             if (_currentStamina >= _maxStamina)
             {
                 _currentStamina = _maxStamina;
+            }
+        }
+
+        // 回避するとスタミナを最大値の1/10減らす
+        if(Input.GetKeyDown("joystick button 0") && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
+        {
+            _currentStamina = _currentStamina - (_maxStamina / 10.0f);
+            if (_currentStamina <= _minStamina)
+            {
+                _currentStamina = _minStamina;
             }
         }
     }

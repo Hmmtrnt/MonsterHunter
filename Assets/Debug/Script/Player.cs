@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Camera _camera;
 
+    // 回避距離
+    [SerializeField] private float _AvoidDistance;
+
     // 進む方向
     private Vector3 _moveDirection;
     private Vector3 _moveX;
@@ -33,8 +36,17 @@ public class Player : MonoBehaviour
     private float _horizontal;
     private float _vertical;
 
+
+
+    // -----------------------------------------------------------
+    // Debug用変数
     // 回避しているかどうか
     private bool _isAvoid;
+
+    // 回避しているフレーム数
+    private int _AvoidFlame;
+
+    // -----------------------------------------------------------
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +55,14 @@ public class Player : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
 
         _isAvoid = false;
+        _AvoidFlame = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         Avoid();
+        if (_isAvoid) return;
         Move();
     }
 
@@ -94,33 +108,43 @@ public class Player : MonoBehaviour
 
         // プレイヤーの進む方向に向きを変更
         transform.LookAt(transform.position + _moveZ + _moveX);
-        // 
+        // 移動
         _characterController.Move(_moveDirection * Time.deltaTime);
 
         //_rigidbody.AddForce(_horizontal, 0, _vertical, ForceMode.Force);
+
+        _targetPosition = new Vector3(transform.position.x + _horizontal, transform.position.y, transform.position.z + _vertical);
+
     }
 
     // 回避処理
     private void Avoid()
     {
-        // 回避ボタン押したとき
-        if(Input.GetKeyDown("joystick button 0"))
+        // 移動しながらAボタンを押すと回避フラグON
+        if(Input.GetKeyDown("joystick button 0") && (_horizontal!= 0 || _vertical != 0))
         {
-            _targetPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5f);
             _isAvoid = true;
         }
 
-        // 回避中ではないときには飛ばす
         if (!_isAvoid) return;
 
+        _AvoidFlame++;
 
+        _speed = 5.0f;
+        _moveZ = _cameraFront * _vertical * _speed;
+        _moveX = _camera.transform.right * _horizontal * _speed;
 
+        _moveDirection = _moveZ + _moveX + new Vector3(0.0f, _moveDirection.y, 0.0f);
+        _moveDirection.y -= _gravity * Time.deltaTime;
 
-        transform.position = Vector3.SmoothDamp(transform.position, _targetPosition, ref _velocity, _time);
+        // 回避時の移動
+        _characterController.Move(_moveDirection * _AvoidDistance);
         
-        if(transform.position == _targetPosition)
+        // 回避終了時に回避フラグOFFと回避時間をリセット
+        if(_AvoidFlame >= 60)
         {
-            _isAvoid=false;
+            _isAvoid = false;
+            _AvoidFlame = 0;
         }
     }
 }
