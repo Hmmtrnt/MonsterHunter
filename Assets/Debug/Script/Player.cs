@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     // プレイヤーのスピード
     [SerializeField] private float _speed = 5.0f;
     [SerializeField] private float _gravity = 10.0f;
-    [SerializeField] private float _time = 1.0f;
+    //[SerializeField] private float _time = 1.0f;
 
     // ゲームパッドスティックの入力状態の変数
     private float _horizontal;
@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
     // 回避しているかどうか
     public bool _isAvoid;
+    // 抜刀しているかどうか
+    public bool _isHoldWeapon;
 
     // 回避しているフレーム数
     private int _AvoidFlame;
@@ -50,7 +52,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-
+            Destroy(gameObject);
         }
     }
 
@@ -61,6 +63,7 @@ public class Player : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
 
         _isAvoid = false;
+        _isHoldWeapon = false;
         _AvoidFlame = 0;
     }
 
@@ -69,6 +72,7 @@ public class Player : MonoBehaviour
     {
         Avoid();
         if (_isAvoid) return;
+        HoldWeapon();
         Move();
     }
 
@@ -95,6 +99,7 @@ public class Player : MonoBehaviour
         // ダッシュ
         if(Input.GetKey("joystick button 5"))
         {
+            if (_isHoldWeapon) return;
             _speed = 10.0f;
         }
         // 元のスピードに戻す
@@ -151,6 +156,32 @@ public class Player : MonoBehaviour
         {
             _isAvoid = false;
             _AvoidFlame = 0;
+        }
+    }
+
+    // 武器を構える
+    private void HoldWeapon()
+    {
+        // 抜刀状態にするかどうか
+        //if(Input.GetKeyDown("joystick button 3"))
+        //{
+        //    if(!_isHoldWeapon) _isHoldWeapon = true;
+        //    if(_isHoldWeapon) _isHoldWeapon = false;
+        //}
+
+        if(!_isHoldWeapon)
+        {
+            if(Input.GetKeyDown("joystick button 3"))
+            {
+                _isHoldWeapon = true;
+            }
+        }
+        else if(_isHoldWeapon) 
+        {
+            if (Input.GetKeyDown("joystick button 3"))
+            {
+                _isHoldWeapon = false;
+            }
         }
     }
 }
