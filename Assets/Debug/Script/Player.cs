@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // プレイヤーのインスタンス
-    Player _instance;
+    public static Player _instance;
 
     // キャラクターコントローラー
     private CharacterController _characterController;
@@ -121,8 +121,6 @@ public class Player : MonoBehaviour
         transform.LookAt(transform.position + _moveZ + _moveX);
         // 移動
         _characterController.Move(_moveDirection * Time.deltaTime);
-
-        //_rigidbody.AddForce(_horizontal, 0, _vertical, ForceMode.Force);
 
         _targetPosition = new Vector3(transform.position.x + _horizontal, transform.position.y, transform.position.z + _vertical);
 
