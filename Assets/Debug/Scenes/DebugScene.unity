@@ -1683,7 +1683,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponObject: {fileID: 1083313282}
-  _fireBulletObject: {fileID: 0}
+  _fireBulletPositionObject: {fileID: 634931947}
+  _bulletObject: {fileID: 6447334880835965245, guid: 0a4b292a9e99802419571b381790765e, type: 3}
 --- !u!1 &1900967568
 GameObject:
   m_ObjectHideFlags: 0
