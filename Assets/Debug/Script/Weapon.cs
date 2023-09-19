@@ -51,9 +51,6 @@ public class Weapon : MonoBehaviour
         {
             _bulletNumber = 6;
         }
-
-
-
     }
 
     private void FixedUpdate()
