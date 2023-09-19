@@ -32,9 +32,13 @@ public class Player : MonoBehaviour
     [SerializeField] private float _gravity = 10.0f;
     //[SerializeField] private float _time = 1.0f;
 
-    // ゲームパッドスティックの入力状態の変数
-    private float _horizontal;
-    private float _vertical;
+    // ゲームパッド
+    // 左スティックの入力状態の変数
+    private float _LeftHorizontal;
+    private float _LeftVertical;
+    // 右スティックの入力状態の変数
+    private float _RightHorizontal;
+    private float _RightVertical;
 
     // 回避しているかどうか
     public bool _isAvoid;
@@ -70,6 +74,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _LeftHorizontal = Input.GetAxis("Horizontal");
+        _LeftVertical = Input.GetAxis("Vertical");
+        _RightHorizontal = Input.GetAxis("Horizontal2");
+        _RightVertical = Input.GetAxis("Vertical2");
+
         Avoid();
         if (_isAvoid) return;
         HoldWeapon();
@@ -93,8 +102,6 @@ public class Player : MonoBehaviour
     // 移動
     private void Move()
     {
-        _horizontal = Input.GetAxis("Horizontal");
-        _vertical = Input.GetAxis("Vertical");
         float _trigger = Input.GetAxis("L_R_Trigger");
 
         // ダッシュ
@@ -112,8 +119,8 @@ public class Player : MonoBehaviour
         // カメラの向きを基準にした正面方向のベクトル
         _cameraFront = Vector3.Scale(_camera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
         // 移動
-        _moveZ = _cameraFront * _vertical * _speed;
-        _moveX = _camera.transform.right * _horizontal * _speed;
+        _moveZ = _cameraFront * _LeftVertical * _speed;
+        _moveX = _camera.transform.right * _LeftHorizontal * _speed;
 
         _moveDirection = _moveZ + _moveX + new Vector3(0.0f, _moveDirection.y, 0.0f);
         _moveDirection.y -= _gravity * Time.deltaTime;
@@ -121,12 +128,19 @@ public class Player : MonoBehaviour
         if((_isHoldWeapon && _trigger >= 0.0) || !_isHoldWeapon)
         {
             // プレイヤーの進む方向に向きを変更
-            transform.LookAt(transform.position + _moveZ + _moveX);
+            //transform.LookAt(transform.position + _moveZ + _moveX);
         }
         // 移動
         _characterController.Move(_moveDirection * Time.deltaTime);
 
-        _targetPosition = new Vector3(transform.position.x + _horizontal, transform.position.y, transform.position.z + _vertical);
+        _targetPosition = new Vector3(transform.position.x + _LeftHorizontal, transform.position.y, transform.position.z + _LeftVertical);
+
+    }
+
+    // デバッグ用カメラ処理
+    private void DebugCamera()
+    {
+        transform.Rotate(0.0f, _RightHorizontal, 0.0f);
 
     }
 
@@ -134,7 +148,7 @@ public class Player : MonoBehaviour
     private void Avoid()
     {
         // 移動しながらAボタンを押すと回避フラグON
-        if(Input.GetKeyDown("joystick button 0") && (_horizontal!= 0 || _vertical != 0))
+        if(Input.GetKeyDown("joystick button 0") && (_LeftHorizontal!= 0 || _LeftVertical != 0))
         {
             _isAvoid = true;
         }
@@ -144,8 +158,8 @@ public class Player : MonoBehaviour
         _AvoidFlame++;
 
         _speed = 5.0f;
-        _moveZ = _cameraFront * _vertical * _speed;
-        _moveX = _camera.transform.right * _horizontal * _speed;
+        _moveZ = _cameraFront * _LeftVertical * _speed;
+        _moveX = _camera.transform.right * _LeftHorizontal * _speed;
 
         _moveDirection = _moveZ + _moveX + new Vector3(0.0f, _moveDirection.y, 0.0f);
         _moveDirection.y -= _gravity * Time.deltaTime;
