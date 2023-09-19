@@ -1148,7 +1148,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083313282}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1685,6 +1685,8 @@ MonoBehaviour:
   _weaponObject: {fileID: 1083313282}
   _fireBulletPositionObject: {fileID: 634931947}
   _bulletObject: {fileID: 6447334880835965245, guid: 0a4b292a9e99802419571b381790765e, type: 3}
+  _bulletSpeed: 30
+  _bulletNumber: 6
 --- !u!1 &1900967568
 GameObject:
   m_ObjectHideFlags: 0

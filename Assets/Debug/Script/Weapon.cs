@@ -12,8 +12,10 @@ public class Weapon : MonoBehaviour
     // 弾
     [SerializeField] private GameObject _bulletObject;
 
-    // 弾が消える時間
-    private float _disappearBulletTime;
+    [SerializeField] private float _bulletSpeed;
+
+    // 弾数
+    [SerializeField] private int _bulletNumber;
 
     // 生成したかどうか
     private bool _isGenerated;
@@ -29,15 +31,13 @@ public class Weapon : MonoBehaviour
         // トリガーの入力状態取得
         float testTrigger = Input.GetAxis("L_R_Trigger");
 
-        disappearBullet();
-
-
         if (!Player._instance._isHoldWeapon) return;
         // 弾発射
         if(testTrigger >= 0.5)
         {
             if (_isGenerated) return;
-            Instantiate(_bulletObject, _fireBulletPositionObject.transform.position, Quaternion.identity);
+            //Instantiate(_bulletObject, _fireBulletPositionObject.transform.position, Quaternion.identity);
+            disappearBullet();
             _isGenerated = true;
         }
         else if(testTrigger == 0)
@@ -65,15 +65,23 @@ public class Weapon : MonoBehaviour
 
     private void disappearBullet()
     {
-        // 消える時間をカウント中
-        _disappearBulletTime = Time.deltaTime;
+        // 弾の発射位置
+        Vector3 firePos = _fireBulletPositionObject.transform.position;
+        // 発射位置に弾を生成
+        GameObject newBullet = Instantiate(_bulletObject, firePos, transform.rotation);
 
-        Debug.Log(_disappearBulletTime);
+        //_testNewBullet = newBullet;
 
-        if(_disappearBulletTime >= 5)
-        {
-            Destroy(_bulletObject);
-            _disappearBulletTime=0;
-        }
+        // 出現させたボールのz軸方向
+        Vector3 direction = newBullet.transform.forward;
+        // 弾の発射方向に発射
+        newBullet.GetComponent<Rigidbody>().AddForce(direction * _bulletSpeed, ForceMode.Impulse);
+
+        // 出現したボールを消去
+        Destroy(newBullet, 1.0f);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
     }
 }
