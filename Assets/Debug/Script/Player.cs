@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
     {
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
+        float _trigger = Input.GetAxis("L_R_Trigger");
 
         // ダッシュ
         if(Input.GetKey("joystick button 5"))
@@ -116,7 +117,8 @@ public class Player : MonoBehaviour
 
         _moveDirection = _moveZ + _moveX + new Vector3(0.0f, _moveDirection.y, 0.0f);
         _moveDirection.y -= _gravity * Time.deltaTime;
-
+        
+        if(!_isHoldWeapon)
         // プレイヤーの進む方向に向きを変更
         transform.LookAt(transform.position + _moveZ + _moveX);
         // 移動
@@ -176,7 +178,7 @@ public class Player : MonoBehaviour
         }
         else if(_isHoldWeapon) 
         {
-            if (Input.GetKeyDown("joystick button 3"))
+            if (Input.GetKeyDown("joystick button 2"))
             {
                 _isHoldWeapon = false;
             }

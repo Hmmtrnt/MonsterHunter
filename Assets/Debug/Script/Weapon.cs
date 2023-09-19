@@ -31,18 +31,25 @@ public class Weapon : MonoBehaviour
         // トリガーの入力状態取得
         float testTrigger = Input.GetAxis("L_R_Trigger");
 
+
         if (!Player._instance._isHoldWeapon) return;
         // 弾発射
         if(testTrigger >= 0.5)
         {
-            if (_isGenerated) return;
+            if (_isGenerated || _bulletNumber == 0) return;
             //Instantiate(_bulletObject, _fireBulletPositionObject.transform.position, Quaternion.identity);
             disappearBullet();
+            _bulletNumber -= 1;
             _isGenerated = true;
         }
         else if(testTrigger == 0)
         {
             _isGenerated=false;
+        }
+
+        if(Input.GetKeyDown("joystick button 3"))
+        {
+            _bulletNumber = 6;
         }
 
 
@@ -69,8 +76,6 @@ public class Weapon : MonoBehaviour
         Vector3 firePos = _fireBulletPositionObject.transform.position;
         // 発射位置に弾を生成
         GameObject newBullet = Instantiate(_bulletObject, firePos, transform.rotation);
-
-        //_testNewBullet = newBullet;
 
         // 出現させたボールのz軸方向
         Vector3 direction = newBullet.transform.forward;
