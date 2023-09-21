@@ -137,13 +137,6 @@ public class Player : MonoBehaviour
 
     }
 
-    // デバッグ用カメラ処理
-    private void DebugCamera()
-    {
-        transform.Rotate(0.0f, _RightHorizontal, 0.0f);
-
-    }
-
     // 回避処理
     private void Avoid()
     {
