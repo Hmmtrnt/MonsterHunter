@@ -54,12 +54,7 @@ public class TPSPlayer : MonoBehaviour
             _TPSEyeObject.transform.localEulerAngles = new Vector3(_MinTPSEyeRotateX, 0.0f, 0.0f);
         }
 
-
-        //if (_TPSEyeObject.transform.localEulerAngles.x > _MinTPSEyeRotateX &&
-          //  _TPSEyeObject.transform.localEulerAngles.x < _MaxTPSEyeRotateX)
-
-            _TPSEyeObject.transform.Rotate(_RightVertical, 0.0f, 0.0f);
-
+        _TPSEyeObject.transform.Rotate(_RightVertical, 0.0f, 0.0f);
 
         Debug.Log(_TPSEyeObject.transform.localEulerAngles.x);
 

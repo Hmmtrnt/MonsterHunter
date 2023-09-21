@@ -37,7 +37,6 @@ public class Weapon : MonoBehaviour
         if(testTrigger >= 0.5)
         {
             if (_isGenerated || _bulletNumber == 0) return;
-            //Instantiate(_bulletObject, _fireBulletPositionObject.transform.position, Quaternion.identity);
             disappearBullet();
             _bulletNumber -= 1;
             _isGenerated = true;

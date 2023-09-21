@@ -125,11 +125,11 @@ public class Player : MonoBehaviour
         _moveDirection = _moveZ + _moveX + new Vector3(0.0f, _moveDirection.y, 0.0f);
         _moveDirection.y -= _gravity * Time.deltaTime;
         
-        if((_isHoldWeapon && _trigger >= 0.0) || !_isHoldWeapon)
-        {
-            // プレイヤーの進む方向に向きを変更
-            //transform.LookAt(transform.position + _moveZ + _moveX);
-        }
+        //if((_isHoldWeapon && _trigger >= 0.0) || !_isHoldWeapon)
+        //{
+        //    // プレイヤーの進む方向に向きを変更
+        //}
+        transform.LookAt(transform.position + _moveZ + _moveX);
         // 移動
         _characterController.Move(_moveDirection * Time.deltaTime);
 
