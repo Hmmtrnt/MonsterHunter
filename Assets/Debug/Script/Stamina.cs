@@ -1,3 +1,5 @@
+// スタミナ
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +12,12 @@ public class Stamina : MonoBehaviour
     private float _minStamina = 0;// 最小値
     private float _currentStamina;// 現在
 
+    // スタミナ回復速度
     private float _recoveryStamina = 0.1f;
-    private float _decreaseStamina = 0.01f;// スタミナの消費量
+    // スタミナの消費量
+    private float _decreaseStamina = 0.01f;
 
+    // スタミナバー
     [SerializeField] private Slider _slider;
 
     // Start is called before the first frame update
