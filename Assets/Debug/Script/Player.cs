@@ -105,10 +105,12 @@ public class Player : MonoBehaviour
         float _trigger = Input.GetAxis("L_R_Trigger");
 
         // ダッシュ
-        if(Input.GetKey("joystick button 5"))
+        if(!_isHoldWeapon)
         {
-            if (_isHoldWeapon) return;
-            _speed = 10.0f;
+            if (Input.GetKey("joystick button 5"))
+            {
+                _speed = 10.0f;
+            }
         }
         // 元のスピードに戻す
         if(Input.GetKeyUp("joystick button 5"))
@@ -171,13 +173,7 @@ public class Player : MonoBehaviour
     // 武器を構える
     private void HoldWeapon()
     {
-        // 抜刀状態にするかどうか
-        //if(Input.GetKeyDown("joystick button 3"))
-        //{
-        //    if(!_isHoldWeapon) _isHoldWeapon = true;
-        //    if(_isHoldWeapon) _isHoldWeapon = false;
-        //}
-
+        // 抜刀状態にする
         if(!_isHoldWeapon)
         {
             if(Input.GetKeyDown("joystick button 3"))
@@ -185,9 +181,10 @@ public class Player : MonoBehaviour
                 _isHoldWeapon = true;
             }
         }
+        // 納刀する
         else if(_isHoldWeapon) 
         {
-            if (Input.GetKeyDown("joystick button 2"))
+            if (Input.GetKeyDown("joystick button 2") || Input.GetKeyDown("joystick button 5"))
             {
                 _isHoldWeapon = false;
             }
