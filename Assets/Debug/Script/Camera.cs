@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
+    // プレイヤーオブジェクト
     [SerializeField] private GameObject _player;
 
     // Start is called before the first frame update
@@ -17,7 +18,7 @@ public class Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // カメラの向き
+        // 右スティックの入力状態
         float horizontal = Input.GetAxis("Horizontal2");
         float vertical = Input.GetAxis("Vertical2");
 

@@ -7,9 +7,10 @@ public class Player : MonoBehaviour
     // プレイヤーのインスタンス
     public static Player _instance;
 
-    // キャラクターコントローラー
-    private CharacterController _characterController;
+    // Rigidbody
+    private Rigidbody _rigidbody;
 
+    // プレイヤーについているカメラ
     [SerializeField] private Camera _camera;
 
     // 回避距離
@@ -28,7 +29,12 @@ public class Player : MonoBehaviour
     private Vector3 _velocity = Vector3.zero;
 
     // プレイヤーのスピード
-    [SerializeField] private float _speed = 5.0f;
+    private float _speed = 50.0f;
+    // ダッシュスピード
+    [SerializeField] private float _dashSpeed;
+    // ランニングスピード
+    [SerializeField] private float _runningSpeed;
+    // 重力
     [SerializeField] private float _gravity = 10.0f;
     //[SerializeField] private float _time = 1.0f;
 
@@ -63,8 +69,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //_rigidbody = GetComponent<Rigidbody>();
-        _characterController = GetComponent<CharacterController>();
+        _rigidbody = GetComponent<Rigidbody>();
 
         _isAvoid = false;
         _isHoldWeapon = false;
@@ -109,13 +114,13 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey("joystick button 5"))
             {
-                _speed = 10.0f;
+                _speed = _dashSpeed;
             }
         }
         // 元のスピードに戻す
         if(Input.GetKeyUp("joystick button 5"))
         {
-            _speed = 5.0f;
+            _speed = _runningSpeed;
         }
 
         // カメラの向きを基準にした正面方向のベクトル
@@ -133,7 +138,7 @@ public class Player : MonoBehaviour
         //}
         transform.LookAt(transform.position + _moveZ + _moveX);
         // 移動
-        _characterController.Move(_moveDirection * Time.deltaTime);
+        _rigidbody.velocity = _moveDirection;
 
         _targetPosition = new Vector3(transform.position.x + _LeftHorizontal, transform.position.y, transform.position.z + _LeftVertical);
 
@@ -160,8 +165,8 @@ public class Player : MonoBehaviour
         _moveDirection.y -= _gravity * Time.deltaTime;
 
         // 回避時の移動
-        _characterController.Move(_moveDirection * _AvoidDistance);
         
+
         // 回避終了時に回避フラグOFFと回避時間をリセット
         if(_AvoidFlame >= 60)
         {
