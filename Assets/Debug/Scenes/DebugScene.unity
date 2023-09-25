@@ -1075,7 +1075,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873993833}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 722af77c7bb757d4bb9f2cc1b47864d6, type: 3}
   m_Name: 
@@ -1129,14 +1129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35635c5efde512c49acd9899c0597d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: {x: 0, y: 0, z: 0}
-  _groundLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  _speed: 4
-  _ifGrounded: 0
-  _groundPositionOffset: {x: 0, y: 0.02, z: 0}
-  groundColliderRadius: 0.29
 --- !u!1001 &926837350
 PrefabInstance:
   m_ObjectHideFlags: 0
