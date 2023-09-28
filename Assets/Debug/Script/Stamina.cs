@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Stamina : MonoBehaviour
 {
+    public static Stamina _inctance;
+
     // スタミナ
     private float _maxStamina = 200;// 最大値
     private float _minStamina = 0;// 最小値
@@ -19,6 +21,19 @@ public class Stamina : MonoBehaviour
 
     // スタミナバー
     [SerializeField] private Slider _slider;
+
+    private void Awake()
+    {
+        // シングルトンの呪文
+        if( _inctance == null )
+        {
+            _inctance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

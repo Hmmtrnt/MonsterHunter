@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player _inctance;
+
     CharacterController _characterController;
     [SerializeField] private Camera _camera;
     // 移動スピード
@@ -31,6 +33,18 @@ public class Player : MonoBehaviour
 
     private Transform _transform;
 
+    private void Awake()
+    {
+        if(_inctance == null)
+        {
+            _inctance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,17 +60,14 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown("joystick button 0")&& (_horizontalLeftStick != 0.0f || _verticalLeftStick != 0.0f))
         {
             _isAvoid = true;
-
-            //Debug.Log("通っている");
         }
 
+        // 回避中
         if(_isAvoid)
         {
             Evasion();
             _avoidTime++;
         }
-
-        //Debug.Log(_avoidTime);
 
         if(_avoidTime >= _avoidMaxTime)
         {
