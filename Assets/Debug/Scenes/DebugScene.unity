@@ -1075,36 +1075,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873993833}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 722af77c7bb757d4bb9f2cc1b47864d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 963194227}
-  _AvoidDistance: 0.02
-  _dashSpeed: 50
-  _runningSpeed: 30
-  _gravity: 10
-  _isAvoid: 0
-  _isHoldWeapon: 0
---- !u!54 &873993838
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873993833}
-  serializedVersion: 2
-  m_Mass: 10
-  m_Drag: 1
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!136 &873993839
-CapsuleCollider:
+  _gravity: -15
+  _time: 1
+--- !u!143 &873993838
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1113,23 +1093,14 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
-  m_Height: 1.75
-  m_Direction: 1
+  serializedVersion: 2
+  m_Height: 1.8
+  m_Radius: 0.4
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &873993840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 873993833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35635c5efde512c49acd9899c0597d18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 100
 --- !u!1001 &926837350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2128,13 +2099,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722af77c7bb757d4bb9f2cc1b47864d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 963194227}
-  _AvoidDistance: 0.02
-  _dashSpeed: 0
-  _runningSpeed: 0
-  _gravity: 10
-  _isAvoid: 0
-  _isHoldWeapon: 0
+  _camera: {fileID: 0}
+  _gravity: 0
+  _time: 0
 --- !u!143 &1759077954
 CharacterController:
   m_ObjectHideFlags: 0
