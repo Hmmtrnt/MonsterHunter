@@ -122,6 +122,7 @@ public class Player : MonoBehaviour
     // ‰ñ”ğˆ—
     private void Evasion()
     {
-        _characterController.Move(_transform.forward * _avoidSpeed * Time.deltaTime);
+        _moveDirection.y = _gravity;
+        _characterController.Move((_transform.forward + new Vector3(0.0f, _moveDirection.y, 0.0f)) * _avoidSpeed * Time.deltaTime);
     }
 }
