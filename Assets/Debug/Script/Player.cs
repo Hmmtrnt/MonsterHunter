@@ -21,10 +21,12 @@ public class Player : MonoBehaviour
     private float _horizontalLeftStick;
     private float _verticalLeftStick;
 
+    [SerializeField]private float _avoidSpeed = 0.0f;
+
     // 回避中
     private bool _isAvoid = false;
     // 回避時間
-    private float _avoidMaxTime = 30.0f;
+    private float _avoidMaxTime = 45.0f;
 
     private float _avoidTime = 0;
 
@@ -76,13 +78,13 @@ public class Player : MonoBehaviour
         }
 
         if (_isAvoid) return;
-        Move();
+        Movement();
     }
 
     // デバッグ用
 
     // 移動処理
-    private void Move()
+    private void Movement()
     {
         // 左スティック情報取得
         _horizontalLeftStick = Input.GetAxis("Horizontal");
@@ -120,6 +122,6 @@ public class Player : MonoBehaviour
     // 回避処理
     private void Evasion()
     {
-        _characterController.Move(_moveDirection * 0.03f);
+        _characterController.Move(_transform.forward * _avoidSpeed * Time.deltaTime);
     }
 }

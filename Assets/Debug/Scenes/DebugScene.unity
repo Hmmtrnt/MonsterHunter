@@ -1083,6 +1083,7 @@ MonoBehaviour:
   _camera: {fileID: 963194227}
   _gravity: -15
   _time: 1
+  _avoidSpeed: 0
 --- !u!143 &873993838
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2118,6 +2119,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _gravity: 0
   _time: 0
+  _avoidSpeed: 0
 --- !u!143 &1759077954
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2272,7 +2274,7 @@ GameObject:
   - component: {fileID: 1938837880}
   - component: {fileID: 1938837879}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: PlayUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
