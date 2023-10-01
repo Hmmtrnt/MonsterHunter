@@ -132,6 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 58016118}
+  - component: {fileID: 58016119}
+  - component: {fileID: 58016120}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -154,6 +156,66 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &58016119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58016117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d239e98cacd8d7646b11b8c282c3b0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &58016120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58016117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f43f04c49a6ccc42bddfc00594a3505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _LeftStickHorizontal: 0
+  _LeftStickVertical: 0
+  _LeftStickButton: 0
+  _LeftStickButtonDown: 0
+  _LeftStickButtonUp: 0
+  _RightStickHorizontal: 0
+  _RightStickVertical: 0
+  _RightStickButton: 0
+  _RightStickButtonDown: 0
+  _RightStickButtonUp: 0
+  _LeftTrigger: 0
+  _RightTrigger: 0
+  _AButton: 0
+  _AButtonDown: 0
+  _AButtonUp: 0
+  _BButton: 0
+  _BButtonDown: 0
+  _BButtonUp: 0
+  _XButton: 0
+  _XButtonDown: 0
+  _XButtonUp: 0
+  _YButton: 0
+  _YButtonDown: 0
+  _YButtonUp: 0
+  _LBButton: 0
+  _LBButtonDown: 0
+  _LBButtonUp: 0
+  _RBButton: 0
+  _RBButtonDown: 0
+  _RBButtonUp: 0
+  _ViewButton: 0
+  _ViewButtonDown: 0
+  _ViewButtonUp: 0
+  _MenuButton: 0
+  _MenuButtonDown: 0
+  _MenuButtonUp: 0
 --- !u!1 &88538790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3320,7 +3382,7 @@ MonoBehaviour:
     m_MaxSpeed: 1
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Vertical2
+    m_InputAxisName: VerticalRight
     m_InputAxisValue: 0
     m_InvertInput: 1
     m_MinValue: -10
@@ -3344,7 +3406,7 @@ MonoBehaviour:
     m_MaxSpeed: 1
     m_AccelTime: 0.1
     m_DecelTime: 0.1
-    m_InputAxisName: Horizontal2
+    m_InputAxisName: HorizontalRight
     m_InputAxisValue: 0
     m_InvertInput: 0
     m_MinValue: -180

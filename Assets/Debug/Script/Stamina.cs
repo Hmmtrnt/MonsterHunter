@@ -44,11 +44,15 @@ public class Stamina : MonoBehaviour
     // ‰ñ”ğ‚ÌƒQ[ƒWÁ”ï‚Ìˆ—
     private void Avoidance()
     {
-        if (Input.GetAxis("Horizontal") == 0.0f ||
-            Input.GetAxis("Vertical") == 0.0f) return;
+        if (ControllerManager._inctance._LeftStickHorizontal == 0.0f ||
+            ControllerManager._inctance._LeftStickVertical == 0.0f) return;
 
+        // ‰ñ”ğ‚ğs‚Á‚½‚Æ‚«
+        bool isAvoid = ControllerManager._inctance._AButtonDown &&
+            (ControllerManager._inctance._LeftStickHorizontal == 0.0f ||
+            ControllerManager._inctance._LeftStickVertical == 0.0f);
 
-        if (Input.GetKeyDown("joystick button 0"))
+        if (isAvoid)
         {
             _gauge.fillAmount -= _avoidanceCostGauge;
         }

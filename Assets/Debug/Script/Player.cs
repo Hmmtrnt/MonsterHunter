@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("joystick button 0")&& (_horizontalLeftStick != 0.0f || _verticalLeftStick != 0.0f))
+        if (ControllerManager._inctance._AButtonDown&& (_horizontalLeftStick != 0.0f || _verticalLeftStick != 0.0f))
         {
             _isAvoid = true;
         }
@@ -87,8 +87,8 @@ public class Player : MonoBehaviour
     private void Movement()
     {
         // 左スティック情報取得
-        _horizontalLeftStick = Input.GetAxis("Horizontal");
-        _verticalLeftStick = Input.GetAxis("Vertical");
+        _horizontalLeftStick = ControllerManager._inctance._LeftStickHorizontal;
+        _verticalLeftStick = ControllerManager._inctance._LeftStickVertical;
 
         // カメラの正面ベクトル
         Vector3 cameraForward = Vector3.Scale(_camera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
         Vector3 horizontalDirection = _camera.transform.right * _horizontalLeftStick * _moveSpeed;// 左右
 
         // ダッシュ
-        if(Input.GetKey("joystick button 5"))
+        if(ControllerManager._inctance._RBButton)
         {
             _moveSpeed = 15.0f;
         }
