@@ -84,6 +84,7 @@ public class Player : MonoBehaviour
 
         if (_isAvoid) return;
         Movement();
+        //TestMove();
     }
 
     // デバッグ用
@@ -124,6 +125,21 @@ public class Player : MonoBehaviour
 
         // 移動
         _characterController.Move(_moveDirection * Time.deltaTime);
+    }
+
+    private void TestMove()
+    {
+        // 左スティック情報取得
+        _horizontalLeftStick = ControllerManager._inctance._LeftStickHorizontal;
+        _verticalLeftStick = ControllerManager._inctance._LeftStickVertical;
+
+        if (_horizontalLeftStick != 0 || _verticalLeftStick != 0)
+        {
+            // 移動
+            _characterController.Move(transform.forward * 5.0f * Time.deltaTime);
+        }
+
+        
     }
 
     // 回避処理
