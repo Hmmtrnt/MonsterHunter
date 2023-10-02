@@ -24,7 +24,6 @@ public class Stamina : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         Avoidance();
     }
 
@@ -35,22 +34,29 @@ public class Stamina : MonoBehaviour
 
     }
 
-    // スタミナを自動回復処理
+    // スタミナを自動回復
     private void AutomaticRecovery()
     {
         _gauge.fillAmount += _recoverySpeed;
     }
 
-    // 回避時のゲージ消費の処理
+    // ダッシュ時のゲージ消費
+    private void Run()
+    {
+
+    }
+
+
+    // 回避時のゲージ消費
     private void Avoidance()
     {
-        if (ControllerManager._inctance._LeftStickHorizontal == 0.0f ||
-            ControllerManager._inctance._LeftStickVertical == 0.0f) return;
+        //if (ControllerManager._inctance._LeftStickHorizontal == 0.0f ||
+        //    ControllerManager._inctance._LeftStickVertical == 0.0f) return;
 
         // 回避を行ったとき
         bool isAvoid = ControllerManager._inctance._AButtonDown &&
-            (ControllerManager._inctance._LeftStickHorizontal == 0.0f ||
-            ControllerManager._inctance._LeftStickVertical == 0.0f);
+            (ControllerManager._inctance._LeftStickHorizontal != 0.0f ||
+            ControllerManager._inctance._LeftStickVertical != 0.0f);
 
         if (isAvoid)
         {

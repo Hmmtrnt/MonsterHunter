@@ -21,19 +21,22 @@ public class Player : MonoBehaviour
     private float _horizontalLeftStick;
     private float _verticalLeftStick;
 
+    // 回避スピード
     [SerializeField]private float _avoidSpeed = 0.0f;
 
     // 回避中
     private bool _isAvoid = false;
     // 回避時間
-    private float _avoidMaxTime = 45.0f;
-
+    private float _avoidMaxTime = 20.0f;
+    // 回避のフレーム数
     private float _avoidTime = 0;
 
     // 動く方向
     Vector3 _moveDirection = Vector3.zero;
 
     private Transform _transform;
+
+    private Quaternion _targetRotation;
 
     private void Awake()
     {
@@ -54,6 +57,8 @@ public class Player : MonoBehaviour
 
         // キャッシュしておく
         _transform = transform;
+
+        _targetRotation = transform.rotation;
     }
 
     // Update is called once per frame
@@ -115,6 +120,8 @@ public class Player : MonoBehaviour
 
         // 移動する向き
         transform.LookAt(_transform.position + verticalDirection + horizontalDirection); 
+
+
         // 移動
         _characterController.Move(_moveDirection * Time.deltaTime);
     }
