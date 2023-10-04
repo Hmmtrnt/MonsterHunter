@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
     private Quaternion _targetRotation;
 
+    //int test = 0;
+
     private void Awake()
     {
         if(_inctance == null)
@@ -85,6 +87,9 @@ public class Player : MonoBehaviour
         if (_isAvoid) return;
         Movement();
         //TestMove();
+
+        //test++;
+        //Debug.Log(test);
     }
 
     // デバッグ用
