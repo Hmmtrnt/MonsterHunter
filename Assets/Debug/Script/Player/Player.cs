@@ -37,8 +37,8 @@ public class Player : MonoBehaviour
     private Transform _transform;
 
     private Quaternion _targetRotation;
-
-    //int test = 0;
+    // 抜刀状態かどうか
+    private bool _isDrawnWepon;
 
     private void Awake()
     {
@@ -132,6 +132,7 @@ public class Player : MonoBehaviour
         _characterController.Move(_moveDirection * Time.deltaTime);
     }
 
+    // プレイヤーの回転をブラッシュアップ
     private void TestMove()
     {
         // 左スティック情報取得
@@ -152,5 +153,25 @@ public class Player : MonoBehaviour
     {
         _moveDirection.y = _gravity;
         _characterController.Move((_transform.forward + new Vector3(0.0f, _moveDirection.y, 0.0f)) * _avoidSpeed * Time.deltaTime);
+    }
+
+    // プレイヤーの抜刀又は納刀状態取得
+    private void WeponState()
+    {
+        if(ControllerManager._inctance._YButtonDown) 
+        {
+            _isDrawnWepon = true;
+        }
+
+        if (_isDrawnWepon) return;
+       
+        if(ControllerManager._inctance._XButtonDown)
+        {
+            _isDrawnWepon = false;
+        }
+        if(ControllerManager._inctance._RBButtonDown)
+        {
+            _isDrawnWepon = false;
+        }
     }
 }
