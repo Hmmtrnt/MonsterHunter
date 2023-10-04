@@ -13,6 +13,9 @@ public class Stamina : MonoBehaviour
     private float _recoverySpeed = 0.003f;
     // 回避時のゲージ消費量
     private float _avoidanceCostGauge;
+    // 走っているときのゲージ消費量
+    private float _runCostGauge = 0.001f;
+    private bool _isRuning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +27,16 @@ public class Stamina : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Run();
         Avoidance();
     }
 
     private void FixedUpdate()
     {
         _currentGauge = _gauge.fillAmount;
+
+        if (_isRuning) return;
+
         AutomaticRecovery();
 
     }
@@ -43,7 +50,15 @@ public class Stamina : MonoBehaviour
     // ダッシュ時のゲージ消費
     private void Run()
     {
-
+        if(ControllerManager._inctance._RBButton)
+        {
+            _gauge.fillAmount -= _runCostGauge;
+            _isRuning = true;
+        }
+        else
+        {
+            _isRuning = false;
+        }
     }
 
 
