@@ -74,7 +74,9 @@ public class Player : MonoBehaviour
         // âÒîíÜ
         if(_isAvoid)
         {
-            Evasion();
+            //Avoid();
+
+            MovementPlayer._inctance.Avoid();
             _avoidCurrentTime++;
         }
 
@@ -84,8 +86,14 @@ public class Player : MonoBehaviour
             _avoidCurrentTime = 0;
         }
 
+        //Debug.Log(_isDrawnWepon);
+
         if (_isAvoid) return;
-        Movement();
+        //Movement();
+        MovementPlayer._inctance.Movement();
+
+        WeponState();
+
         //TestMove();
 
         //test++;
@@ -154,7 +162,7 @@ public class Player : MonoBehaviour
     }
 
     // âÒîèàóù
-    private void Evasion()
+    private void Avoid()
     {
         _moveDirection.y = _gravity;
         _characterController.Move((_transform.forward + new Vector3(0.0f, _moveDirection.y, 0.0f)) * _avoidSpeed * Time.deltaTime);
@@ -178,5 +186,10 @@ public class Player : MonoBehaviour
         {
             _isDrawnWepon = false;
         }
+    }
+
+    public bool GetDrawWepon()
+    {
+        return _isDrawnWepon;
     }
 }
