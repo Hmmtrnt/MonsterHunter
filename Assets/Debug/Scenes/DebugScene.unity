@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 58016118}
   - component: {fileID: 58016119}
   - component: {fileID: 58016120}
+  - component: {fileID: 58016121}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -216,6 +217,18 @@ MonoBehaviour:
   _MenuButton: 0
   _MenuButtonDown: 0
   _MenuButtonUp: 0
+--- !u!114 &58016121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58016117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b5e9f7916c103c4ea47d51de45c23c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &88538790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,7 +1095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -142.5, y: 121.6}
+  m_AnchoredPosition: {x: -144, y: 121.6}
   m_SizeDelta: {x: 87.2, y: 79.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &688225879
@@ -1398,6 +1411,7 @@ MonoBehaviour:
   _gravity: -15
   _time: 1
   _avoidSpeed: 20
+  _isAvoid: 0
 --- !u!143 &873993838
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3919,7 +3933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 11e08c56afb168c498bdd3ad4f5911f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 452ea79adefc61341b6e7931e64bac47, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1

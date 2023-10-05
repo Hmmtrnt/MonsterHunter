@@ -25,11 +25,11 @@ public class Player : MonoBehaviour
     [SerializeField]private float _avoidSpeed = 0.0f;
 
     // 回避中
-    private bool _isAvoid = false;
-    // 回避時間
-    private float _avoidMaxTime = 20.0f;
-    // 回避のフレーム数
-    private float _avoidTime = 0;
+    public bool _isAvoid = false;
+    // 最大回避フレーム数
+    private float _avoidMaxTime = 30.0f;
+    // 現在の回避フレーム数
+    private float _avoidCurrentTime = 0;
 
     // 動く方向
     Vector3 _moveDirection = Vector3.zero;
@@ -75,13 +75,13 @@ public class Player : MonoBehaviour
         if(_isAvoid)
         {
             Evasion();
-            _avoidTime++;
+            _avoidCurrentTime++;
         }
 
-        if(_avoidTime >= _avoidMaxTime)
+        if(_avoidCurrentTime >= _avoidMaxTime)
         {
             _isAvoid = false;
-            _avoidTime = 0;
+            _avoidCurrentTime = 0;
         }
 
         if (_isAvoid) return;
@@ -109,11 +109,16 @@ public class Player : MonoBehaviour
         Vector3 horizontalDirection = _camera.transform.right * _horizontalLeftStick * _moveSpeed;// 左右
 
         // ダッシュ
-        if(ControllerManager._inctance._RBButton)
+        if(Stamina._instance.GetCurrentLengthGauge() <= Stamina._instance.GetLastGauge() &&
+           ControllerManager._inctance._RBButton)
+        {
+            _moveSpeed = 4.0f;
+        }
+        else if(ControllerManager._inctance._RBButton)
         {
             _moveSpeed = 15.0f;
         }
-        else
+        else if(!ControllerManager._inctance._RBButton)
         {
             _moveSpeed = 7.0f;
         }

@@ -14,9 +14,9 @@ public class QuestTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Time.timeScale = 1.0f / 60.0f;
-        //float m = Time.time;
-        //GameObject.Find("LongHand").transform.localEulerAngles = new Vector3 (0,0,-360 / 60.0f * m);
-        //GameObject.Find("HourHand").transform.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * 50.0f);
+        float m = Time.time;
+        m = m / 60.0f;
+        GameObject.Find("LongHand").transform.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * m);
+        GameObject.Find("HourHand").transform.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * 50.0f);
     }
 }

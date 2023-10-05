@@ -5,17 +5,34 @@ using UnityEngine.UI;
 
 public class Stamina : MonoBehaviour
 {
+    public static Stamina _instance;
+
     // ゲージオブジェクト.
     Image _gauge;
     // 現在のゲージ.
     private float _currentGauge = 0;
+    // 走るスピードが落ちるのゲージの長さ
+    private float _lastGauge = 0.15f;
     // ゲージの回復スピード
     private float _recoverySpeed = 0.003f;
     // 回避時のゲージ消費量
     private float _avoidanceCostGauge;
     // 走っているときのゲージ消費量
-    private float _runCostGauge = 0.001f;
+    private float _runCostGauge = 0.0005f;
+    // 走っているかどうか
     private bool _isRuning = false;
+
+    private void Awake()
+    {
+        if(_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +52,7 @@ public class Stamina : MonoBehaviour
     {
         _currentGauge = _gauge.fillAmount;
 
-        if (_isRuning) return;
+        if (_isRuning || Player._inctance._isAvoid) return;
 
         AutomaticRecovery();
 
@@ -77,5 +94,17 @@ public class Stamina : MonoBehaviour
         {
             _gauge.fillAmount -= _avoidanceCostGauge;
         }
+    }
+
+    // 現在のゲージの長さを取得
+    public float GetCurrentLengthGauge()
+    {
+        return _currentGauge;
+    }
+
+    // 走るスピードが遅くなるゲージの長さ取得
+    public float GetLastGauge()
+    {
+        return _lastGauge;
     }
 }
