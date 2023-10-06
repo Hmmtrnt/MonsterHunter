@@ -42,8 +42,6 @@ namespace StatePattern
         private IState m_nextState = null;
         public bool IsEndState { get; private set; } = false;
 
-        #region ==== IState ====
-
         StateType IState.GetCurrentState { get; } = StateType.IDLE;
 
         bool IState.ChangeState(IState nextState)
@@ -88,8 +86,6 @@ namespace StatePattern
         void IState.SetNextState(IState nextState) { m_nextState = nextState; }
         IState IState.GetNextState() { return m_nextState; }
 
-        #endregion // IState
-
     }
 
     public class MoveState : IState
@@ -104,8 +100,6 @@ namespace StatePattern
         private IState m_nextState = null;
         // 多分Stateの終了
         public bool IsEndState { get; private set; } = false;
-
-        #region ====IState====
 
         StateType IState.GetCurrentState { get; } = StateType.RUNNING;
         bool IState.ChangeState(IState nextState)
@@ -196,7 +190,6 @@ namespace StatePattern
         void IState.SetNextState(IState nextState) { m_nextState = nextState; }
         IState IState.GetNextState() {  return m_nextState; }
 
-        #endregion// ====IState====
 
         public void SetTarget(Transform target, Vector3 destination, float speedPerSec)
         {
@@ -218,7 +211,7 @@ public class PlayerStatePattern : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentState.OnStateChanged();
     }
 
     // Update is called once per frame
@@ -234,7 +227,7 @@ public class PlayerStatePattern : MonoBehaviour
             _verticalLeftStick != 0)
         {
             Debug.Log("チェンジ");
-            //currentState.SetNextState(MoveState);
+            currentState = new MoveState();
         }
     }
 }
