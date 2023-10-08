@@ -14,6 +14,18 @@ public partial class PlayerStateSample
 
         public override void OnUpdate(PlayerStateSample owner)
         {
+            Debug.Log("Run");
+
+            if(ControllerManager._inctance._LeftStickHorizontal == 0 &&
+                ControllerManager._inctance._LeftStickVertical == 0)
+            {
+                owner.ChangeState(_idle);
+            }
+
+            if (ControllerManager._inctance._AButtonDown)
+            {
+                owner.ChangeState(_avoid);
+            }
 
         }
     }

@@ -9,15 +9,18 @@ public partial class PlayerStateSample
     {
         public override void OnUpdate(PlayerStateSample owner)
         {
+            Debug.Log("Idle");
             if(ControllerManager._inctance._LeftStickHorizontal != 0 ||
                 ControllerManager._inctance._LeftStickVertical !=0)
             {
+                Debug.Log("waw");
                 // à⁄ìÆ
+                owner.ChangeState(_running);
             }
-            else if(ControllerManager._inctance._LeftStickHorizontal == 0 &&
-                ControllerManager._inctance._LeftStickVertical==0)
+
+            if(ControllerManager._inctance._AButtonDown)
             {
-                // ÉAÉCÉhÉã
+                // ÇµÇ·Ç™Çﬁèàóù
             }
         }
     }
