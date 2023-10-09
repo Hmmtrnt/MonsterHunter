@@ -26,6 +26,10 @@ public partial class PlayerStateSample
             {
                 owner.ChangeState(_avoid);
             }
+        }
+
+        public override void OnFixedUpdate(PlayerStateSample owner)
+        {
 
         }
     }

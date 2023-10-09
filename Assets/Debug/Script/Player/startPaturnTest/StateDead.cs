@@ -13,6 +13,10 @@ public partial class PlayerStateSample
         {
             Debug.Log("Dead");
         }
+        public override void OnFixedUpdate(PlayerStateSample owner)
+        {
+            
+        }
     }
 }
 

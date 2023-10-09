@@ -13,7 +13,6 @@ public partial class PlayerStateSample
             if(ControllerManager._inctance._LeftStickHorizontal != 0 ||
                 ControllerManager._inctance._LeftStickVertical !=0)
             {
-                Debug.Log("waw");
                 // ˆÚ“®
                 owner.ChangeState(_running);
             }
@@ -22,6 +21,11 @@ public partial class PlayerStateSample
             {
                 // ‚µ‚á‚ª‚Şˆ—
             }
+        }
+
+        public override void OnFixedUpdate(PlayerStateSample owner)
+        {
+
         }
     }
 }

@@ -16,15 +16,20 @@ public partial class PlayerStateSample
 
     public bool IsDead => _currentState is StateDead;
 
-    // Start()から呼ばれる
+    // Startに入れる
     private void OnStart()
     {
         _currentState.OnEnter(this, null);
     }
-
+    // Updateに入れる
     private void OnUpdate()
     {
         _currentState.OnUpdate(this);
+    }
+    // FixedUpdateに入れる
+    private void OnFixedUpdate()
+    {
+        _currentState.OnFixedUpdate(this);
     }
 
     // ステート変更
