@@ -14,7 +14,6 @@ public partial class PlayerStateSample
 
         public override void OnUpdate(PlayerStateSample owner)
         {
-            Debug.Log("Run");
 
             if(ControllerManager._inctance._LeftStickHorizontal == 0 &&
                 ControllerManager._inctance._LeftStickVertical == 0)
@@ -30,7 +29,16 @@ public partial class PlayerStateSample
 
         public override void OnFixedUpdate(PlayerStateSample owner)
         {
+            Move(owner);
+        }
 
+        // ˆÚ“®
+        private void Move(PlayerStateSample owner)
+        {
+            if(owner._rigidbody.velocity.magnitude <= 10.0f)
+            {
+                owner._rigidbody.AddForce(owner._moveSpeed, ForceMode.Acceleration);
+            }
         }
     }
 }

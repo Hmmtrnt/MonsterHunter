@@ -11,7 +11,6 @@ public partial class PlayerStateSample
 
         public override void OnUpdate(PlayerStateSample owner)
         {
-            Debug.Log("Dead");
         }
         public override void OnFixedUpdate(PlayerStateSample owner)
         {

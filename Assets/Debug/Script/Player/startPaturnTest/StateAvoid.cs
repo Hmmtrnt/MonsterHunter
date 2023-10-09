@@ -6,15 +6,14 @@ public partial class PlayerStateSample
     {
         public override void OnUpdate(PlayerStateSample owner)
         {
-            Debug.Log("Avoid");
 
             if (owner._avoidTime >= owner._avoidMaxTime)
             {
                 owner._avoidTime = 0;
+                // スティック傾けていたらRunに
                 if (owner._leftStickHorizontal != 0 ||
                     owner._leftStickVertical != 0)
                 {
-                    Debug.Log("as");
                     owner.ChangeState(_running);
                 }
                 else if (owner._leftStickHorizontal == 0 &&
