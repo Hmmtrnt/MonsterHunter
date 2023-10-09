@@ -15,8 +15,17 @@ public partial class PlayerStateSample
         public override void OnUpdate(PlayerStateSample owner)
         {
 
-            if(ControllerManager._inctance._LeftStickHorizontal == 0 &&
-                ControllerManager._inctance._LeftStickVertical == 0)
+            if (ControllerManager._inctance._RBButtonDown)
+            {
+                owner._moveVelocityMagnification = owner._moveVelocityDashMagnigication;
+            }
+            else if (ControllerManager._inctance._RBButtonUp)
+            {
+                owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
+            }
+
+            if (owner._leftStickHorizontal == 0 &&
+                owner._leftStickVertical == 0)
             {
                 owner.ChangeState(_idle);
             }
@@ -29,17 +38,25 @@ public partial class PlayerStateSample
 
         public override void OnFixedUpdate(PlayerStateSample owner)
         {
+            
+
+
             Move(owner);
+            RotateDirection(owner);
         }
 
         // ˆÚ“®
         private void Move(PlayerStateSample owner)
         {
-            if(owner._rigidbody.velocity.magnitude <= 10.0f)
-            {
-                owner._rigidbody.AddForce(owner._moveSpeed, ForceMode.Acceleration);
-            }
+            owner._rigidbody.velocity = new Vector3(owner._moveVelocity.x, owner._gravity, owner._moveVelocity.z);
         }
+
+        // ˆÚ“®‚µ‚Ä‚¢‚é•ûŒü‚É‰ñ“]
+        private void RotateDirection(PlayerStateSample owner)
+        {
+            owner._transform.LookAt(owner._transform.position + owner._moveDirection);
+        }
+
     }
 }
 
