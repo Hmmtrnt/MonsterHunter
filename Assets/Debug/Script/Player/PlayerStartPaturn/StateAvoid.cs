@@ -4,6 +4,11 @@ public partial class PlayerStateSample
 {
     public class StateAvoid : PlayerStateBase
     {
+        public override void OnEnter(PlayerStateSample owner, PlayerStateBase prevState)
+        {
+            owner._staminaGauge.fillAmount -= owner._decreaseAvoidStaminaGauge;
+        }
+
         public override void OnUpdate(PlayerStateSample owner)
         {
 

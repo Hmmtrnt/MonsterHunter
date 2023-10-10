@@ -14,15 +14,8 @@ public partial class PlayerStateSample
 
         public override void OnUpdate(PlayerStateSample owner)
         {
-
-            if (ControllerManager._inctance._RBButtonDown)
-            {
-                owner._moveVelocityMagnification = owner._moveVelocityDashMagnigication;
-            }
-            else if (ControllerManager._inctance._RBButtonUp)
-            {
-                owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
-            }
+            ChangeMoveSpeed(owner);
+            ChangeDashFlag(owner);
 
             if (owner._leftStickHorizontal == 0 &&
                 owner._leftStickVertical == 0)
@@ -32,6 +25,8 @@ public partial class PlayerStateSample
 
             if (ControllerManager._inctance._AButtonDown)
             {
+                owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
+                owner._isDashing = false;
                 owner.ChangeState(_avoid);
             }
         }
@@ -40,6 +35,7 @@ public partial class PlayerStateSample
         {
             Move(owner);
             RotateDirection(owner);
+            DashStaminaGauge(owner);
         }
 
         // 移動
@@ -52,6 +48,41 @@ public partial class PlayerStateSample
         private void RotateDirection(PlayerStateSample owner)
         {
             owner._transform.LookAt(owner._transform.position + owner._moveVelocity);
+        }
+
+        // 移動速度の変更
+        private void ChangeMoveSpeed(PlayerStateSample owner)
+        {
+            if (ControllerManager._inctance._RBButton)
+            {
+                owner._moveVelocityMagnification = owner._moveVelocityDashMagnigication;
+            }
+            else if (ControllerManager._inctance._RBButtonUp)
+            {
+                owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
+            }
+        }
+
+        // ダッシュしているかどうかの取得
+        private void ChangeDashFlag(PlayerStateSample owner)
+        {
+            if (ControllerManager._inctance._RBButton)
+            {
+                owner._isDashing = true;
+            }
+            if(ControllerManager._inctance._RBButtonUp)
+            {
+                owner._isDashing = false;
+            }
+        }
+
+        // ダッシュした時のスタミナゲージ処理
+        private void DashStaminaGauge(PlayerStateSample owner)
+        {
+            if (owner._isDashing)
+            {
+                owner._staminaGauge.fillAmount -= owner._decreaseDashStaminaGauge;
+            }
         }
 
     }
