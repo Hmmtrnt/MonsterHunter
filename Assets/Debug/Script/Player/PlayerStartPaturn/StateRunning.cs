@@ -35,7 +35,6 @@ public partial class PlayerStateSample
         {
             Move(owner);
             RotateDirection(owner);
-            DashStaminaGauge(owner);
         }
 
         // 移動
@@ -76,14 +75,6 @@ public partial class PlayerStateSample
             }
         }
 
-        // ダッシュした時のスタミナゲージ処理
-        private void DashStaminaGauge(PlayerStateSample owner)
-        {
-            if (owner._isDashing)
-            {
-                owner._staminaGauge.fillAmount -= owner._decreaseDashStaminaGauge;
-            }
-        }
 
     }
 }

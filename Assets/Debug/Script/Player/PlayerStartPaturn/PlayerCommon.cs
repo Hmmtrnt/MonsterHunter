@@ -47,28 +47,6 @@ public partial class PlayerStateSample : MonoBehaviour
     // 最大回避フレーム.
     private float _avoidMaxTime = 30;
 
-    /*移動,回避共通変数*/
-    // スタミナゲージ.
-    private Image _staminaGauge;
-    // 現在のスタミナゲージ.
-    private float _currentStaminaGauge;
-    // スタミナゲージの自動回復量.
-    private float _autoRecoveryStaminaGauge = 0.001f;
-    // ダッシュした時のスタミナゲージの減少量.
-    private float _decreaseDashStaminaGauge = 0.0005f;
-    // 回避した時のスタミナゲージの減少量
-    private float _decreaseAvoidStaminaGauge = 0.1f;
-    // スタミナ切れが起こるタイミングのゲージの長さ
-    private float _defatigationGauge = 0.15f;
-
-    // スタミナが自動回復しないときtrue
-    private bool _isNoAutoRecovery = false;
-
-    // 体力ゲージ.
-    private Image _hitPointGauge;
-    // 現在の体力ゲージ.
-    private float _currentHitPointGauge;
-
 
     void Start()
     {
@@ -85,10 +63,6 @@ public partial class PlayerStateSample : MonoBehaviour
     private void FixedUpdate()
     {
         SubstituteVariable();
-        if(!_isNoAutoRecovery)
-        {
-            AutoRecoveryStaminaGauge();
-        }
         OnFixedUpdate();
     }
 
@@ -97,17 +71,12 @@ public partial class PlayerStateSample : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _transform = transform;
-        _staminaGauge = GameObject.Find("StaminaGauge").GetComponent<Image>();
-        _hitPointGauge = GameObject.Find("HitPointGauge").GetComponent<Image>();
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
     }
 
     // 情報の代入
     private void SubstituteVariable()
     {
-        // 現在のゲージの代入
-        _currentStaminaGauge = _staminaGauge.fillAmount;
-        _currentHitPointGauge = _hitPointGauge.fillAmount;
 
         // 動く方向代入.
         _moveDirection = new Vector3(_leftStickHorizontal, 0.0f, _leftStickVertical);
@@ -125,8 +94,6 @@ public partial class PlayerStateSample : MonoBehaviour
         _moveVelocity = moveForward + moveSide;
         _avoidVelocity = _transform.forward * _avoidVelocityMagnification;
 
-        // スタミナゲージが自動回復するかどうか
-        _isNoAutoRecovery = _isDashing || _currentState is StateAvoid;
     }
 
     // スティックの入力情報取得
@@ -137,9 +104,4 @@ public partial class PlayerStateSample : MonoBehaviour
         _leftStickVertical = ControllerManager._inctance._LeftStickVertical;
     }
 
-    // スタミナゲージの自動回復
-    private void AutoRecoveryStaminaGauge()
-    {
-        _staminaGauge.fillAmount += _autoRecoveryStaminaGauge;
-    }
 }
