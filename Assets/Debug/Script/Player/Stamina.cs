@@ -8,7 +8,7 @@ public class Stamina : MonoBehaviour
     public static Stamina _instance;
 
     // ゲージオブジェクト.
-    Image _gauge;
+    private Image _gauge;
     // 現在のゲージ.
     private float _currentGauge = 0;
     // 走るスピードが落ちるのゲージの長さ
@@ -82,9 +82,6 @@ public class Stamina : MonoBehaviour
     // 回避時のゲージ消費
     private void Avoidance()
     {
-        //if (ControllerManager._inctance._LeftStickHorizontal == 0.0f ||
-        //    ControllerManager._inctance._LeftStickVertical == 0.0f) return;
-
         // 回避を行ったとき
         bool isAvoid = ControllerManager._inctance._AButtonDown &&
             (ControllerManager._inctance._LeftStickHorizontal != 0.0f ||

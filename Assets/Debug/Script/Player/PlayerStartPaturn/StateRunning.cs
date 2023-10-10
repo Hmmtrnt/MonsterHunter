@@ -38,9 +38,6 @@ public partial class PlayerStateSample
 
         public override void OnFixedUpdate(PlayerStateSample owner)
         {
-            
-
-
             Move(owner);
             RotateDirection(owner);
         }
@@ -48,13 +45,13 @@ public partial class PlayerStateSample
         // ˆÚ“®
         private void Move(PlayerStateSample owner)
         {
-            owner._rigidbody.velocity = new Vector3(owner._moveVelocity.x, owner._gravity, owner._moveVelocity.z);
+            owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + new Vector3(0.0f, owner._gravity, 0.0f);
         }
 
         // ˆÚ“®‚µ‚Ä‚¢‚é•ûŒü‚É‰ñ“]
         private void RotateDirection(PlayerStateSample owner)
         {
-            owner._transform.LookAt(owner._transform.position + owner._moveDirection);
+            owner._transform.LookAt(owner._transform.position + owner._moveVelocity);
         }
 
     }
