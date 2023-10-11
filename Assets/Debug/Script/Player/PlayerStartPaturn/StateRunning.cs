@@ -29,6 +29,7 @@ public partial class PlayerStateSample
         public override void OnExit(PlayerStateSample owner, PlayerStateBase nextState)
         {
             owner._isDashing = false;
+            owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 
         public override void OnChangeState(PlayerStateSample owner)
@@ -43,7 +44,6 @@ public partial class PlayerStateSample
             // âÒîèÛë‘Ç÷
             if (ControllerManager._inctance._AButtonDown)
             {
-                owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
                 owner.ChangeState(_avoid);
             }
 

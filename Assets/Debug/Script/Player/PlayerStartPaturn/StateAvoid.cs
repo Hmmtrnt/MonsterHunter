@@ -14,24 +14,7 @@ public partial class PlayerStateSample
         public override void OnUpdate(PlayerStateSample owner)
         {
 
-            if (owner._avoidTime >= owner._avoidMaxTime)
-            {
-                owner._avoidTime = 0;
-                owner._rigidbody.velocity = Vector3.zero;
-                // スティック傾けていたらRunに
-                if (owner._leftStickHorizontal != 0 ||
-                    owner._leftStickVertical != 0)
-                {
-                    owner._isAvoiding = false;
-                    owner.ChangeState(_running);
-                }
-                else if (owner._leftStickHorizontal == 0 &&
-                    owner._leftStickVertical == 0)
-                {
-                    owner._isAvoiding = false;
-                    owner.ChangeState(_idle);
-                }
-            }
+            
         }
 
         public override void OnFixedUpdate(PlayerStateSample owner)
@@ -40,9 +23,29 @@ public partial class PlayerStateSample
             MoveAvoid(owner);
         }
 
+        public override void OnExit(PlayerStateSample owner, PlayerStateBase nextState)
+        {
+            owner._isAvoiding = false;
+        }
+
         public override void OnChangeState(PlayerStateSample owner)
         {
-            base.OnChangeState(owner);
+            if (owner._avoidTime >= owner._avoidMaxTime)
+            {
+                owner._avoidTime = 0;
+                owner._rigidbody.velocity = Vector3.zero;
+                // スティック傾けていたらRunに
+                if (owner._leftStickHorizontal != 0 ||
+                    owner._leftStickVertical != 0)
+                {
+                    owner.ChangeState(_running);
+                }
+                else if (owner._leftStickHorizontal == 0 &&
+                    owner._leftStickVertical == 0)
+                {
+                    owner.ChangeState(_idle);
+                }
+            }
         }
 
         private void MoveAvoid(PlayerStateSample owner)

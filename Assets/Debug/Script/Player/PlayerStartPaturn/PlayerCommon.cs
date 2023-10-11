@@ -46,9 +46,9 @@ public partial class PlayerStateSample : MonoBehaviour
     // 回避速度.
     private Vector3 _avoidVelocity = new (0.0f,0.0f,0.0f);
     // 現在の回避フレーム.
-    private float _avoidTime    = 0;
+    private int _avoidTime    = 0;
     // 最大回避フレーム.
-    private float _avoidMaxTime = 30;
+    private int _avoidMaxTime = 30;
     // 回避しているかどうか.
     private bool _isAvoiding = false;
 
@@ -58,7 +58,7 @@ public partial class PlayerStateSample : MonoBehaviour
     // 現在の回復時間
     private float _currentRecoveryTime = 0;
     // 最大回復時間
-    private float _maxRecoveryTime = 30;
+    private float _maxRecoveryTime = 200;
 
 
 
@@ -120,6 +120,9 @@ public partial class PlayerStateSample : MonoBehaviour
 
     // ダッシュしているかどうかの情報取得
     public bool GetIsDashing() { return _isDashing; }
+
+    // 回避フレームの数を取得
+    public int GetAvoidTime() { return _avoidTime; }
 
     // 回避しているかどうかの情報取得
     public bool GetIsAvoiding() { return _isAvoiding; }

@@ -2493,6 +2493,7 @@ GameObject:
   - component: {fileID: 1234433958}
   - component: {fileID: 1234433960}
   - component: {fileID: 1234433959}
+  - component: {fileID: 1234433961}
   m_Layer: 5
   m_Name: HitPointGauge
   m_TagString: Untagged
@@ -2545,7 +2546,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.06
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2558,6 +2559,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234433957}
   m_CullTransparentMesh: 1
+--- !u!114 &1234433961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234433957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7918bf3d20357e447b87c237601f23c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1279409055
 GameObject:
   m_ObjectHideFlags: 0

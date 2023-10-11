@@ -29,6 +29,7 @@ public partial class PlayerStateSample
         public override void OnExit(PlayerStateSample owner, PlayerStateBase nextState)
         {
             owner._isRecovery = false;
+            owner._currentRecoveryTime = 0;
         }
 
         public override void OnChangeState(PlayerStateSample owner)

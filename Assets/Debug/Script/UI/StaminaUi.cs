@@ -1,19 +1,13 @@
 // スタミナゲージの処理
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StaminaUi : MonoBehaviour
 {
     public static StaminaUi _instance;
-
+    // プレイヤー情報
     private PlayerStateSample _playerState;
-
-    // スティックの入力情報
-    private float _leftStickHorizontal;
-    private float _leftStickVertical;
 
     // スタミナゲージ.
     private Image _Gauge;
@@ -40,11 +34,9 @@ public class StaminaUi : MonoBehaviour
 
     void Update()
     {
-        _leftStickHorizontal = ControllerManager._inctance._LeftStickHorizontal;
-        _leftStickVertical = ControllerManager._inctance._LeftStickVertical;
+        Debug.Log(_playerState.GetAvoidTime());
 
-        if (!ControllerManager._inctance._AButtonDown) return;
-
+        if (_playerState.GetAvoidTime() != 1) return;
 
         if (_playerState.GetIsAvoiding())
         {
