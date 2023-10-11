@@ -12,7 +12,7 @@ public partial class PlayerStateSample
     /// <summary>
     /// åªç›ÇÃState
     /// </summary>
-    public PlayerStateBase _currentState = _idle;
+    private PlayerStateBase _currentState = _idle;
 
     public bool IsDead => _currentState is StateDead;
 

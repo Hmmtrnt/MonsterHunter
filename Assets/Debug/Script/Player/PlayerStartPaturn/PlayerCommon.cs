@@ -46,6 +46,8 @@ public partial class PlayerStateSample : MonoBehaviour
     private float _avoidTime    = 0;
     // 最大回避フレーム.
     private float _avoidMaxTime = 30;
+    // 回避しているかどうか.
+    private bool _isAvoiding = false;
 
 
     void Start()
@@ -104,4 +106,9 @@ public partial class PlayerStateSample : MonoBehaviour
         _leftStickVertical = ControllerManager._inctance._LeftStickVertical;
     }
 
+    // ダッシュしているかどうかの情報取得
+    public bool GetIsDashing() { return _isDashing; }
+
+    // 回避しているかどうかの情報取得
+    public bool GetIsAvoiding() { return _isAvoiding; }
 }

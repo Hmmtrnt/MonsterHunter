@@ -6,6 +6,7 @@ public partial class PlayerStateSample
     {
         public override void OnEnter(PlayerStateSample owner, PlayerStateBase prevState)
         {
+            owner._isAvoiding = true;
         }
 
         public override void OnUpdate(PlayerStateSample owner)
@@ -19,11 +20,13 @@ public partial class PlayerStateSample
                 if (owner._leftStickHorizontal != 0 ||
                     owner._leftStickVertical != 0)
                 {
+                    owner._isAvoiding = false;
                     owner.ChangeState(_running);
                 }
                 else if (owner._leftStickHorizontal == 0 &&
                     owner._leftStickVertical == 0)
                 {
+                    owner._isAvoiding = false;
                     owner.ChangeState(_idle);
                 }
             }

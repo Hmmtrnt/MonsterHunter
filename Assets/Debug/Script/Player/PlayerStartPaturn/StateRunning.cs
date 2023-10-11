@@ -1,3 +1,5 @@
+/*‘–‚é*/
+
 using UnityEngine;
 
 public partial class PlayerStateSample

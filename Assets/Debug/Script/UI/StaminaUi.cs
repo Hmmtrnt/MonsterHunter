@@ -30,26 +30,26 @@ public class StaminaUi : MonoBehaviour
 
     // スタミナが自動回復しないときtrue.
     private bool _isNoAutoRecovery = false;
-    private bool _isDashing = false;
 
     void Start()
     {
         _Gauge = GetComponent<Image>();
         _Gauge.fillAmount = 1.0f;
+        _playerState = GameObject.Find("Hunter2").GetComponent<PlayerStateSample>();
     }
 
     void Update()
     {
         _leftStickHorizontal = ControllerManager._inctance._LeftStickHorizontal;
         _leftStickVertical = ControllerManager._inctance._LeftStickVertical;
-        _isDashing = (_leftStickHorizontal != 0 || _leftStickVertical != 0) &&
-            ControllerManager._inctance._RBButton;
 
-        IsNoAutoRecovery();
-        //if(_playerState._currentState == new PlayerStateSample.StateIdle())
-        //{
-        //    Debug.Log("adaiofda");
-        //}
+        if (!ControllerManager._inctance._AButtonDown) return;
+
+
+        if (_playerState.GetIsAvoiding())
+        {
+            AvoidStaminaConsumption();
+        }
 
     }
 
@@ -57,7 +57,10 @@ public class StaminaUi : MonoBehaviour
     {
         _currentGauge = _Gauge.fillAmount;
 
-        if(_isDashing)
+        IsNoAutoRecovery();
+
+
+        if (_playerState.GetIsDashing())
         {
             DashStaminaConsumption();
         }
@@ -72,13 +75,13 @@ public class StaminaUi : MonoBehaviour
     // 自動回復できるかどうか
     private void IsNoAutoRecovery()
     {
-        if(_isDashing)
+        if(!_playerState.GetIsDashing() && !_playerState.GetIsAvoiding())
         {
-            _isNoAutoRecovery = true;
+            _isNoAutoRecovery = false;
         }
         else
         {
-            _isNoAutoRecovery = false;
+            _isNoAutoRecovery = true;
         }
     }
 
@@ -92,5 +95,11 @@ public class StaminaUi : MonoBehaviour
     private void DashStaminaConsumption()
     {
         _Gauge.fillAmount -= _decreaseDashGauge;
+    }
+
+    // 回避時のスタミナ消費
+    private void AvoidStaminaConsumption()
+    {
+        _Gauge.fillAmount -= _decreaseAvoidGauge;
     }
 }
