@@ -1,3 +1,5 @@
+/*アイドル*/
+
 using UnityEngine;
 
 public partial class PlayerStateSample
@@ -9,23 +11,32 @@ public partial class PlayerStateSample
     {
         public override void OnUpdate(PlayerStateSample owner)
         {
-            if(ControllerManager._inctance._LeftStickHorizontal != 0 ||
-                ControllerManager._inctance._LeftStickVertical !=0)
-            {
-                // 移動
-                owner.ChangeState(_running);
-            }
 
-            if(ControllerManager._inctance._AButtonDown)
-            {
-                // しゃがむ処理
-            }
         }
 
         public override void OnFixedUpdate(PlayerStateSample owner)
         {
 
         }
+
+        public override void OnChangeState(PlayerStateSample owner)
+        {
+            if (owner._leftStickHorizontal != 0 ||
+                owner._leftStickVertical != 0)
+            {
+                // 移動
+                owner.ChangeState(_running);
+            }
+
+            // HACK:のちにアイテムが何を選ばれているか
+            if (ControllerManager._inctance._XButtonDown)
+            {
+                // 回復
+                owner.ChangeState(_recovery);
+            }
+        }
+
+        
     }
 }
 

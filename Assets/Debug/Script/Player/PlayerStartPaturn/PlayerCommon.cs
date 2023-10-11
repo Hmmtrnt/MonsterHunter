@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+// プレイヤーの全体の動き
+
 using UnityEngine;
-using UnityEngine.UI;
 
 public partial class PlayerStateSample : MonoBehaviour
 {
@@ -13,6 +12,7 @@ public partial class PlayerStateSample : MonoBehaviour
     private Camera _camera;
     // カメラの正面
     private Vector3 _cameraForward;
+
 
     /*コントローラー変数*/
     // 左スティックの入力情報.
@@ -30,6 +30,9 @@ public partial class PlayerStateSample : MonoBehaviour
     private float _moveVelocityDashMagnigication = 20;
     // 移動速度倍率.
     private float _moveVelocityMagnification = 12;
+    // 回復しながらの移動倍率
+    private float _moveVelocityRecoveryMagnification = 10;
+
     // 移動速度.
     private Vector3 _moveVelocity = new (0.0f,0.0f,0.0f);
     // ダッシュしているかどうか.
@@ -48,6 +51,15 @@ public partial class PlayerStateSample : MonoBehaviour
     private float _avoidMaxTime = 30;
     // 回避しているかどうか.
     private bool _isAvoiding = false;
+
+    /*回復*/
+    // 回復しているかどうか.
+    private bool _isRecovery = false;
+    // 現在の回復時間
+    private float _currentRecoveryTime = 0;
+    // 最大回復時間
+    private float _maxRecoveryTime = 30;
+
 
 
     void Start()
@@ -111,4 +123,7 @@ public partial class PlayerStateSample : MonoBehaviour
 
     // 回避しているかどうかの情報取得
     public bool GetIsAvoiding() { return _isAvoiding; }
+
+    // 回復しているかどうかの情報取得
+    public bool GetIsRecovery() { return _isRecovery; }
 }

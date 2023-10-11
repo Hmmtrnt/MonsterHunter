@@ -18,25 +18,41 @@ public partial class PlayerStateSample
         {
             ChangeMoveSpeed(owner);
             ChangeDashFlag(owner);
-
-            if (owner._leftStickHorizontal == 0 &&
-                owner._leftStickVertical == 0)
-            {
-                owner.ChangeState(_idle);
-            }
-
-            if (ControllerManager._inctance._AButtonDown)
-            {
-                owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
-                owner._isDashing = false;
-                owner.ChangeState(_avoid);
-            }
         }
 
         public override void OnFixedUpdate(PlayerStateSample owner)
         {
             Move(owner);
             RotateDirection(owner);
+        }
+
+        public override void OnExit(PlayerStateSample owner, PlayerStateBase nextState)
+        {
+            owner._isDashing = false;
+        }
+
+        public override void OnChangeState(PlayerStateSample owner)
+        {
+            // アイドル状態へ
+            if (owner._leftStickHorizontal == 0 &&
+                owner._leftStickVertical == 0)
+            {
+                owner.ChangeState(_idle);
+            }
+
+            // 回避状態へ
+            if (ControllerManager._inctance._AButtonDown)
+            {
+                owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
+                owner.ChangeState(_avoid);
+            }
+
+            // 回復状態へ
+            // HACK:アイテムが選ばれている状態の条件も追加する
+            if (ControllerManager._inctance._XButtonDown)
+            {
+                owner.ChangeState(_recovery);
+            }
         }
 
         // 移動

@@ -1,3 +1,5 @@
+/*‰ñ”ð*/
+
 using UnityEngine;
 
 public partial class PlayerStateSample
@@ -36,8 +38,11 @@ public partial class PlayerStateSample
         {
             owner._avoidTime++;
             MoveAvoid(owner);
+        }
 
-
+        public override void OnChangeState(PlayerStateSample owner)
+        {
+            base.OnChangeState(owner);
         }
 
         private void MoveAvoid(PlayerStateSample owner)

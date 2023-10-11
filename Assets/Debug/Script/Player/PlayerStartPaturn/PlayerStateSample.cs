@@ -1,3 +1,5 @@
+/*プレイヤーステート*/
+
 using UnityEngine;
 
 public partial class PlayerStateSample
@@ -6,6 +8,7 @@ public partial class PlayerStateSample
     private static readonly StateIdle _idle = new();
     private static readonly StateAvoid _avoid = new();
     private static readonly StateRunning _running = new();
+    private static readonly StateRecovery _recovery = new();
     private static readonly StateDead _dead = new();
 
 
@@ -25,6 +28,7 @@ public partial class PlayerStateSample
     private void OnUpdate()
     {
         _currentState.OnUpdate(this);
+        _currentState.OnChangeState(this);
     }
     // FixedUpdateに入れる
     private void OnFixedUpdate()
