@@ -1,11 +1,11 @@
-/*ƒAƒCƒhƒ‹*/
+ï»¿/*ã‚¢ã‚¤ãƒ‰ãƒ«*/
 
 using UnityEngine;
 
 public partial class PlayerStateSample
 {
     /// <summary>
-    /// ƒAƒCƒhƒ‹ó‘Ô
+    /// ã‚¢ã‚¤ãƒ‰ãƒ«çŠ¶æ…‹.
     /// </summary>
     public class StateIdle : StateBase
     {
@@ -24,14 +24,14 @@ public partial class PlayerStateSample
             if (owner._leftStickHorizontal != 0 ||
                 owner._leftStickVertical != 0)
             {
-                // ˆÚ“®
+                // ç§»å‹•.
                 owner.ChangeState(_running);
             }
 
-            // HACK:‚Ì‚¿‚ÉƒAƒCƒeƒ€‚ª‰½‚ğ‘I‚Î‚ê‚Ä‚¢‚é‚©
+            // HACK:ã®ã¡ã«ã‚¢ã‚¤ãƒ†ãƒ ãŒä½•ã‚’é¸ã°ã‚Œã¦ã„ã‚‹ã‹.
             if (ControllerManager._inctance._XButtonDown)
             {
-                // ‰ñ•œ
+                // å›å¾©.
                 owner.ChangeState(_recovery);
             }
         }

@@ -1,4 +1,4 @@
-// ƒXƒ^ƒ~ƒiƒQ[ƒW‚ÌŠÇ—.
+ï»¿// ã‚¹ã‚¿ãƒŸãƒŠã‚²ãƒ¼ã‚¸ã®ç®¡ç†.
 
 using System.Collections;
 using System.Collections.Generic;
@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class StaminaGauge : MonoBehaviour
 {
-    // ƒCƒ“ƒXƒ^ƒ“ƒX
+    // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
     public static StaminaGauge _instance;
-    // ƒQ[ƒW.
+    // ã‚²ãƒ¼ã‚¸.
     private Image _gauge;
-    // Œ»İ‚ÌƒQ[ƒW‚Ì’·‚³.
+    // ç¾åœ¨ã®ã‚²ãƒ¼ã‚¸ã®é•·ã•.
     private float _currentGauge;
-    // ‰ñ”ğ‚ÌƒQ[ƒWÁ”ï—Ê
+    // å›é¿æ™‚ã®ã‚²ãƒ¼ã‚¸æ¶ˆè²»é‡
 
 
 
@@ -43,7 +43,7 @@ public class StaminaGauge : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Œ»İ‚ÌƒQ[ƒW‚Ì’·‚³æ“¾.
+        // ç¾åœ¨ã®ã‚²ãƒ¼ã‚¸ã®é•·ã•å–å¾—.
         _currentGauge = _gauge.fillAmount;
 
     }

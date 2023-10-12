@@ -1,13 +1,13 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ControllerManager : MonoBehaviour
 {
-    // ƒCƒ“ƒXƒ^ƒ“ƒX
+    // ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
     public static ControllerManager _inctance;
 
-    // ƒXƒeƒBƒbƒN‚Ì“ü—Íî•ñ
+    // ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã®å…¥åŠ›æƒ…å ±
     public float _LeftStickHorizontal = 0;
     public float _LeftStickVertical = 0;
     public bool  _LeftStickButton;
@@ -20,14 +20,14 @@ public class ControllerManager : MonoBehaviour
     public bool  _RightStickButtonDown;
     public bool  _RightStickButtonUp;
 
-    // ƒgƒŠƒK[“ü—Íî•ñ
+    // ãƒˆãƒªã‚¬ãƒ¼å…¥åŠ›æƒ…å ±
     public float _LeftTrigger = 0;
     public float _RightTrigger = 0;
 
-    // Xboxƒ{ƒ^ƒ““ü—Íî•ñ
-    // ButtonF’·‰Ÿ‚µ
-    // Down  F‰Ÿ‚µ‚½uŠÔ
-    // Up    F‰Ÿ‚µI‚í‚éuŠÔ
+    // Xboxãƒœã‚¿ãƒ³å…¥åŠ›æƒ…å ±
+    // Buttonï¼šé•·æŠ¼ã—
+    // Down  ï¼šæŠ¼ã—ãŸç¬é–“
+    // Up    ï¼šæŠ¼ã—çµ‚ã‚ã‚‹ç¬é–“
     public bool _AButton;
     public bool _AButtonDown;
     public bool _AButtonUp;
@@ -83,7 +83,7 @@ public class ControllerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ƒXƒeƒBƒbƒN‚Ì“ü—Íî•ñæ“¾
+        // ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã®å…¥åŠ›æƒ…å ±å–å¾—
         _LeftStickHorizontal = Input.GetAxis("HorizontalLeft");
         _LeftStickVertical = Input.GetAxis("VerticalLeft");
         _LeftStickButton = Input.GetKey("joystick button 8");
@@ -96,11 +96,11 @@ public class ControllerManager : MonoBehaviour
         _RightStickButtonDown = Input.GetKeyDown("joystick button 9");
         _RightStickButtonUp = Input.GetKeyUp("joystick button 9");
 
-        // ƒgƒŠƒK[“ü—Íî•ñ
+        // ãƒˆãƒªã‚¬ãƒ¼å…¥åŠ›æƒ…å ±
         _LeftTrigger = Input.GetAxis("LTrigger");
         _RightTrigger = Input.GetAxis("RTrigger");
 
-        // ƒ{ƒ^ƒ““ü—Íî•ñ
+        // ãƒœã‚¿ãƒ³å…¥åŠ›æƒ…å ±
         _AButton = Input.GetKey("joystick button 0");
         _AButtonDown = Input.GetKeyDown("joystick button 0");
         _AButtonUp = Input.GetKeyUp("joystick button 0");

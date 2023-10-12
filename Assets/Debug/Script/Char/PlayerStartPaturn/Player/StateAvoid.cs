@@ -1,4 +1,4 @@
-/*‰ñ”ğ*/
+ï»¿/*å›é¿*/
 
 using UnityEngine;
 
@@ -34,7 +34,7 @@ public partial class PlayerStateSample
             {
                 owner._avoidTime = 0;
                 owner._rigidbody.velocity = Vector3.zero;
-                // ƒXƒeƒBƒbƒNŒX‚¯‚Ä‚¢‚½‚çRun‚É
+                // ã‚¹ãƒ†ã‚£ãƒƒã‚¯å‚¾ã‘ã¦ã„ãŸã‚‰Runã«
                 if (owner._leftStickHorizontal != 0 ||
                     owner._leftStickVertical != 0)
                 {

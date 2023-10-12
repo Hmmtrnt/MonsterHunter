@@ -1,10 +1,10 @@
-/*ƒvƒŒƒCƒ„[ƒXƒe[ƒg*/
+ï»¿/*ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚¹ãƒ†ãƒ¼ãƒˆ*/
 
 using UnityEngine;
 
 public partial class PlayerStateSample
 {
-    // State‚ÌƒCƒ“ƒXƒ^ƒ“ƒX.
+    // Stateã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹.
     private static readonly StateIdle _idle = new();
     private static readonly StateAvoid _avoid = new();
     private static readonly StateRunning _running = new();
@@ -12,29 +12,29 @@ public partial class PlayerStateSample
     private static readonly StateDead _dead = new();
 
 
-    // Œ»İ‚ÌState.
+    // ç¾åœ¨ã®State.
     private StateBase _currentState = _idle;
 
     public bool IsDead => _currentState is StateDead;
 
-    // Start‚É“ü‚ê‚é.
+    // Startã«å…¥ã‚Œã‚‹.
     private void OnStart()
     {
         _currentState.OnEnter(this, null);
     }
-    // Update‚É“ü‚ê‚é.
+    // Updateã«å…¥ã‚Œã‚‹.
     private void OnUpdate()
     {
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
     }
-    // FixedUpdate‚É“ü‚ê‚é.
+    // FixedUpdateã«å…¥ã‚Œã‚‹.
     private void OnFixedUpdate()
     {
         _currentState.OnFixedUpdate(this);
     }
 
-    // ƒXƒe[ƒg•ÏX.
+    // ã‚¹ãƒ†ãƒ¼ãƒˆå¤‰æ›´.
     private void ChangeState(StateBase nextState)
     {
         _currentState.OnExit(this, nextState);
@@ -42,7 +42,7 @@ public partial class PlayerStateSample
         _currentState = nextState;
     }
 
-    // €–S‚µ‚½‚ÉŒÄ‚Î‚ê‚é.
+    // æ­»äº¡ã—ãŸæ™‚ã«å‘¼ã°ã‚Œã‚‹.
     private void OnDeath()
     {
         ChangeState(_dead);

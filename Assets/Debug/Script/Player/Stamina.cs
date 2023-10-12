@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,19 +7,19 @@ public class Stamina : MonoBehaviour
 {
     public static Stamina _instance;
 
-    // ƒQ[ƒWƒIƒuƒWƒFƒNƒg.
+    // ã‚²ãƒ¼ã‚¸ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ.
     private Image _gauge;
-    // Œ»İ‚ÌƒQ[ƒW.
+    // ç¾åœ¨ã®ã‚²ãƒ¼ã‚¸.
     private float _currentGauge = 0;
-    // ‘–‚éƒXƒs[ƒh‚ª—‚¿‚é‚ÌƒQ[ƒW‚Ì’·‚³
+    // èµ°ã‚‹ã‚¹ãƒ”ãƒ¼ãƒ‰ãŒè½ã¡ã‚‹ã®ã‚²ãƒ¼ã‚¸ã®é•·ã•
     private float _lastGauge = 0.15f;
-    // ƒQ[ƒW‚Ì‰ñ•œƒXƒs[ƒh
+    // ã‚²ãƒ¼ã‚¸ã®å›å¾©ã‚¹ãƒ”ãƒ¼ãƒ‰
     private float _recoverySpeed = 0.003f;
-    // ‰ñ”ğ‚ÌƒQ[ƒWÁ”ï—Ê
+    // å›é¿æ™‚ã®ã‚²ãƒ¼ã‚¸æ¶ˆè²»é‡
     private float _avoidanceCostGauge;
-    // ‘–‚Á‚Ä‚¢‚é‚Æ‚«‚ÌƒQ[ƒWÁ”ï—Ê
+    // èµ°ã£ã¦ã„ã‚‹ã¨ãã®ã‚²ãƒ¼ã‚¸æ¶ˆè²»é‡
     private float _runCostGauge = 0.0005f;
-    // ‘–‚Á‚Ä‚¢‚é‚©‚Ç‚¤‚©
+    // èµ°ã£ã¦ã„ã‚‹ã‹ã©ã†ã‹
     private bool _isRuning = false;
 
     private void Awake()
@@ -58,13 +58,13 @@ public class Stamina : MonoBehaviour
 
     }
 
-    // ƒXƒ^ƒ~ƒi‚ğ©“®‰ñ•œ
+    // ã‚¹ã‚¿ãƒŸãƒŠã‚’è‡ªå‹•å›å¾©
     private void AutomaticRecovery()
     {
         _gauge.fillAmount += _recoverySpeed;
     }
 
-    // ƒ_ƒbƒVƒ…‚ÌƒQ[ƒWÁ”ï
+    // ãƒ€ãƒƒã‚·ãƒ¥æ™‚ã®ã‚²ãƒ¼ã‚¸æ¶ˆè²»
     private void Run()
     {
         if(ControllerManager._inctance._RBButton)
@@ -79,10 +79,10 @@ public class Stamina : MonoBehaviour
     }
 
 
-    // ‰ñ”ğ‚ÌƒQ[ƒWÁ”ï
+    // å›é¿æ™‚ã®ã‚²ãƒ¼ã‚¸æ¶ˆè²»
     private void Avoidance()
     {
-        // ‰ñ”ğ‚ğs‚Á‚½‚Æ‚«
+        // å›é¿ã‚’è¡Œã£ãŸã¨ã
         bool isAvoid = ControllerManager._inctance._AButtonDown &&
             (ControllerManager._inctance._LeftStickHorizontal != 0.0f ||
             ControllerManager._inctance._LeftStickVertical != 0.0f);
@@ -93,13 +93,13 @@ public class Stamina : MonoBehaviour
         }
     }
 
-    // Œ»İ‚ÌƒQ[ƒW‚Ì’·‚³‚ğæ“¾
+    // ç¾åœ¨ã®ã‚²ãƒ¼ã‚¸ã®é•·ã•ã‚’å–å¾—
     public float GetCurrentLengthGauge()
     {
         return _currentGauge;
     }
 
-    // ‘–‚éƒXƒs[ƒh‚ª’x‚­‚È‚éƒQ[ƒW‚Ì’·‚³æ“¾
+    // èµ°ã‚‹ã‚¹ãƒ”ãƒ¼ãƒ‰ãŒé…ããªã‚‹ã‚²ãƒ¼ã‚¸ã®é•·ã•å–å¾—
     public float GetLastGauge()
     {
         return _lastGauge;

@@ -1,4 +1,4 @@
-/*‰ñ•œ*/
+ï»¿/*å›å¾©*/
 
 using UnityEngine;
 
@@ -38,12 +38,12 @@ public partial class PlayerStateSample
 
         public override void OnChangeState(PlayerStateSample owner)
         {
-            // ó‘Ô‘JˆÚ‚ª‚Å‚«‚é‚©‚Ç‚¤‚©
+            // çŠ¶æ…‹é·ç§»ãŒã§ãã‚‹ã‹ã©ã†ã‹
             bool isChange = owner._currentRecoveryTime >= owner._maxRecoveryTime;
-            // “®‚¢‚Ä‚¢‚é‚©‚Ç‚¤‚©
+            // å‹•ã„ã¦ã„ã‚‹ã‹ã©ã†ã‹
             bool isMove = owner._leftStickHorizontal != 0 || owner._leftStickVertical != 0;
 
-            // ƒAƒCƒhƒ‹ó‘Ô‚Ö
+            // ã‚¢ã‚¤ãƒ‰ãƒ«çŠ¶æ…‹ã¸
             if (isChange && !isMove)
             {
                 owner.ChangeState(_idle);
@@ -58,13 +58,13 @@ public partial class PlayerStateSample
             }
         }
 
-        // ˆÚ“®
+        // ç§»å‹•
         private void Move(PlayerStateSample owner)
         {
             owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityRecoveryMagnification + new Vector3(0.0f, owner._gravity, 0.0f);
         }
 
-        // ˆÚ“®‚µ‚Ä‚¢‚é•ûŒü‚É‰ñ“]
+        // ç§»å‹•ã—ã¦ã„ã‚‹æ–¹å‘ã«å›è»¢
         private void RotateDirection(PlayerStateSample owner)
         {
             owner._transform.LookAt(owner._transform.position + owner._moveVelocity);

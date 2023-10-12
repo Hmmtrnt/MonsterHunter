@@ -1,4 +1,4 @@
-/*‘–‚é*/
+ï»¿/*èµ°ã‚‹*/
 
 using UnityEngine;
 
@@ -10,7 +10,7 @@ public partial class PlayerStateSample
         {
             if(prevState is StateIdle)
             {
-                // ‘O‚Ìó‘Ô‚ªƒAƒCƒhƒ‹ó‘Ô‚È‚ç‚Ìˆ—
+                // å‰ã®çŠ¶æ…‹ãŒã‚¢ã‚¤ãƒ‰ãƒ«çŠ¶æ…‹ãªã‚‰ã®å‡¦ç†
             }
         }
 
@@ -34,40 +34,40 @@ public partial class PlayerStateSample
 
         public override void OnChangeState(PlayerStateSample owner)
         {
-            // ƒAƒCƒhƒ‹ó‘Ô‚Ö
+            // ã‚¢ã‚¤ãƒ‰ãƒ«çŠ¶æ…‹ã¸
             if (owner._leftStickHorizontal == 0 &&
                 owner._leftStickVertical == 0)
             {
                 owner.ChangeState(_idle);
             }
 
-            // ‰ñ”ğó‘Ô‚Ö
+            // å›é¿çŠ¶æ…‹ã¸
             if (ControllerManager._inctance._AButtonDown)
             {
                 owner.ChangeState(_avoid);
             }
 
-            // ‰ñ•œó‘Ô‚Ö
-            // HACK:ƒAƒCƒeƒ€‚ª‘I‚Î‚ê‚Ä‚¢‚éó‘Ô‚ÌğŒ‚à’Ç‰Á‚·‚é
+            // å›å¾©çŠ¶æ…‹ã¸
+            // HACK:ã‚¢ã‚¤ãƒ†ãƒ ãŒé¸ã°ã‚Œã¦ã„ã‚‹çŠ¶æ…‹ã®æ¡ä»¶ã‚‚è¿½åŠ ã™ã‚‹
             if (ControllerManager._inctance._XButtonDown)
             {
                 owner.ChangeState(_recovery);
             }
         }
 
-        // ˆÚ“®
+        // ç§»å‹•
         private void Move(PlayerStateSample owner)
         {
             owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + new Vector3(0.0f, owner._gravity, 0.0f);
         }
 
-        // ˆÚ“®‚µ‚Ä‚¢‚é•ûŒü‚É‰ñ“]
+        // ç§»å‹•ã—ã¦ã„ã‚‹æ–¹å‘ã«å›è»¢
         private void RotateDirection(PlayerStateSample owner)
         {
             owner._transform.LookAt(owner._transform.position + owner._moveVelocity);
         }
 
-        // ˆÚ“®‘¬“x‚Ì•ÏX
+        // ç§»å‹•é€Ÿåº¦ã®å¤‰æ›´
         private void ChangeMoveSpeed(PlayerStateSample owner)
         {
             if (ControllerManager._inctance._RBButton)
@@ -80,7 +80,7 @@ public partial class PlayerStateSample
             }
         }
 
-        // ƒ_ƒbƒVƒ…‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìæ“¾
+        // ãƒ€ãƒƒã‚·ãƒ¥ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®å–å¾—
         private void ChangeDashFlag(PlayerStateSample owner)
         {
             if (ControllerManager._inctance._RBButton)

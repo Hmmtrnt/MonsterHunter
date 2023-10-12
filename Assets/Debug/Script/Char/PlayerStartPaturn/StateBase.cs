@@ -1,34 +1,34 @@
-/// <summary>
-/// State‚Ì’ŠÛƒNƒ‰ƒX
+ï»¿/// <summary>
+/// Stateã®æŠ½è±¡ã‚¯ãƒ©ã‚¹
 /// </summary>
 
 public abstract class StateBase
 {
     /// <summary>
-    /// ƒXƒe[ƒgŠJnŒÄ‚Ño‚µ
+    /// ã‚¹ãƒ†ãƒ¼ãƒˆé–‹å§‹æ™‚å‘¼ã³å‡ºã—
     /// </summary>
-    /// <param name="owner">ƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌQÆ</param>
-    /// <param name="prevState">‚Ğ‚Æ‚Â‘O‚Ìó‘Ô</param>
+    /// <param name="owner">ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®å‚ç…§</param>
+    /// <param name="prevState">ã²ã¨ã¤å‰ã®çŠ¶æ…‹</param>
     public virtual void OnEnter(PlayerStateSample owner, StateBase prevState) { }
     /// <summary>
     /// Update
     /// </summary>
-    /// <param name="owner">ƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌQÆ</param>
+    /// <param name="owner">ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®å‚ç…§</param>
     public virtual void OnUpdate(PlayerStateSample owner) { }
     /// <summary>
     /// FixedUpdate
     /// </summary>
-    /// <param name="owner">ƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌQÆ</param>
+    /// <param name="owner">ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®å‚ç…§</param>
     public virtual void OnFixedUpdate(PlayerStateSample owner) { }
     /// <summary>
-    /// ƒXƒe[ƒgI—¹ŒÄ‚Ño‚µ
+    /// ã‚¹ãƒ†ãƒ¼ãƒˆçµ‚äº†æ™‚å‘¼ã³å‡ºã—
     /// </summary>
-    /// <param name="owner">ƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌQÆ</param>
-    /// <param name="nextState">Ÿ‚Ìó‘Ô</param>
+    /// <param name="owner">ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®å‚ç…§</param>
+    /// <param name="nextState">æ¬¡ã®çŠ¶æ…‹</param>
     public virtual void OnExit(PlayerStateSample owner, StateBase nextState) { }
     /// <summary>
-    /// ƒXƒe[ƒg‘JˆÚ‚ÌŒÄ‚Ño‚µ
+    /// ã‚¹ãƒ†ãƒ¼ãƒˆé·ç§»ã®å‘¼ã³å‡ºã—
     /// </summary>
-    /// <param name="owner">ƒAƒNƒZƒX‚·‚é‚½‚ß‚ÌQÆ</param>
+    /// <param name="owner">ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãŸã‚ã®å‚ç…§</param>
     public virtual void OnChangeState(PlayerStateSample owner) { }
 }

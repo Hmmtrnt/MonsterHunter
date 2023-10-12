@@ -1,28 +1,28 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementPlayer : MonoBehaviour
 {
-    // ƒVƒ“ƒOƒ‹ƒgƒ“
+    // ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³
     public static MovementPlayer _inctance;
 
     private Camera _camera;
     private CharacterController _characterController;
 
-    // ƒQ[ƒ€ƒpƒbƒh‚Ì¶ƒXƒeƒBƒbƒN“ü—Íó‘Ô
+    // ã‚²ãƒ¼ãƒ ãƒ‘ãƒƒãƒ‰ã®å·¦ã‚¹ãƒ†ã‚£ãƒƒã‚¯å…¥åŠ›çŠ¶æ…‹
     private float _horizontalLeftStick = 0.0f;
     private float _verticalLeftStick = 0.0f;
 
-    // ˆÚ“®‘¬“x
+    // ç§»å‹•é€Ÿåº¦
     private float _moveSpeed = 0.0f;
-    // ‰ñ”ğ‘¬“x
+    // å›é¿é€Ÿåº¦
     private float _avoidSpeed = 30.0f;
 
-    // d—Í
+    // é‡åŠ›
     private float _gravity = -15.0f;
 
-    // “®‚­•ûŒü
+    // å‹•ãæ–¹å‘
     Vector3 _moveDirection = Vector3.zero;
 
     private Transform _transform;
@@ -46,25 +46,25 @@ public class MovementPlayer : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
-        // ƒLƒƒƒbƒVƒ…‚µ‚Ä‚¨‚­
+        // ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ãŠã
         _transform = transform;
     }
 
-    // ˆÚ“®ˆ—
+    // ç§»å‹•å‡¦ç†
     public void Movement()
     {
-        // ¶ƒXƒeƒBƒbƒNî•ñæ“¾
+        // å·¦ã‚¹ãƒ†ã‚£ãƒƒã‚¯æƒ…å ±å–å¾—
         _horizontalLeftStick = ControllerManager._inctance._LeftStickHorizontal;
         _verticalLeftStick = ControllerManager._inctance._LeftStickVertical;
 
-        // ƒJƒƒ‰‚Ì³–ÊƒxƒNƒgƒ‹
+        // ã‚«ãƒ¡ãƒ©ã®æ­£é¢ãƒ™ã‚¯ãƒˆãƒ«
         Vector3 cameraForward = Vector3.Scale(_camera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
 
-        // ƒJƒƒ‰‚ÌŒü‚«‚ÅVector‚Ì™ôšK‚ğ•Ï‚¦‚é
-        Vector3 verticalDirection = cameraForward * _verticalLeftStick * _moveSpeed;// ‘OŒã
-        Vector3 horizontalDirection = _camera.transform.right * _horizontalLeftStick * _moveSpeed;// ¶‰E
+        // ã‚«ãƒ¡ãƒ©ã®å‘ãã§Vectorã®å’†å“®ã‚’å¤‰ãˆã‚‹
+        Vector3 verticalDirection = cameraForward * _verticalLeftStick * _moveSpeed;// å‰å¾Œ
+        Vector3 horizontalDirection = _camera.transform.right * _horizontalLeftStick * _moveSpeed;// å·¦å³
 
-        // ƒ_ƒbƒVƒ…
+        // ãƒ€ãƒƒã‚·ãƒ¥
         if (Stamina._instance.GetCurrentLengthGauge() <= Stamina._instance.GetLastGauge() &&
            ControllerManager._inctance._RBButton)
         {
@@ -79,21 +79,21 @@ public class MovementPlayer : MonoBehaviour
             _moveSpeed = 7.0f;
         }
 
-        // d—Í
+        // é‡åŠ›
         _moveDirection.y = _gravity;
 
-        // ˆÚ“®‚·‚é•ûŒü
+        // ç§»å‹•ã™ã‚‹æ–¹å‘
         _moveDirection = verticalDirection + horizontalDirection + new Vector3(0.0f, _moveDirection.y, 0.0f);
 
-        // ˆÚ“®‚·‚éŒü‚«
+        // ç§»å‹•ã™ã‚‹å‘ã
         transform.LookAt(_transform.position + verticalDirection + horizontalDirection);
 
 
-        // ˆÚ“®
+        // ç§»å‹•
         _characterController.Move(_moveDirection * Time.deltaTime);
     }
 
-    // ‰ñ”ğˆ—
+    // å›é¿å‡¦ç†
     public void Avoid()
     {
         _moveDirection.y = _gravity;

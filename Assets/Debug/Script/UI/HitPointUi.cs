@@ -1,4 +1,4 @@
-// HpƒQ[ƒW
+ï»¿// Hpã‚²ãƒ¼ã‚¸
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,16 +6,16 @@ using UnityEngine.UI;
 public class HitPointUi : MonoBehaviour
 {
     public static StaminaUi _instance;
-    // ƒvƒŒƒCƒ„[î•ñ
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æƒ…å ±
     private PlayerStateSample _playerState;
 
-    // ƒQ[ƒW.
+    // ã‚²ãƒ¼ã‚¸.
     private Image _Gauge;
-    // Œ»İ‚ÌƒXƒ^ƒ~ƒiƒQ[ƒW.
+    // ç¾åœ¨ã®ã‚¹ã‚¿ãƒŸãƒŠã‚²ãƒ¼ã‚¸.
     private float _currentGauge;
-    // ƒ_ƒ[ƒW‚ğH‚ç‚Á‚½‚ÌŒ¸­—Ê.
+    // ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’é£Ÿã‚‰ã£ãŸæ™‚ã®æ¸›å°‘é‡.
     private float _decreaseDashGauge = 0.0005f;
-    // ‘Ì—Í‚Ì‰ñ•œ—Ê
+    // ä½“åŠ›ã®å›å¾©é‡
     private float _increaseRecoveryGauge = 0.003f;
 
     // Start is called before the first frame update
@@ -42,13 +42,13 @@ public class HitPointUi : MonoBehaviour
         }
     }
 
-    // ƒ_ƒ[ƒW‚ğó‚¯‚½‚Ì‘Ì—Í•Ï“®
+    // ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ãŸæ™‚ã®ä½“åŠ›å¤‰å‹•
     private void OnDamage()
     {
 
     }
 
-    // ‰ñ•œ‚µ‚Ä‚¢‚é‚Æ‚«‚Ì‘Ì—Í•Ï“®
+    // å›å¾©ã—ã¦ã„ã‚‹ã¨ãã®ä½“åŠ›å¤‰å‹•
     private void OnRecovery()
     {
         _Gauge.fillAmount += _increaseRecoveryGauge;

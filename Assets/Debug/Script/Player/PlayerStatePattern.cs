@@ -1,4 +1,4 @@
-using StatePattern;
+ï»¿using StatePattern;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,29 +10,29 @@ namespace StatePattern
 {
     public enum StateType
     {
-        NONE,       // –³‚µ
-        IDLE,       // ƒAƒCƒhƒ‹
-        RUNNING,    // ƒ‰ƒ“ƒjƒ“ƒO
-        DASH,       // ƒ_ƒbƒVƒ…
-        AVOID,      // ‰ñ”ğ
+        NONE,       // ç„¡ã—
+        IDLE,       // ã‚¢ã‚¤ãƒ‰ãƒ«
+        RUNNING,    // ãƒ©ãƒ³ãƒ‹ãƒ³ã‚°
+        DASH,       // ãƒ€ãƒƒã‚·ãƒ¥
+        AVOID,      // å›é¿
     }
 
     public interface IState
     {
         StateType GetCurrentState { get; }
-        // Ÿ‚Ìó‘Ô‚Ö
+        // æ¬¡ã®çŠ¶æ…‹ã¸
         bool ChangeState(IState nextState);
 
-        // HACK:«‘S•”Š¨‚Å‘‚¢‚Ä‚¢‚é‚½‚ßŒã‚ÅƒRƒƒ“ƒg’¼‚·
-        // Ÿ‚Ìó‘Ô‚ÖˆÚs‚·‚é‚Æ‚«
+        // HACK:â†“å…¨éƒ¨å‹˜ã§æ›¸ã„ã¦ã„ã‚‹ãŸã‚å¾Œã§ã‚³ãƒ¡ãƒ³ãƒˆç›´ã™
+        // æ¬¡ã®çŠ¶æ…‹ã¸ç§»è¡Œã™ã‚‹ã¨ã
         void OnStateChanged();
-        // ó‘Ô‚Ì‚Í‚¶‚ß
+        // çŠ¶æ…‹ã®ã¯ã˜ã‚
         void OnStateBegin();
-        // ó‘Ô‚ÌI—¹
+        // çŠ¶æ…‹ã®çµ‚äº†
         void OnStateEnd();
-        // XVˆ—
+        // æ›´æ–°å‡¦ç†
         void Update(float deltaTime);
-        // Ÿ‚Ìó‘Ô‚ğƒZƒbƒg
+        // æ¬¡ã®çŠ¶æ…‹ã‚’ã‚»ãƒƒãƒˆ
         void SetNextState(IState nextState);
         IState GetNextState();
     }
@@ -58,23 +58,23 @@ namespace StatePattern
 
         void IState.OnStateChanged()
         {
-            // ‰Šú‰»
-            Debug.Log("ƒAƒCƒhƒ‹ƒ`ƒFƒ“ƒW");
+            // åˆæœŸåŒ–
+            Debug.Log("ã‚¢ã‚¤ãƒ‰ãƒ«ãƒã‚§ãƒ³ã‚¸");
         }
 
         void IState.OnStateBegin()
         {
             IsEndState = false;
-            Debug.Log("ƒAƒCƒhƒ‹‚Í‚¶‚ß");
+            Debug.Log("ã‚¢ã‚¤ãƒ‰ãƒ«ã¯ã˜ã‚");
         }
         void IState.OnStateEnd()
         {
             IsEndState = true;
-            Debug.Log("ƒAƒCƒhƒ‹I—¹");
+            Debug.Log("ã‚¢ã‚¤ãƒ‰ãƒ«çµ‚äº†");
         }
         void IState.Update(float deltaTime)
         {
-            Debug.Log("ƒAƒCƒhƒ‹");
+            Debug.Log("ã‚¢ã‚¤ãƒ‰ãƒ«");
             if (IsEndState) return;
             if(m_nextState != null)
             {
@@ -90,15 +90,15 @@ namespace StatePattern
 
     public class MoveState : IState
     {
-        // ‚È‚ñ‚â‚±‚ê
+        // ãªã‚“ã‚„ã“ã‚Œ
         protected Transform m_moveTarget = null;
-        // ‘½•ªˆÚ“®•ûŒü
+        // å¤šåˆ†ç§»å‹•æ–¹å‘
         protected Vector3 m_moveDestination = Vector3.zero;
-        // ‘½•ªˆÚ“®ƒXƒs[ƒh
+        // å¤šåˆ†ç§»å‹•ã‚¹ãƒ”ãƒ¼ãƒ‰
         protected float m_moveSpeed = 0.0f;
-        // ‘½•ªŸ‚ÌSate
+        // å¤šåˆ†æ¬¡ã®Sate
         private IState m_nextState = null;
-        // ‘½•ªState‚ÌI—¹
+        // å¤šåˆ†Stateã®çµ‚äº†
         public bool IsEndState { get; private set; } = false;
 
         StateType IState.GetCurrentState { get; } = StateType.RUNNING;
@@ -117,21 +117,21 @@ namespace StatePattern
         void IState.OnStateChanged()
         {
             // Initialize
-            Debug.Log("‘–‚éƒ`ƒFƒ“ƒW");
+            Debug.Log("èµ°ã‚‹ãƒã‚§ãƒ³ã‚¸");
         }
         void IState.OnStateBegin() 
         {
             IsEndState = false;
-            Debug.Log("‘–‚é‚Í‚¶‚ß");
+            Debug.Log("èµ°ã‚‹ã¯ã˜ã‚");
         }
         void IState.OnStateEnd()
         {
             IsEndState = true;
-            Debug.Log("‘–‚éI—¹");
+            Debug.Log("èµ°ã‚‹çµ‚äº†");
         }
         void IState.Update(float deltaTime) 
         {
-            Debug.Log("‘–‚é");
+            Debug.Log("èµ°ã‚‹");
 
             if (IsEndState) return;
             if(m_nextState != null)
@@ -140,18 +140,18 @@ namespace StatePattern
                 return;
             }
 
-            // ¶ƒXƒeƒBƒbƒNî•ñæ“¾
+            // å·¦ã‚¹ãƒ†ã‚£ãƒƒã‚¯æƒ…å ±å–å¾—
             //_horizontalLeftStick = ControllerManager._inctance._LeftStickHorizontal;
             //_verticalLeftStick = ControllerManager._inctance._LeftStickVertical;
 
-            //// ƒJƒƒ‰‚Ì³–ÊƒxƒNƒgƒ‹
+            //// ã‚«ãƒ¡ãƒ©ã®æ­£é¢ãƒ™ã‚¯ãƒˆãƒ«
             //Vector3 cameraForward = Vector3.Scale(_camera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
 
-            //// ƒJƒƒ‰‚ÌŒü‚«‚ÅVector‚Ì™ôšK‚ğ•Ï‚¦‚é
-            //Vector3 verticalDirection = cameraForward * _verticalLeftStick * _moveSpeed;// ‘OŒã
-            //Vector3 horizontalDirection = _camera.transform.right * _horizontalLeftStick * _moveSpeed;// ¶‰E
+            //// ã‚«ãƒ¡ãƒ©ã®å‘ãã§Vectorã®å’†å“®ã‚’å¤‰ãˆã‚‹
+            //Vector3 verticalDirection = cameraForward * _verticalLeftStick * _moveSpeed;// å‰å¾Œ
+            //Vector3 horizontalDirection = _camera.transform.right * _horizontalLeftStick * _moveSpeed;// å·¦å³
 
-            //// ƒ_ƒbƒVƒ…
+            //// ãƒ€ãƒƒã‚·ãƒ¥
             //if (Stamina._instance.GetCurrentLengthGauge() <= Stamina._instance.GetLastGauge() &&
             //   ControllerManager._inctance._RBButton)
             //{
@@ -166,17 +166,17 @@ namespace StatePattern
             //    _moveSpeed = 7.0f;
             //}
 
-            //// d—Í
+            //// é‡åŠ›
             //_moveDirection.y = _gravity;
 
-            //// ˆÚ“®‚·‚é•ûŒü
+            //// ç§»å‹•ã™ã‚‹æ–¹å‘
             //_moveDirection = verticalDirection + horizontalDirection + new Vector3(0.0f, _moveDirection.y, 0.0f);
 
-            //// ˆÚ“®‚·‚éŒü‚«
+            //// ç§»å‹•ã™ã‚‹å‘ã
             //transform.LookAt(_transform.position + verticalDirection + horizontalDirection);
 
 
-            //// ˆÚ“®
+            //// ç§»å‹•
             //_characterController.Move(_moveDirection * Time.deltaTime);
 
 
@@ -204,7 +204,7 @@ public class PlayerStatePattern : MonoBehaviour
 {
     private IState currentState = new IdleState();
 
-    // ƒQ[ƒ€ƒpƒbƒh‚Ì“ü—Íó‘Ô
+    // ã‚²ãƒ¼ãƒ ãƒ‘ãƒƒãƒ‰ã®å…¥åŠ›çŠ¶æ…‹
     private float _horizontalLeftStick;
     private float _verticalLeftStick;
 
@@ -221,12 +221,12 @@ public class PlayerStatePattern : MonoBehaviour
         _verticalLeftStick = ControllerManager._inctance._LeftStickVertical;
 
         currentState.Update(Time.deltaTime);
-        //Debug.Log("‚ ");
+        //Debug.Log("ã‚");
 
         if(_horizontalLeftStick != 0 ||
             _verticalLeftStick != 0)
         {
-            Debug.Log("ƒ`ƒFƒ“ƒW");
+            Debug.Log("ãƒã‚§ãƒ³ã‚¸");
             currentState = new MoveState();
         }
     }

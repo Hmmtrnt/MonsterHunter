@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,36 +8,36 @@ public class Player : MonoBehaviour
 
     CharacterController _characterController;
     [SerializeField] private Camera _camera;
-    // ˆÚ“®ƒXƒs[ƒh
+    // ç§»å‹•ã‚¹ãƒ”ãƒ¼ãƒ‰
     private float _moveSpeed = 0.0f;
-    // d—Í
+    // é‡åŠ›
     [SerializeField] private float _gravity = 0.0f;
 
     private Vector3 _velocity = Vector3.zero;
-    // HACK:•Ï”–¼ƒeƒLƒg[
+    // HACK:å¤‰æ•°åãƒ†ã‚­ãƒˆãƒ¼
     [SerializeField] private float _time;
 
-    // ƒQ[ƒ€ƒpƒbƒh‚Ì“ü—Íó‘Ô
+    // ã‚²ãƒ¼ãƒ ãƒ‘ãƒƒãƒ‰ã®å…¥åŠ›çŠ¶æ…‹
     private float _horizontalLeftStick;
     private float _verticalLeftStick;
 
-    // ‰ñ”ğƒXƒs[ƒh
+    // å›é¿ã‚¹ãƒ”ãƒ¼ãƒ‰
     [SerializeField]private float _avoidSpeed = 0.0f;
 
-    // ‰ñ”ğ’†
+    // å›é¿ä¸­
     public bool _isAvoid = false;
-    // Å‘å‰ñ”ğƒtƒŒ[ƒ€”
+    // æœ€å¤§å›é¿ãƒ•ãƒ¬ãƒ¼ãƒ æ•°
     private float _avoidMaxTime = 30.0f;
-    // Œ»İ‚Ì‰ñ”ğƒtƒŒ[ƒ€”
+    // ç¾åœ¨ã®å›é¿ãƒ•ãƒ¬ãƒ¼ãƒ æ•°
     private float _avoidCurrentTime = 0;
 
-    // “®‚­•ûŒü
+    // å‹•ãæ–¹å‘
     Vector3 _moveDirection = Vector3.zero;
 
     private Transform _transform;
 
     private Quaternion _targetRotation;
-    // ”²“ó‘Ô‚©‚Ç‚¤‚©
+    // æŠœåˆ€çŠ¶æ…‹ã‹ã©ã†ã‹
     private bool _isDrawnWepon;
 
     private void Awake()
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
 
-        // ƒLƒƒƒbƒVƒ…‚µ‚Ä‚¨‚­
+        // ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ãŠã
         _transform = transform;
 
         _targetRotation = transform.rotation;
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
             _isAvoid = true;
         }
 
-        // ‰ñ”ğ’†
+        // å›é¿ä¸­
         if(_isAvoid)
         {
             //Avoid();
@@ -100,23 +100,23 @@ public class Player : MonoBehaviour
         //Debug.Log(test);
     }
 
-    // ƒfƒoƒbƒO—p
+    // ãƒ‡ãƒãƒƒã‚°ç”¨
 
-    // ˆÚ“®ˆ—
+    // ç§»å‹•å‡¦ç†
     private void Movement()
     {
-        // ¶ƒXƒeƒBƒbƒNî•ñæ“¾
+        // å·¦ã‚¹ãƒ†ã‚£ãƒƒã‚¯æƒ…å ±å–å¾—
         _horizontalLeftStick = ControllerManager._inctance._LeftStickHorizontal;
         _verticalLeftStick = ControllerManager._inctance._LeftStickVertical;
 
-        // ƒJƒƒ‰‚Ì³–ÊƒxƒNƒgƒ‹
+        // ã‚«ãƒ¡ãƒ©ã®æ­£é¢ãƒ™ã‚¯ãƒˆãƒ«
         Vector3 cameraForward = Vector3.Scale(_camera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
 
-        // ƒJƒƒ‰‚ÌŒü‚«‚ÅVector‚Ì™ôšK‚ğ•Ï‚¦‚é
-        Vector3 verticalDirection = cameraForward * _verticalLeftStick * _moveSpeed;// ‘OŒã
-        Vector3 horizontalDirection = _camera.transform.right * _horizontalLeftStick * _moveSpeed;// ¶‰E
+        // ã‚«ãƒ¡ãƒ©ã®å‘ãã§Vectorã®å’†å“®ã‚’å¤‰ãˆã‚‹
+        Vector3 verticalDirection = cameraForward * _verticalLeftStick * _moveSpeed;// å‰å¾Œ
+        Vector3 horizontalDirection = _camera.transform.right * _horizontalLeftStick * _moveSpeed;// å·¦å³
 
-        // ƒ_ƒbƒVƒ…
+        // ãƒ€ãƒƒã‚·ãƒ¥
         if(Stamina._instance.GetCurrentLengthGauge() <= Stamina._instance.GetLastGauge() &&
            ControllerManager._inctance._RBButton)
         {
@@ -131,44 +131,44 @@ public class Player : MonoBehaviour
             _moveSpeed = 7.0f;
         }
 
-        // d—Í
+        // é‡åŠ›
         _moveDirection.y = _gravity;
 
-        // ˆÚ“®‚·‚é•ûŒü
+        // ç§»å‹•ã™ã‚‹æ–¹å‘
         _moveDirection = verticalDirection + horizontalDirection + new Vector3(0.0f, _moveDirection.y, 0.0f);
 
-        // ˆÚ“®‚·‚éŒü‚«
+        // ç§»å‹•ã™ã‚‹å‘ã
         transform.LookAt(_transform.position + verticalDirection + horizontalDirection); 
 
 
-        // ˆÚ“®
+        // ç§»å‹•
         _characterController.Move(_moveDirection * Time.deltaTime);
     }
 
-    // ƒvƒŒƒCƒ„[‚Ì‰ñ“]‚ğƒuƒ‰ƒbƒVƒ…ƒAƒbƒv
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å›è»¢ã‚’ãƒ–ãƒ©ãƒƒã‚·ãƒ¥ã‚¢ãƒƒãƒ—
     private void TestMove()
     {
-        // ¶ƒXƒeƒBƒbƒNî•ñæ“¾
+        // å·¦ã‚¹ãƒ†ã‚£ãƒƒã‚¯æƒ…å ±å–å¾—
         _horizontalLeftStick = ControllerManager._inctance._LeftStickHorizontal;
         _verticalLeftStick = ControllerManager._inctance._LeftStickVertical;
 
         if (_horizontalLeftStick != 0 || _verticalLeftStick != 0)
         {
-            // ˆÚ“®
+            // ç§»å‹•
             _characterController.Move(transform.forward * 5.0f * Time.deltaTime);
         }
 
         
     }
 
-    // ‰ñ”ğˆ—
+    // å›é¿å‡¦ç†
     private void Avoid()
     {
         _moveDirection.y = _gravity;
         _characterController.Move((_transform.forward + new Vector3(0.0f, _moveDirection.y, 0.0f)) * _avoidSpeed * Time.deltaTime);
     }
 
-    // ƒvƒŒƒCƒ„[‚Ì”²“–”‚Í”[“ó‘Ôæ“¾
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æŠœåˆ€åˆã¯ç´åˆ€çŠ¶æ…‹å–å¾—
     private void WeponState()
     {
         if(ControllerManager._inctance._YButtonDown) 

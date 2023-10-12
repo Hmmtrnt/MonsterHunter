@@ -1,4 +1,4 @@
-// ƒXƒ^ƒ~ƒiƒQ[ƒW‚Ìˆ—
+ï»¿// ã‚¹ã‚¿ãƒŸãƒŠã‚²ãƒ¼ã‚¸ã®å‡¦ç†
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,23 +6,23 @@ using UnityEngine.UI;
 public class StaminaUi : MonoBehaviour
 {
     public static StaminaUi _instance;
-    // ƒvƒŒƒCƒ„[î•ñ
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æƒ…å ±
     private PlayerStateSample _playerState;
 
-    // ƒXƒ^ƒ~ƒiƒQ[ƒW.
+    // ã‚¹ã‚¿ãƒŸãƒŠã‚²ãƒ¼ã‚¸.
     private Image _Gauge;
-    // Œ»İ‚ÌƒXƒ^ƒ~ƒiƒQ[ƒW.
+    // ç¾åœ¨ã®ã‚¹ã‚¿ãƒŸãƒŠã‚²ãƒ¼ã‚¸.
     private float _currentGauge;
-    // ƒXƒ^ƒ~ƒiƒQ[ƒW‚Ì©“®‰ñ•œ—Ê.
+    // ã‚¹ã‚¿ãƒŸãƒŠã‚²ãƒ¼ã‚¸ã®è‡ªå‹•å›å¾©é‡.
     private float _autoRecoveryGauge = 0.001f;
-    // ƒ_ƒbƒVƒ…‚µ‚½‚ÌƒXƒ^ƒ~ƒiƒQ[ƒW‚ÌŒ¸­—Ê.
+    // ãƒ€ãƒƒã‚·ãƒ¥ã—ãŸæ™‚ã®ã‚¹ã‚¿ãƒŸãƒŠã‚²ãƒ¼ã‚¸ã®æ¸›å°‘é‡.
     private float _decreaseDashGauge = 0.0005f;
-    // ‰ñ”ğ‚µ‚½‚ÌƒXƒ^ƒ~ƒiƒQ[ƒW‚ÌŒ¸­—Ê.
+    // å›é¿ã—ãŸæ™‚ã®ã‚¹ã‚¿ãƒŸãƒŠã‚²ãƒ¼ã‚¸ã®æ¸›å°‘é‡.
     private float _decreaseAvoidGauge = 0.1f;
-    // ƒXƒ^ƒ~ƒiØ‚ê‚ª‹N‚±‚éƒ^ƒCƒ~ƒ“ƒO‚ÌƒQ[ƒW‚Ì’·‚³.
+    // ã‚¹ã‚¿ãƒŸãƒŠåˆ‡ã‚ŒãŒèµ·ã“ã‚‹ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã®ã‚²ãƒ¼ã‚¸ã®é•·ã•.
     private float _defatigationGauge = 0.15f;
 
-    // ƒXƒ^ƒ~ƒi‚ª©“®‰ñ•œ‚µ‚È‚¢‚Æ‚«true.
+    // ã‚¹ã‚¿ãƒŸãƒŠãŒè‡ªå‹•å›å¾©ã—ãªã„ã¨ãtrue.
     private bool _isNoAutoRecovery = false;
 
     void Start()
@@ -61,7 +61,7 @@ public class StaminaUi : MonoBehaviour
         
     }
 
-    // ©“®‰ñ•œ‚Å‚«‚é‚©‚Ç‚¤‚©
+    // è‡ªå‹•å›å¾©ã§ãã‚‹ã‹ã©ã†ã‹
     private void IsNoAutoRecovery()
     {
         if(!_playerState.GetIsDashing() && !_playerState.GetIsAvoiding())
@@ -74,19 +74,19 @@ public class StaminaUi : MonoBehaviour
         }
     }
 
-    // ©“®‰ñ•œ.
+    // è‡ªå‹•å›å¾©.
     private void AutoRecovery()
     {
         _Gauge.fillAmount += _autoRecoveryGauge;
     }
 
-    // ƒ_ƒbƒVƒ…‚ÌƒXƒ^ƒ~ƒiÁ”ï
+    // ãƒ€ãƒƒã‚·ãƒ¥æ™‚ã®ã‚¹ã‚¿ãƒŸãƒŠæ¶ˆè²»
     private void DashStaminaConsumption()
     {
         _Gauge.fillAmount -= _decreaseDashGauge;
     }
 
-    // ‰ñ”ğ‚ÌƒXƒ^ƒ~ƒiÁ”ï
+    // å›é¿æ™‚ã®ã‚¹ã‚¿ãƒŸãƒŠæ¶ˆè²»
     private void AvoidStaminaConsumption()
     {
         _Gauge.fillAmount -= _decreaseAvoidGauge;

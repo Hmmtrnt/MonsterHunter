@@ -1,67 +1,9 @@
-// ƒvƒŒƒCƒ„[‚Ì‘S‘Ì‚Ì“®‚«
+ï»¿// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å…¨ä½“ã®å‹•ã
 
 using UnityEngine;
 
 public partial class PlayerStateSample : MonoBehaviour
 {
-    private Rigidbody _rigidbody;
-
-    // transform‚ğƒLƒƒƒbƒVƒ….
-    private Transform _transform;
-    // ƒJƒƒ‰
-    private Camera _camera;
-    // ƒJƒƒ‰‚Ì³–Ê
-    private Vector3 _cameraForward;
-
-
-    /*ƒRƒ“ƒgƒ[ƒ‰[•Ï”*/
-    // ¶ƒXƒeƒBƒbƒN‚Ì“ü—Íî•ñ.
-    private float _leftStickHorizontal;
-    private float _leftStickVertical;
-
-    /*ƒAƒCƒhƒ‹ó‘Ô‚Ì•Ï”*/
-
-    /*ˆÚ“®‚Ì•Ï”*/
-    // ˆÚ“®•ûŒü.
-    private Vector3 _moveDirection;
-    // ‘–‚é‚ÌˆÚ“®”{—¦.
-    private float _moveVelocityRunMagnification = 12;
-    // ƒ_ƒbƒVƒ…‚ÌˆÚ“®”{—¦.
-    private float _moveVelocityDashMagnigication = 20;
-    // ˆÚ“®‘¬“x”{—¦.
-    private float _moveVelocityMagnification = 12;
-    // ‰ñ•œ‚µ‚È‚ª‚ç‚ÌˆÚ“®”{—¦
-    private float _moveVelocityRecoveryMagnification = 10;
-
-    // ˆÚ“®‘¬“x.
-    private Vector3 _moveVelocity = new (0.0f,0.0f,0.0f);
-    // ƒ_ƒbƒVƒ…‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©.
-    private bool _isDashing = false;
-    // d—Í.
-    private float _gravity = -10.0f;
-
-    /*‰ñ”ğ‚Ì•Ï”*/
-    // ‰ñ”ğ‘¬“x”{—¦.
-    private float _avoidVelocityMagnification = 30;
-    // ‰ñ”ğ‘¬“x.
-    private Vector3 _avoidVelocity = new (0.0f,0.0f,0.0f);
-    // Œ»İ‚Ì‰ñ”ğƒtƒŒ[ƒ€.
-    private int _avoidTime    = 0;
-    // Å‘å‰ñ”ğƒtƒŒ[ƒ€.
-    private int _avoidMaxTime = 30;
-    // ‰ñ”ğ‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©.
-    private bool _isAvoiding = false;
-
-    /*‰ñ•œ*/
-    // ‰ñ•œ‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©.
-    private bool _isRecovery = false;
-    // Œ»İ‚Ì‰ñ•œŠÔ
-    private float _currentRecoveryTime = 0;
-    // Å‘å‰ñ•œŠÔ
-    private float _maxRecoveryTime = 200;
-
-
-
     void Start()
     {
         Initialization();
@@ -80,7 +22,7 @@ public partial class PlayerStateSample : MonoBehaviour
         OnFixedUpdate();
     }
 
-    // ƒvƒŒƒCƒ„[î•ñ‚Ì‰Šú‰»
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼æƒ…å ±ã®åˆæœŸåŒ–
     private void Initialization()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -88,45 +30,47 @@ public partial class PlayerStateSample : MonoBehaviour
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
     }
 
-    // î•ñ‚Ì‘ã“ü
+    // æƒ…å ±ã®ä»£å…¥
     private void SubstituteVariable()
     {
 
-        // “®‚­•ûŒü‘ã“ü.
+        // å‹•ãæ–¹å‘ä»£å…¥.
         _moveDirection = new Vector3(_leftStickHorizontal, 0.0f, _leftStickVertical);
         _moveDirection.Normalize();
 
-        // ƒJƒƒ‰‚Ì³–Ê
+        // ã‚«ãƒ¡ãƒ©ã®æ­£é¢
         _cameraForward = Vector3.Scale(_camera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
 
-        /*ƒJƒƒ‰‚ÌŒü‚«‚©‚çˆÚ“®•ûŒüæ“¾*/
-        // ³–Ê
+        /*ã‚«ãƒ¡ãƒ©ã®å‘ãã‹ã‚‰ç§»å‹•æ–¹å‘å–å¾—*/
+        // æ­£é¢
         Vector3 moveForward = _cameraForward * _leftStickVertical;
-        // ‰¡
+        // æ¨ª
         Vector3 moveSide = _camera.transform.right * _leftStickHorizontal;
-        // ‘¬“x‚Ì‘ã“ü.
+        // é€Ÿåº¦ã®ä»£å…¥.
         _moveVelocity = moveForward + moveSide;
         _avoidVelocity = _transform.forward * _avoidVelocityMagnification;
 
     }
 
-    // ƒXƒeƒBƒbƒN‚Ì“ü—Íî•ñæ“¾
+    // ã‚¹ãƒ†ã‚£ãƒƒã‚¯ã®å…¥åŠ›æƒ…å ±å–å¾—
     private void GetStickInput()
     {
-        // “ü—Íî•ñ‘ã“ü.
+        // å…¥åŠ›æƒ…å ±ä»£å…¥.
         _leftStickHorizontal = ControllerManager._inctance._LeftStickHorizontal;
         _leftStickVertical = ControllerManager._inctance._LeftStickVertical;
     }
 
-    // ƒ_ƒbƒVƒ…‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìî•ñæ“¾
+
+
+    // ãƒ€ãƒƒã‚·ãƒ¥ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®æƒ…å ±å–å¾—
     public bool GetIsDashing() { return _isDashing; }
 
-    // ‰ñ”ğƒtƒŒ[ƒ€‚Ì”‚ğæ“¾
+    // å›é¿ãƒ•ãƒ¬ãƒ¼ãƒ ã®æ•°ã‚’å–å¾—
     public int GetAvoidTime() { return _avoidTime; }
 
-    // ‰ñ”ğ‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìî•ñæ“¾
+    // å›é¿ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®æƒ…å ±å–å¾—
     public bool GetIsAvoiding() { return _isAvoiding; }
 
-    // ‰ñ•œ‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìî•ñæ“¾
+    // å›å¾©ã—ã¦ã„ã‚‹ã‹ã©ã†ã‹ã®æƒ…å ±å–å¾—
     public bool GetIsRecovery() { return _isRecovery; }
 }

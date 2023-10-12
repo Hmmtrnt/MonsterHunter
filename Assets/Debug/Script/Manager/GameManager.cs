@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // FPS�Œ�
+        // FPS固定
         Application.targetFrameRate = 60;
     }
 
