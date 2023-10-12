@@ -2,29 +2,29 @@
 
 using UnityEngine;
 
-public partial class PlayerStateSample
+public partial class PlayerState
 {
     /// <summary>
     /// アイドル状態.
     /// </summary>
     public class StateIdle : StateBase
     {
-        public override void OnEnter(PlayerStateSample owner, StateBase prevState)
+        public override void OnEnter(PlayerState owner, StateBase prevState)
         {
 
         }
 
-        public override void OnUpdate(PlayerStateSample owner)
+        public override void OnUpdate(PlayerState owner)
         {
 
         }
 
-        public override void OnFixedUpdate(PlayerStateSample owner)
+        public override void OnFixedUpdate(PlayerState owner)
         {
 
         }
 
-        public override void OnChangeState(PlayerStateSample owner)
+        public override void OnChangeState(PlayerState owner)
         {
             if (owner._leftStickHorizontal != 0 ||
                 owner._leftStickVertical != 0)

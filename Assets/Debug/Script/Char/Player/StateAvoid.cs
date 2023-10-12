@@ -2,33 +2,33 @@
 
 using UnityEngine;
 
-public partial class PlayerStateSample
+public partial class PlayerState
 {
     public class StateAvoid : StateBase
     {
-        public override void OnEnter(PlayerStateSample owner, StateBase prevState)
+        public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._isAvoiding = true;
         }
 
-        public override void OnUpdate(PlayerStateSample owner)
+        public override void OnUpdate(PlayerState owner)
         {
 
             
         }
 
-        public override void OnFixedUpdate(PlayerStateSample owner)
+        public override void OnFixedUpdate(PlayerState owner)
         {
             owner._avoidTime++;
             MoveAvoid(owner);
         }
 
-        public override void OnExit(PlayerStateSample owner, StateBase nextState)
+        public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._isAvoiding = false;
         }
 
-        public override void OnChangeState(PlayerStateSample owner)
+        public override void OnChangeState(PlayerState owner)
         {
             if (owner._avoidTime >= owner._avoidMaxTime)
             {
@@ -48,7 +48,7 @@ public partial class PlayerStateSample
             }
         }
 
-        private void MoveAvoid(PlayerStateSample owner)
+        private void MoveAvoid(PlayerState owner)
         {
             //owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);
             owner._rigidbody.velocity = owner._avoidVelocity;

@@ -7,7 +7,7 @@ public class StaminaUi : MonoBehaviour
 {
     public static StaminaUi _instance;
     // プレイヤー情報
-    private PlayerStateSample _playerState;
+    private PlayerState _playerState;
 
     // スタミナゲージ.
     private Image _Gauge;
@@ -29,7 +29,7 @@ public class StaminaUi : MonoBehaviour
     {
         _Gauge = GetComponent<Image>();
         _Gauge.fillAmount = 1.0f;
-        _playerState = GameObject.Find("Hunter2").GetComponent<PlayerStateSample>();
+        _playerState = GameObject.Find("Hunter2").GetComponent<PlayerState>();
     }
 
     void Update()

@@ -7,7 +7,7 @@ public class HitPointUi : MonoBehaviour
 {
     public static StaminaUi _instance;
     // プレイヤー情報
-    private PlayerStateSample _playerState;
+    private PlayerState _playerState;
 
     // ゲージ.
     private Image _Gauge;
@@ -20,7 +20,7 @@ public class HitPointUi : MonoBehaviour
 
     void Start()
     {
-        _playerState = GameObject.Find("Hunter2").GetComponent<PlayerStateSample>();
+        _playerState = GameObject.Find("Hunter2").GetComponent<PlayerState>();
 
         _Gauge = GetComponent<Image>();
     }

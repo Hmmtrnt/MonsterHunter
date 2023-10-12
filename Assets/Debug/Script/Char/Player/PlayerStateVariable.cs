@@ -2,8 +2,19 @@
 
 using UnityEngine;
 
-public partial class PlayerStateSample
+public partial class PlayerState
 {
+    // プレイヤーのステータス
+    // 体力
+    private int _HitPoint = 200;
+    // スタミナ
+    private int _Stamina = 200;
+    // 攻撃力
+    private float _AttackPower = 100;
+
+    // モーション値
+    private float _MotionValue = 0;
+
     private Rigidbody _rigidbody;
 
     // 納刀抜刀を確認するデバッグ用オブジェクト

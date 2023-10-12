@@ -2,11 +2,11 @@
 
 using UnityEngine;
 
-public partial class PlayerStateSample
+public partial class PlayerState
 {
     public class StateRunning : StateBase
     {
-        public override void OnEnter(PlayerStateSample owner, StateBase prevState)
+        public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             if(prevState is StateIdle)
             {
@@ -14,7 +14,7 @@ public partial class PlayerStateSample
             }
         }
 
-        public override void OnUpdate(PlayerStateSample owner)
+        public override void OnUpdate(PlayerState owner)
         {
             if(!owner._UnsheathedSword)
             {
@@ -28,19 +28,19 @@ public partial class PlayerStateSample
             }
         }
 
-        public override void OnFixedUpdate(PlayerStateSample owner)
+        public override void OnFixedUpdate(PlayerState owner)
         {
             Move(owner);
             RotateDirection(owner);
         }
 
-        public override void OnExit(PlayerStateSample owner, StateBase nextState)
+        public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._isDashing = false;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 
-        public override void OnChangeState(PlayerStateSample owner)
+        public override void OnChangeState(PlayerState owner)
         {
             // アイドル状態へ
             if (owner._leftStickHorizontal == 0 &&
@@ -64,19 +64,19 @@ public partial class PlayerStateSample
         }
 
         // 移動
-        private void Move(PlayerStateSample owner)
+        private void Move(PlayerState owner)
         {
             owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + new Vector3(0.0f, owner._gravity, 0.0f);
         }
 
         // 移動している方向に回転
-        private void RotateDirection(PlayerStateSample owner)
+        private void RotateDirection(PlayerState owner)
         {
             owner._transform.LookAt(owner._transform.position + owner._moveVelocity);
         }
 
         // 移動速度の変更
-        private void ChangeMoveSpeed(PlayerStateSample owner)
+        private void ChangeMoveSpeed(PlayerState owner)
         {
             if (ControllerManager._inctance._RBButton)
             {
@@ -89,7 +89,7 @@ public partial class PlayerStateSample
         }
 
         // ダッシュしているかどうかの取得
-        private void ChangeDashFlag(PlayerStateSample owner)
+        private void ChangeDashFlag(PlayerState owner)
         {
             if (ControllerManager._inctance._RBButton)
             {

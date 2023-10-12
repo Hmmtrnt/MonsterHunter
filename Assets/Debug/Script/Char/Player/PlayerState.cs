@@ -1,8 +1,6 @@
 ﻿/*プレイヤーステート*/
 
-using UnityEngine;
-
-public partial class PlayerStateSample
+public partial class PlayerState
 {
     // Stateのインスタンス.
     private static readonly StateIdle _idle = new();
@@ -14,8 +12,6 @@ public partial class PlayerStateSample
 
     // 現在のState.
     private StateBase _currentState = _idle;
-
-    public bool IsDead => _currentState is StateDead;
 
     // Startに入れる.
     private void OnStart()

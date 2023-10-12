@@ -2,20 +2,23 @@
 
 using UnityEngine;
 
-public partial class PlayerStateSample : MonoBehaviour
+public partial class PlayerState : MonoBehaviour
 {
     void Start()
     {
         Initialization();
-        OnStart();
+        //OnStart();
+        _currentState.OnEnter(this, null);
     }
 
     void Update()
     {
         GetStickInput();
-        OnUpdate();
+        //OnUpdate();
+        _currentState.OnUpdate(this);
+        _currentState.OnChangeState(this);
 
-        if(ControllerManager._inctance._YButtonDown)
+        if (ControllerManager._inctance._YButtonDown)
         {
             _UnsheathedSword = true;
         }
@@ -29,7 +32,8 @@ public partial class PlayerStateSample : MonoBehaviour
     private void FixedUpdate()
     {
         SubstituteVariable();
-        OnFixedUpdate();
+        //OnFixedUpdate();
+        _currentState.OnFixedUpdate(this);
 
         _debagObject.SetActive(_UnsheathedSword);
     }
