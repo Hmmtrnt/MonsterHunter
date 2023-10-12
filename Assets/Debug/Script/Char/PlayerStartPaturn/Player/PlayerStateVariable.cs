@@ -26,6 +26,11 @@ public partial class PlayerStateSample : MonoBehaviour
     // false:納刀
     private bool _UnsheathedSword = false;
 
+    // 現在の攻撃のモーション値
+    private int _currentAttackMotionValue = 0;
+    // 最大攻撃のモーション値
+    private int _maxAttackMotionValue = 0;
+
     // 攻撃判定
 
     /*アイドル状態時の変数*/

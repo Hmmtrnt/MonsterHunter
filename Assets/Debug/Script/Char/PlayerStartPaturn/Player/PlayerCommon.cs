@@ -32,8 +32,14 @@ public partial class PlayerStateSample : MonoBehaviour
         OnFixedUpdate();
 
         _debagObject.SetActive(_UnsheathedSword);
-        
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Finish")
+        {
+            Debug.Log("dafds");
+        }
     }
 
     // プレイヤー情報の初期化
