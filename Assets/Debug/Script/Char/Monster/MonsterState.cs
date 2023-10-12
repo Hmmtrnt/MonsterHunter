@@ -2,22 +2,22 @@
 
 using UnityEngine;
 
-public partial class MonsterState
+public partial class MonsterState : MonoBehaviour
 {
-    // State.
-    private void OnState()
-    {
 
+    private void Start()
+    {
+        
     }
-    // Update.
-    private void OnUpdate()
-    {
 
+    private void Update()
+    {
+        
     }
-    // FixedUpdate.
-    private void OnFixedUpdate()
-    {
 
+    private void FixedUpdate()
+    {
+        
     }
 
     // ステートの変更
