@@ -56,7 +56,7 @@ public partial class PlayerStateSample : MonoBehaviour
     // 回復しているかどうか.
     private bool _isRecovery = false;
     // 現在の回復時間.
-    private float _currentRecoveryTime = 0;
+    private int _currentRecoveryTime = 0;
     // 最大回復時間.
-    private float _maxRecoveryTime = 200;
+    private int _maxRecoveryTime = 200;
 }

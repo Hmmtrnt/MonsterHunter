@@ -71,6 +71,8 @@ public partial class PlayerStateSample : MonoBehaviour
     // 回避しているかどうかの情報取得
     public bool GetIsAvoiding() { return _isAvoiding; }
 
+    public int GetRecoveryTime() { return _currentRecoveryTime; }
+
     // 回復しているかどうかの情報取得
     public bool GetIsRecovery() { return _isRecovery; }
 }

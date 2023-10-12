@@ -21,13 +21,7 @@ public partial class PlayerStateSample
             owner._currentRecoveryTime++;
 
             Move(owner);
-
-            if (owner._currentRecoveryTime <= 50) return;
-            
             RotateDirection(owner);
-            
-
-            
         }
 
         public override void OnExit(PlayerStateSample owner, StateBase nextState)
