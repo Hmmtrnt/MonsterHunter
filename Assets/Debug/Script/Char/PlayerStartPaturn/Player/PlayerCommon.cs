@@ -14,18 +14,33 @@ public partial class PlayerStateSample : MonoBehaviour
     {
         GetStickInput();
         OnUpdate();
+
+        if(ControllerManager._inctance._YButtonDown)
+        {
+            _UnsheathedSword = true;
+        }
+        if(ControllerManager._inctance._XButtonDown || ControllerManager._inctance._RBButtonDown)
+        {
+            _UnsheathedSword = false;
+        }
+
     }
 
     private void FixedUpdate()
     {
         SubstituteVariable();
         OnFixedUpdate();
+
+        _debagObject.SetActive(_UnsheathedSword);
+        
+
     }
 
     // プレイヤー情報の初期化
     private void Initialization()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _debagObject = GameObject.Find("UnsheathedSwordFlag");
         _transform = transform;
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
     }
@@ -33,7 +48,6 @@ public partial class PlayerStateSample : MonoBehaviour
     // 情報の代入
     private void SubstituteVariable()
     {
-
         // 動く方向代入.
         _moveDirection = new Vector3(_leftStickHorizontal, 0.0f, _leftStickVertical);
         _moveDirection.Normalize();

@@ -6,6 +6,9 @@ public partial class PlayerStateSample : MonoBehaviour
 {
     private Rigidbody _rigidbody;
 
+    // 納刀抜刀を確認するデバッグ用オブジェクト
+    private GameObject _debagObject;
+
     // transformをキャッシュ.
     private Transform _transform;
     // カメラ.
@@ -17,6 +20,13 @@ public partial class PlayerStateSample : MonoBehaviour
     // 左スティックの入力情報.
     private float _leftStickHorizontal;
     private float _leftStickVertical;
+
+    // 抜刀状態
+    // true :抜刀
+    // false:納刀
+    private bool _UnsheathedSword = false;
+
+    // 攻撃判定
 
     /*アイドル状態時の変数*/
 

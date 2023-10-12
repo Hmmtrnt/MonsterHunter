@@ -16,8 +16,16 @@ public partial class PlayerStateSample
 
         public override void OnUpdate(PlayerStateSample owner)
         {
-            ChangeMoveSpeed(owner);
-            ChangeDashFlag(owner);
+            if(!owner._UnsheathedSword)
+            {
+                ChangeMoveSpeed(owner);
+                ChangeDashFlag(owner);
+            }
+            else
+            {
+                owner._isDashing = false;
+                owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
+            }
         }
 
         public override void OnFixedUpdate(PlayerStateSample owner)
@@ -49,7 +57,7 @@ public partial class PlayerStateSample
 
             // 回復状態へ
             // HACK:アイテムが選ばれている状態の条件も追加する
-            if (ControllerManager._inctance._XButtonDown)
+            if (ControllerManager._inctance._XButtonDown && !owner._UnsheathedSword)
             {
                 owner.ChangeState(_recovery);
             }

@@ -9,6 +9,11 @@ public partial class PlayerStateSample
     /// </summary>
     public class StateIdle : StateBase
     {
+        public override void OnEnter(PlayerStateSample owner, StateBase prevState)
+        {
+
+        }
+
         public override void OnUpdate(PlayerStateSample owner)
         {
 
@@ -29,7 +34,7 @@ public partial class PlayerStateSample
             }
 
             // HACK:のちにアイテムが何を選ばれているか.
-            if (ControllerManager._inctance._XButtonDown)
+            if (ControllerManager._inctance._XButtonDown && !owner._UnsheathedSword)
             {
                 // 回復.
                 owner.ChangeState(_recovery);
