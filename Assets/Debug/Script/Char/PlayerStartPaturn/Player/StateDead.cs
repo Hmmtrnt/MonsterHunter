@@ -4,9 +4,9 @@ using UnityEngine;
 
 public partial class PlayerStateSample
 {
-    public class StateDead : PlayerStateBase
+    public class StateDead : StateBase
     {
-        public override void OnEnter(PlayerStateSample owner, PlayerStateBase prevState)
+        public override void OnEnter(PlayerStateSample owner, StateBase prevState)
         {
             
         }

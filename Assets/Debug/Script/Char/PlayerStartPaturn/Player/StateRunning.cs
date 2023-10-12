@@ -4,9 +4,9 @@ using UnityEngine;
 
 public partial class PlayerStateSample
 {
-    public class StateRunning : PlayerStateBase
+    public class StateRunning : StateBase
     {
-        public override void OnEnter(PlayerStateSample owner, PlayerStateBase prevState)
+        public override void OnEnter(PlayerStateSample owner, StateBase prevState)
         {
             if(prevState is StateIdle)
             {
@@ -26,7 +26,7 @@ public partial class PlayerStateSample
             RotateDirection(owner);
         }
 
-        public override void OnExit(PlayerStateSample owner, PlayerStateBase nextState)
+        public override void OnExit(PlayerStateSample owner, StateBase nextState)
         {
             owner._isDashing = false;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;

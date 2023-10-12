@@ -2,14 +2,14 @@
 /// Stateの抽象クラス
 /// </summary>
 
-public abstract class PlayerStateBase
+public abstract class StateBase
 {
     /// <summary>
     /// ステート開始時呼び出し
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
     /// <param name="prevState">ひとつ前の状態</param>
-    public virtual void OnEnter(PlayerStateSample owner, PlayerStateBase prevState) { }
+    public virtual void OnEnter(PlayerStateSample owner, StateBase prevState) { }
     /// <summary>
     /// Update
     /// </summary>
@@ -25,7 +25,7 @@ public abstract class PlayerStateBase
     /// </summary>
     /// <param name="owner">アクセスするための参照</param>
     /// <param name="nextState">次の状態</param>
-    public virtual void OnExit(PlayerStateSample owner, PlayerStateBase nextState) { }
+    public virtual void OnExit(PlayerStateSample owner, StateBase nextState) { }
     /// <summary>
     /// ステート遷移の呼び出し
     /// </summary>

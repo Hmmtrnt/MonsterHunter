@@ -4,9 +4,9 @@ using UnityEngine;
 
 public partial class PlayerStateSample
 {
-    public class StateRecovery : PlayerStateBase
+    public class StateRecovery : StateBase
     {
-        public override void OnEnter(PlayerStateSample owner, PlayerStateBase prevState)
+        public override void OnEnter(PlayerStateSample owner, StateBase prevState)
         {
             owner._isRecovery = true;
         }
@@ -30,7 +30,7 @@ public partial class PlayerStateSample
             
         }
 
-        public override void OnExit(PlayerStateSample owner, PlayerStateBase nextState)
+        public override void OnExit(PlayerStateSample owner, StateBase nextState)
         {
             owner._isRecovery = false;
             owner._currentRecoveryTime = 0;

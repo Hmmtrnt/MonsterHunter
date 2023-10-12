@@ -7,7 +7,7 @@ public partial class PlayerStateSample
     /// <summary>
     /// ƒAƒCƒhƒ‹ó‘Ô
     /// </summary>
-    public class StateIdle : PlayerStateBase
+    public class StateIdle : StateBase
     {
         public override void OnUpdate(PlayerStateSample owner)
         {

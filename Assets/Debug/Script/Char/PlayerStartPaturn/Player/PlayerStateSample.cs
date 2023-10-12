@@ -13,7 +13,7 @@ public partial class PlayerStateSample
 
 
     // 現在のState.
-    private PlayerStateBase _currentState = _idle;
+    private StateBase _currentState = _idle;
 
     public bool IsDead => _currentState is StateDead;
 
@@ -35,7 +35,7 @@ public partial class PlayerStateSample
     }
 
     // ステート変更.
-    private void ChangeState(PlayerStateBase nextState)
+    private void ChangeState(StateBase nextState)
     {
         _currentState.OnExit(this, nextState);
         nextState.OnEnter(this, _currentState);

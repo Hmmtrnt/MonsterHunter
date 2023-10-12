@@ -4,9 +4,9 @@ using UnityEngine;
 
 public partial class PlayerStateSample
 {
-    public class StateAvoid : PlayerStateBase
+    public class StateAvoid : StateBase
     {
-        public override void OnEnter(PlayerStateSample owner, PlayerStateBase prevState)
+        public override void OnEnter(PlayerStateSample owner, StateBase prevState)
         {
             owner._isAvoiding = true;
         }
@@ -23,7 +23,7 @@ public partial class PlayerStateSample
             MoveAvoid(owner);
         }
 
-        public override void OnExit(PlayerStateSample owner, PlayerStateBase nextState)
+        public override void OnExit(PlayerStateSample owner, StateBase nextState)
         {
             owner._isAvoiding = false;
         }
