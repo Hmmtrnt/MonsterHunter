@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public partial class PlayerStateSample : MonoBehaviour
+public partial class PlayerStateSample
 {
     private Rigidbody _rigidbody;
 
