@@ -34,15 +34,12 @@ public class StaminaUi : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_playerState.GetAvoidTime());
-
         if (_playerState.GetAvoidTime() != 1) return;
 
         if (_playerState.GetIsAvoiding())
         {
             AvoidStaminaConsumption();
         }
-
     }
 
     private void FixedUpdate()

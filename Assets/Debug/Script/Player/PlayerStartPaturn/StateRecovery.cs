@@ -21,7 +21,11 @@ public partial class PlayerStateSample
             owner._currentRecoveryTime++;
 
             Move(owner);
+
+            if (owner._currentRecoveryTime <= 50) return;
+            
             RotateDirection(owner);
+            
 
             
         }
@@ -47,6 +51,10 @@ public partial class PlayerStateSample
             else if(isChange && isMove)
             {
                 owner.ChangeState(_running);
+            }
+            else if(ControllerManager._inctance._AButtonDown)
+            {
+                owner.ChangeState(_avoid);
             }
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public partial class PlayerStateSample
 {
-    // Stateのインスタンス
+    // Stateのインスタンス.
     private static readonly StateIdle _idle = new();
     private static readonly StateAvoid _avoid = new();
     private static readonly StateRunning _running = new();
@@ -12,31 +12,29 @@ public partial class PlayerStateSample
     private static readonly StateDead _dead = new();
 
 
-    /// <summary>
-    /// 現在のState
-    /// </summary>
+    // 現在のState.
     private PlayerStateBase _currentState = _idle;
 
     public bool IsDead => _currentState is StateDead;
 
-    // Startに入れる
+    // Startに入れる.
     private void OnStart()
     {
         _currentState.OnEnter(this, null);
     }
-    // Updateに入れる
+    // Updateに入れる.
     private void OnUpdate()
     {
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
     }
-    // FixedUpdateに入れる
+    // FixedUpdateに入れる.
     private void OnFixedUpdate()
     {
         _currentState.OnFixedUpdate(this);
     }
 
-    // ステート変更
+    // ステート変更.
     private void ChangeState(PlayerStateBase nextState)
     {
         _currentState.OnExit(this, nextState);
@@ -44,7 +42,7 @@ public partial class PlayerStateSample
         _currentState = nextState;
     }
 
-    // 死亡した時に呼ばれる
+    // 死亡した時に呼ばれる.
     private void OnDeath()
     {
         ChangeState(_dead);
