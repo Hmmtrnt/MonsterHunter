@@ -46,7 +46,6 @@ public partial class PlayerState : MonoBehaviour
         //OnFixedUpdate();
         _currentState.OnFixedUpdate(this);
 
-        _debagObject.SetActive(_UnsheathedSword);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -69,7 +68,7 @@ public partial class PlayerState : MonoBehaviour
     private void Initialization()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _debagObject = GameObject.Find("UnsheathedSwordFlag");
+        
         _transform = transform;
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
     }
