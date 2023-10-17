@@ -50,14 +50,14 @@ public partial class PlayerState
             }
 
             // 回避状態へ
-            if (ControllerManager._inctance._AButtonDown)
+            if (owner._input._AButtonDown)
             {
                 owner.ChangeState(_avoid);
             }
 
             // 回復状態へ
             // HACK:アイテムが選ばれている状態の条件も追加する
-            if (ControllerManager._inctance._XButtonDown && !owner._UnsheathedSword)
+            if (owner._input._XButtonDown && !owner._UnsheathedSword)
             {
                 owner.ChangeState(_recovery);
             }
@@ -78,11 +78,11 @@ public partial class PlayerState
         // 移動速度の変更
         private void ChangeMoveSpeed(PlayerState owner)
         {
-            if (ControllerManager._inctance._RBButton)
+            if (owner._input._RBButton)
             {
                 owner._moveVelocityMagnification = owner._moveVelocityDashMagnigication;
             }
-            else if (ControllerManager._inctance._RBButtonUp)
+            else if (owner._input._RBButtonUp)
             {
                 owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
             }
@@ -91,11 +91,11 @@ public partial class PlayerState
         // ダッシュしているかどうかの取得
         private void ChangeDashFlag(PlayerState owner)
         {
-            if (ControllerManager._inctance._RBButton)
+            if (owner._input._RBButton)
             {
                 owner._isDashing = true;
             }
-            if(ControllerManager._inctance._RBButtonUp)
+            if(owner._input._RBButtonUp)
             {
                 owner._isDashing = false;
             }

@@ -12,13 +12,12 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateDead _dead = new();
 
 
-    // 現在のState.
+    // Stateの初期化.
     private StateBase _currentState = _idle;
 
     void Start()
     {
         Initialization();
-        //OnStart();
         _currentState.OnEnter(this, null);
     }
 
@@ -29,11 +28,11 @@ public partial class PlayerState : MonoBehaviour
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
 
-        if (ControllerManager._inctance._YButtonDown)
+        if (_input._YButtonDown)
         {
             _UnsheathedSword = true;
         }
-        if (ControllerManager._inctance._XButtonDown || ControllerManager._inctance._RBButtonDown)
+        if (_input._XButtonDown || _input._RBButtonDown)
         {
             _UnsheathedSword = false;
         }
@@ -67,6 +66,7 @@ public partial class PlayerState : MonoBehaviour
     // プレイヤー情報の初期化
     private void Initialization()
     {
+        _input = GameObject.FindWithTag("Manager").GetComponent<ControllerManager>();
         _rigidbody = GetComponent<Rigidbody>();
         
         _transform = transform;
@@ -98,8 +98,8 @@ public partial class PlayerState : MonoBehaviour
     private void GetStickInput()
     {
         // 入力情報代入.
-        _leftStickHorizontal = ControllerManager._inctance._LeftStickHorizontal;
-        _leftStickVertical = ControllerManager._inctance._LeftStickVertical;
+        _leftStickHorizontal = _input._LeftStickHorizontal;
+        _leftStickVertical = _input._LeftStickVertical;
     }
 
 

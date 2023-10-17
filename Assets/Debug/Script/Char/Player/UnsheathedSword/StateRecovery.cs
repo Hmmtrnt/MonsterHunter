@@ -46,7 +46,7 @@ public partial class PlayerState
             {
                 owner.ChangeState(_running);
             }
-            else if(ControllerManager._inctance._AButtonDown)
+            else if(owner._input._AButtonDown)
             {
                 owner.ChangeState(_avoid);
             }

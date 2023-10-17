@@ -1,24 +1,30 @@
-﻿// プレイヤーの変数
+﻿// プレイヤーの変数.
 
 using UnityEngine;
 
 public partial class PlayerState
 {
-    // プレイヤーのステータス
-    // 体力
+    // コントローラーの入力情報
+    ControllerManager _input;
+
+    // プレイヤーのステータス.
+    // 体力.
     private int _HitPoint = 200;
-    // スタミナ
+    // スタミナ.
     private int _Stamina = 200;
-    // 攻撃力
+    // 攻撃力.
     private float _AttackPower = 100;
 
-    // モーション値
+    // モーション値.
     private float _MotionValue = 0;
 
+    // Rigidbody.
     private Rigidbody _rigidbody;
 
-    // 納刀抜刀を確認するデバッグ用オブジェクト
+    // 納刀抜刀を確認するデバッグ用オブジェクト.
     private GameObject _debagObject;
+
+    
 
     // transformをキャッシュ.
     private Transform _transform;
@@ -33,16 +39,16 @@ public partial class PlayerState
     private float _leftStickVertical;
 
     // 抜刀状態
-    // true :抜刀
-    // false:納刀
+    // true :抜刀.
+    // false:納刀.
     private bool _UnsheathedSword = false;
 
-    // 現在の攻撃のモーション値
+    // 現在の攻撃のモーション値.
     private int _currentAttackMotionValue = 0;
-    // 最大攻撃のモーション値
+    // 最大攻撃のモーション値.
     private int _maxAttackMotionValue = 0;
 
-    // 攻撃判定
+    // 攻撃判定.
 
     /*アイドル状態時の変数*/
 

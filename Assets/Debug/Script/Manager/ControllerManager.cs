@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ControllerManager : MonoBehaviour
 {
-    // インスタンス
-    public static ControllerManager _inctance;
-
     // スティックの入力情報
     public float _LeftStickHorizontal = 0;
     public float _LeftStickVertical = 0;
@@ -59,21 +56,7 @@ public class ControllerManager : MonoBehaviour
     public bool _MenuButton;
     public bool _MenuButtonDown;
     public bool _MenuButtonUp;
-
     
-
-    private void Awake()
-    {
-        if(_inctance == null)
-        {
-            _inctance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
     void Update()
     {
         // スティックの入力情報取得
