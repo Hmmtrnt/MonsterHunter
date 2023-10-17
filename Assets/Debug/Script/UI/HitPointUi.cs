@@ -20,7 +20,7 @@ public class HitPointUi : MonoBehaviour
 
     void Start()
     {
-        _playerState = GameObject.Find("Hunter2").GetComponent<PlayerState>();
+        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
 
         _Gauge = GetComponent<Image>();
     }

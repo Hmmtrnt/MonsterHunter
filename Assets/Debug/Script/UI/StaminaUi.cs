@@ -29,7 +29,7 @@ public class StaminaUi : MonoBehaviour
     {
         _Gauge = GetComponent<Image>();
         _Gauge.fillAmount = 1.0f;
-        _playerState = GameObject.Find("Hunter2").GetComponent<PlayerState>();
+        _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
     }
 
     void Update()
