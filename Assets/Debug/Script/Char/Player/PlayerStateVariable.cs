@@ -4,20 +4,20 @@ using UnityEngine;
 
 public partial class PlayerState
 {
-    // コントローラーの入力情報
+    // コントローラーの入力情報.
     private ControllerManager _input;
 
     /*アニメーション*/
     private Animator _animator;
     // Setbool
     //--納刀状態--//
-    // アイドルモーション
+    // アイドルモーション.
     private bool _idleMotion = false;
-    // 走りモーション
+    // 走りモーション.
     private bool _runMotion = false;
 
     //--抜刀状態--//
-    // 抜刀するモーション
+    // 抜刀するモーション.
     private bool _drawnSword = false;
 
     // プレイヤーのステータス.

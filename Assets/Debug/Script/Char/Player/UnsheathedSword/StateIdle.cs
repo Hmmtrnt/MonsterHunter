@@ -44,6 +44,12 @@ public partial class PlayerState
                 // 回復.
                 owner.ChangeState(_recovery);
             }
+
+            if(owner._input._YButtonDown)
+            {
+                // 抜刀する
+                owner.ChangeState(_drawSwordTransition);
+            }
         }
 
         

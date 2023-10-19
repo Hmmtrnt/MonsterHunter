@@ -5,12 +5,17 @@ using UnityEngine;
 public partial class PlayerState : MonoBehaviour
 {
     // Stateのインスタンス.
-    private static readonly StateIdle _idle = new();
-    private static readonly StateAvoid _avoid = new();
-    private static readonly StateRunning _running = new();
-    private static readonly StateRecovery _recovery = new();
-    private static readonly StateDead _dead = new();
+    //--納刀状態--//
+    private static readonly StateIdle _idle = new();// アイドル.
+    private static readonly StateAvoid _avoid = new();// 回避.
+    private static readonly StateRunning _running = new();// 走る.
+    private static readonly StateRecovery _recovery = new();// 回復.
 
+    //--抜刀状態--//
+    private static readonly StateDrawnSwordTransition _drawSwordTransition = new();// 抜刀している.
+
+    //--共通状態--//
+    private static readonly StateDead _dead = new();// やられた.
 
     // Stateの初期化.
     private StateBase _currentState = _idle;
