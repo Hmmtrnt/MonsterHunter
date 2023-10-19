@@ -4,11 +4,9 @@ using UnityEngine;
 
 public partial class PlayerState
 {
-    /// <summary>
-    /// 抜刀している状態
-    /// </summary>
     public class StateDrawnSwordTransition : StateBase
     {
+        // デバッグ用変数
         private int MotionTransition = 0;
 
         public override void OnEnter(PlayerState owner, StateBase prevState)
@@ -28,7 +26,6 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            owner._drawnSword = false;
         }
 
         public override void OnChangeState(PlayerState owner)

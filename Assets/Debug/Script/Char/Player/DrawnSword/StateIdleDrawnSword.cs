@@ -35,6 +35,11 @@ public partial class PlayerState
             }
 
             // のちに納刀ステートを入れる
+            if(owner._input._XButtonDown || owner._input._RBButtonDown)
+            {
+                owner.ChangeState(_sheathingSword);
+            }
+
         }
     }
 }
