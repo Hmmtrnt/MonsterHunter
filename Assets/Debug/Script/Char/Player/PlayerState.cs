@@ -4,7 +4,6 @@ using UnityEngine;
 
 public partial class PlayerState : MonoBehaviour
 {
-    // Stateのインスタンス.
     //--納刀状態--//
     private static readonly StateIdle _idle = new();// アイドル.
     private static readonly StateAvoid _avoid = new();// 回避.
@@ -22,7 +21,7 @@ public partial class PlayerState : MonoBehaviour
     //--共通状態--//
     private static readonly StateDead _dead = new();// やられた.
 
-    // Stateの初期化.
+    // 現在のState.
     private StateBase _currentState = _idle;
 
     void Start()
@@ -54,6 +53,8 @@ public partial class PlayerState : MonoBehaviour
     {
         SubstituteVariable();
         _currentState.OnFixedUpdate(this);
+
+        Debug.Log(_leftStickVertical);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -72,7 +73,7 @@ public partial class PlayerState : MonoBehaviour
         _currentState = nextState;
     }
 
-    // プレイヤー情報の初期化
+    // プレイヤー情報の初期化.
     private void Initialization()
     {
         _input = GameObject.FindWithTag("Manager").GetComponent<ControllerManager>();
@@ -96,20 +97,20 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("DrawnSword", _drawnSword);
     }
 
-    // 情報の代入
+    // 情報の代入.
     private void SubstituteVariable()
     {
         // 動く方向代入.
         _moveDirection = new Vector3(_leftStickHorizontal, 0.0f, _leftStickVertical);
         _moveDirection.Normalize();
 
-        // カメラの正面
+        // カメラの正面.
         _cameraForward = Vector3.Scale(_camera.transform.forward, new Vector3(1.0f, 0.0f, 1.0f)).normalized;
 
         /*カメラの向きから移動方向取得*/
-        // 正面
+        // 正面.
         Vector3 moveForward = _cameraForward * _leftStickVertical;
-        // 横
+        // 横.
         Vector3 moveSide = _camera.transform.right * _leftStickHorizontal;
         // 速度の代入.
         _moveVelocity = moveForward + moveSide;
@@ -127,18 +128,19 @@ public partial class PlayerState : MonoBehaviour
 
 
 
-    // ダッシュしているかどうかの情報取得
+    // ダッシュしているかどうかの情報取得.
     public bool GetIsDashing() { return _isDashing; }
 
-    // 回避フレームの数を取得
+    // 回避フレームの数を取得.
     public int GetAvoidTime() { return _avoidTime; }
 
-    // 回避しているかどうかの情報取得
+    // 回避しているかどうかの情報取得.
     public bool GetIsAvoiding() { return _isAvoiding; }
 
+    // 回復している時間取得.
     public int GetRecoveryTime() { return _currentRecoveryTime; }
 
-    // 回復しているかどうかの情報取得
+    // 回復しているかどうかの情報取得.
     public bool GetIsRecovery() { return _isRecovery; }
 
 

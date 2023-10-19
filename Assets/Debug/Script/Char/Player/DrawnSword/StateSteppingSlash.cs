@@ -10,7 +10,7 @@ public partial class PlayerState
         {
             owner._AtCol.SetActive(true);
             owner._AtCol.transform.position = new Vector3(owner.transform.position.x + owner.transform.forward.x * 5.0f, 
-                3.0f, 
+                5.0f, 
                 owner.transform.position.z + owner.transform.forward.z *5.0f);
         }
 

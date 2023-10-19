@@ -33,8 +33,8 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // アイドル状態へ.
-            if (owner._leftStickHorizontal == 0 &&
-                owner._leftStickVertical == 0)
+            if (owner._leftStickHorizontal <= 0.1f &&
+                owner._leftStickVertical <= 0.1f)
             {
                 owner.ChangeState(_idle);
             }

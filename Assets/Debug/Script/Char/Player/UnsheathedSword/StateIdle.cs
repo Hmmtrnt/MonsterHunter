@@ -31,8 +31,8 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            if (owner._leftStickHorizontal != 0 ||
-                owner._leftStickVertical != 0)
+            if (owner._leftStickHorizontal >= 0.1f ||
+                owner._leftStickVertical >= 0.1f)
             {
                 if (owner._input._RBButton)
                 {
