@@ -1,20 +1,21 @@
-﻿/*走る*/
+﻿/*ダッシュ*/
 
 using UnityEngine;
 
 public partial class PlayerState
 {
-    public class StateRunning : StateBase
+    public class StateDash : StateBase
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._runMotion = true;
-            owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
+            owner._isDashing = true;
+            owner._moveVelocityMagnification = owner._moveVelocityDashMagnigication;
         }
 
         public override void OnUpdate(PlayerState owner)
         {
-            owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
+
         }
 
         public override void OnFixedUpdate(PlayerState owner)
@@ -27,25 +28,24 @@ public partial class PlayerState
         {
             owner._runMotion = false;
             owner._isDashing = false;
-            owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
-            // アイドル状態へ.
-            if (owner._leftStickHorizontal == 0 &&
+            // idle状態.
+            if(owner._leftStickHorizontal == 0 &&
                 owner._leftStickVertical == 0)
             {
                 owner.ChangeState(_idle);
             }
 
-            // ダッシュ状態へ.
-            if (owner._input._RBButton)
+            // run状態.
+            if (owner._input._RBButtonUp)
             {
-                owner.ChangeState(_dash);
+                owner.ChangeState(_running);
             }
 
-            // 回避状態へ.
+            // avoid状態.
             if (owner._input._AButtonDown)
             {
                 owner.ChangeState(_avoid);
@@ -72,4 +72,3 @@ public partial class PlayerState
         }
     }
 }
-

@@ -9,6 +9,7 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateIdle _idle = new();// アイドル.
     private static readonly StateAvoid _avoid = new();// 回避.
     private static readonly StateRunning _running = new();// 走る.
+    private static readonly StateDash _dash = new();// ダッシュ.
     private static readonly StateRecovery _recovery = new();// 回復.
 
     //--抜刀状態--//

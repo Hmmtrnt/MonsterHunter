@@ -34,8 +34,17 @@ public partial class PlayerState
             if (owner._leftStickHorizontal != 0 ||
                 owner._leftStickVertical != 0)
             {
-                // 移動.
-                owner.ChangeState(_running);
+                if (owner._input._RBButton)
+                {
+                    // ダッシュ.
+                    owner.ChangeState(_dash);
+                }
+                else
+                {
+                    // 移動.
+                    owner.ChangeState(_running);
+                }
+                
             }
 
             // HACK:のちにアイテムが何を選ばれているか.
