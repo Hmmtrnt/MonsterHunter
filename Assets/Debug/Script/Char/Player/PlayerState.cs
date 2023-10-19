@@ -14,6 +14,8 @@ public partial class PlayerState : MonoBehaviour
 
     //--抜刀状態--//
     private static readonly StateDrawnSwordTransition _drawSwordTransition = new();// 抜刀している.
+    private static readonly StateIdleDrawnSword _idleDrawnSword = new();// アイドル.
+    private static readonly StateRunDrawnSword _runDrawnSword = new();// 走る.
 
     //--共通状態--//
     private static readonly StateDead _dead = new();// やられた.
@@ -43,8 +45,6 @@ public partial class PlayerState : MonoBehaviour
         {
             _UnsheathedSword = false;
         }
-        Debug.Log(_leftStickHorizontal);
-        Debug.Log(_leftStickVertical);
     }
 
     private void FixedUpdate()
