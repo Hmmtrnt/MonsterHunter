@@ -16,7 +16,8 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateDrawnSwordTransition _drawSwordTransition = new();// 抜刀している.
     private static readonly StateIdleDrawnSword _idleDrawnSword = new();// アイドル.
     private static readonly StateRunDrawnSword _runDrawnSword = new();// 走る.
-    private static readonly StateSheathingSword _sheathingSword = new();
+    private static readonly StateSheathingSword _sheathingSword = new();// 納刀する.
+    private static readonly StateSteppingSlash _steppingSlash = new();// 踏み込み斬り.
 
     //--共通状態--//
     private static readonly StateDead _dead = new();// やられた.
@@ -27,6 +28,7 @@ public partial class PlayerState : MonoBehaviour
     void Start()
     {
         Initialization();
+        _AtCol.SetActive(false);
         _currentState.OnEnter(this, null);
     }
 
@@ -52,7 +54,6 @@ public partial class PlayerState : MonoBehaviour
     {
         SubstituteVariable();
         _currentState.OnFixedUpdate(this);
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -80,6 +81,9 @@ public partial class PlayerState : MonoBehaviour
         
         _transform = transform;
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
+
+
+        _AtCol = GameObject.Find("AttackCol");
     }
 
     // アニメーション遷移.

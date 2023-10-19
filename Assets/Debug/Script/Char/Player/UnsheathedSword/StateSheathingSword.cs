@@ -11,6 +11,7 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._drawnSword = false;
+            MotionTransition = 0;
         }
 
         public override void OnUpdate(PlayerState owner)

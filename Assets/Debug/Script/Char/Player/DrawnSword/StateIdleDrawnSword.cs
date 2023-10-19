@@ -34,8 +34,14 @@ public partial class PlayerState
                 owner.ChangeState(_runDrawnSword);
             }
 
+            // 踏み込み斬り
+            if (owner._input._YButtonDown)
+            {
+                owner.ChangeState(_steppingSlash);
+            }
+
             // のちに納刀ステートを入れる
-            if(owner._input._XButtonDown || owner._input._RBButtonDown)
+            if (owner._input._XButtonDown || owner._input._RBButtonDown)
             {
                 owner.ChangeState(_sheathingSword);
             }

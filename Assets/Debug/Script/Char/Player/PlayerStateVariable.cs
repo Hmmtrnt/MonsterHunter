@@ -104,4 +104,9 @@ public partial class PlayerState
     private int _currentRecoveryTime = 0;
     // 最大回復時間.
     private int _maxRecoveryTime = 200;
+
+
+    // 以下デバッグ用変数
+    // 攻撃判定のオブジェクト
+    private GameObject _AtCol;
 }
