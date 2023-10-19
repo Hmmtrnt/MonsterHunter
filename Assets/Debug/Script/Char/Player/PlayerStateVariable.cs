@@ -5,7 +5,20 @@ using UnityEngine;
 public partial class PlayerState
 {
     // コントローラーの入力情報
-    ControllerManager _input;
+    private ControllerManager _input;
+
+    /*アニメーション*/
+    private Animator _animator;
+    // Setbool
+    //--納刀状態--//
+    // アイドルモーション
+    private bool _idleMotion = false;
+    // 走りモーション
+    private bool _runMotion = false;
+
+    //--抜刀状態--//
+    // 抜刀するモーション
+    private bool _drawnSword = false;
 
     // プレイヤーのステータス.
     // 体力.

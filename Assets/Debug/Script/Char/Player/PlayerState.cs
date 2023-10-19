@@ -24,7 +24,8 @@ public partial class PlayerState : MonoBehaviour
     void Update()
     {
         GetStickInput();
-        //OnUpdate();
+        AnimTransition();
+        
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
 
@@ -36,13 +37,13 @@ public partial class PlayerState : MonoBehaviour
         {
             _UnsheathedSword = false;
         }
-
+        Debug.Log(_leftStickHorizontal);
+        Debug.Log(_leftStickVertical);
     }
 
     private void FixedUpdate()
     {
         SubstituteVariable();
-        //OnFixedUpdate();
         _currentState.OnFixedUpdate(this);
 
     }
@@ -67,10 +68,21 @@ public partial class PlayerState : MonoBehaviour
     private void Initialization()
     {
         _input = GameObject.FindWithTag("Manager").GetComponent<ControllerManager>();
+        _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
         
         _transform = transform;
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
+    }
+
+    // アニメーション遷移.
+    private void AnimTransition()
+    {
+        if (_animator == null) return;
+
+        _animator.SetBool("Idle", _idleMotion);
+        _animator.SetBool("Run", _runMotion);
+        _animator.SetBool("DrawnSword", _drawnSword);
     }
 
     // 情報の代入

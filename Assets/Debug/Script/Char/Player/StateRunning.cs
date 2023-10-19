@@ -8,10 +8,7 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            if(prevState is StateIdle)
-            {
-                // 前の状態がアイドル状態ならの処理
-            }
+            owner._runMotion = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -36,6 +33,7 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
+            owner._runMotion = false;
             owner._isDashing = false;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
