@@ -9,6 +9,7 @@ public partial class PlayerState
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._isAvoiding = true;
+            owner._avoidMotion = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -26,6 +27,7 @@ public partial class PlayerState
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._isAvoiding = false;
+            owner._avoidMotion = false;
         }
 
         public override void OnChangeState(PlayerState owner)

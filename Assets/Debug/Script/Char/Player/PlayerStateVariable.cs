@@ -15,6 +15,8 @@ public partial class PlayerState
     private bool _idleMotion = false;
     // 走りモーション.
     private bool _runMotion = false;
+    // 回避モーション.
+    private bool _avoidMotion = false;
 
     //--抜刀状態--//
     // 抜刀するモーション.

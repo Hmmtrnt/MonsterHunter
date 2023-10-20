@@ -95,6 +95,7 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("Idle", _idleMotion);
         _animator.SetBool("Run", _runMotion);
         _animator.SetBool("DrawnSword", _drawnSword);
+        _animator.SetBool("Avoid", _avoidMotion);
     }
 
     // 情報の代入.

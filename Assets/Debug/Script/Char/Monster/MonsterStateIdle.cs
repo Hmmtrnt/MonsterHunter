@@ -28,7 +28,7 @@ public partial class MonsterState
         {
             if(owner._Hunter != null)
             {
-                owner.ChangeState();
+                //owner.ChangeState();
             }
         }
     }
