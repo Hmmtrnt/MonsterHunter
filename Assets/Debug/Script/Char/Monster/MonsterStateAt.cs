@@ -1,10 +1,10 @@
-﻿/*モンスターのアイドル*/
+﻿/*デバッグ用アタック*/
 
 using UnityEngine;
 
-public partial class MonsterState
+public partial class MonsterState 
 {
-    public class MonsterStateIdle : StateBase
+    public class MonsterStateAt : StateBase
     {
         private int testTime = 0;
 
@@ -29,13 +29,12 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
-            if(testTime >= 120.0f)
+            if (testTime >= 120.0f)
             {
                 owner.ChangeState(_run);
             }
         }
     }
 }
-
 
 

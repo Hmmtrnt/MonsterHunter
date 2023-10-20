@@ -27,6 +27,22 @@ public partial class MonsterState : MonoBehaviour
         _currentState.OnFixedUpdate(this);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag == "Player")
+        {
+            _collisionTag = collision.transform.tag;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.transform.tag == "Player")
+        {
+            _collisionTag = null;
+        }
+    }
+
     // ステートの変更.
     private void ChangeState(StateBase nextState)
     {

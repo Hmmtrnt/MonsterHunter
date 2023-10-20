@@ -7652,6 +7652,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &147009155
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147009151}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.36
+  m_Height: 9.84
+  m_Direction: 2
+  m_Center: {x: 0, y: 1.54, z: 0.93}
 --- !u!1 &151142583 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2099659145528123360, guid: de28fe6e41a877e44ba626b4136a6b36, type: 3}
@@ -69112,6 +69135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hunter
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a89e863778f3ddd4b9da493f4fc050bb, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -101478,6 +101505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterIdle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de28fe6e41a877e44ba626b4136a6b36, type: 3}
+      propertyPath: m_TagString
+      value: Monster
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -101488,6 +101519,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de28fe6e41a877e44ba626b4136a6b36, type: 3}
       insertIndex: -1
       addedObject: {fileID: 147009152}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de28fe6e41a877e44ba626b4136a6b36, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 147009155}
   m_SourcePrefab: {fileID: 100100000, guid: de28fe6e41a877e44ba626b4136a6b36, type: 3}
 --- !u!1 &1707779557
 GameObject:
