@@ -26,9 +26,9 @@ public partial class MonsterState
 
         public override void OnChangeState(MonsterState owner)
         {
+            owner.ChangeState(_run);
             if(owner._Hunter != null)
             {
-                //owner.ChangeState();
             }
         }
     }

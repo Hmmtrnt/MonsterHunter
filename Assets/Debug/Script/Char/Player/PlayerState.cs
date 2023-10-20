@@ -53,8 +53,6 @@ public partial class PlayerState : MonoBehaviour
     {
         SubstituteVariable();
         _currentState.OnFixedUpdate(this);
-
-        Debug.Log(_leftStickVertical);
     }
 
     private void OnCollisionEnter(Collision collision)
