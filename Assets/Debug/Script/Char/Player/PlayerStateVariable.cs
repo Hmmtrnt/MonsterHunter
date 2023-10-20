@@ -24,11 +24,20 @@ public partial class PlayerState
 
     // プレイヤーのステータス.
     // 体力.
-    private int _HitPoint = 200;
+    private float _hitPoint = 200;
+    // 体力最大値.
+    private float _maxHitPoint = 200;
     // スタミナ.
-    private int _Stamina = 200;
+    private float _stamina = 200;
+    // スタミナ最大値.
+    private float _maxStamina = 200;
+    // スタミナの自動回復量
+    private float _autoRecaveryStamina = 0.5f;
+
     // 攻撃力.
     private float _AttackPower = 100;
+
+    private bool _isReceiveDamage = false;
 
     // モーション値.
     private float _MotionValue = 0;
@@ -96,6 +105,9 @@ public partial class PlayerState
     private int _avoidTime = 0;
     // 最大回避フレーム.
     private int _avoidMaxTime = 30;
+    // 回避時のスタミナ消費量.
+    private float _avoidStaminaCost = 25;
+
     // 回避しているかどうか.
     private bool _isAvoiding = false;
 
@@ -106,9 +118,15 @@ public partial class PlayerState
     private int _currentRecoveryTime = 0;
     // 最大回復時間.
     private int _maxRecoveryTime = 200;
+    // 回復量.
+    private float _recoveryAmount = 0.5f;
 
 
     // 以下デバッグ用変数
-    // 攻撃判定のオブジェクト
+    // 攻撃判定のオブジェクト.
     private GameObject _AtCol;
+    // モンスターオブジェクト.
+    private GameObject _Monster;
+    // モンスターのState.
+    private MonsterState _MonsterState;
 }

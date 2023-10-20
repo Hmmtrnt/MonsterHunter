@@ -12,4 +12,11 @@ public partial class MonsterState
 
     // 当たったオブジェクトのタグ取得
     private string _collisionTag = null;
+
+    // デバッグ用ステータス
+    // 体力
+    private float _debagHitPoint = 1000;
+    // 攻撃力
+    private float _debagAttackPower = 50;
+
 }

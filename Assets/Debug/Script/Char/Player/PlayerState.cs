@@ -20,6 +20,7 @@ public partial class PlayerState : MonoBehaviour
 
     //--共通状態--//
     private static readonly StateDead _dead = new();// やられた.
+    private static readonly StateDamage _damage = new();// ダメージを受けた
 
     // 現在のState.
     private StateBase _currentState = _idle;
@@ -53,13 +54,24 @@ public partial class PlayerState : MonoBehaviour
     {
         SubstituteVariable();
         _currentState.OnFixedUpdate(this);
+
+        if(_hitPoint <= 0)
+        {
+            OnDead();
+        }
+
+        if(_currentState != _dash &&
+            _currentState != _avoid)
+        {
+
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Finish")
+        if (collision.transform.tag == "Monster")
         {
-            Debug.Log("dafds");
+            OnDamage();
         }
     }
 
@@ -77,12 +89,11 @@ public partial class PlayerState : MonoBehaviour
         _input = GameObject.FindWithTag("Manager").GetComponent<ControllerManager>();
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
-        
         _transform = transform;
         _camera = GameObject.Find("Camera").GetComponent<Camera>();
-
-
         _AtCol = GameObject.Find("AttackCol");
+        _Monster = GameObject.FindWithTag("Monster");
+        _MonsterState = GameObject.FindWithTag("Monster").GetComponent<MonsterState>();
     }
 
     // アニメーション遷移.
@@ -117,6 +128,20 @@ public partial class PlayerState : MonoBehaviour
 
     }
 
+    // ダメージを受けた時に遷移
+    private void OnDamage()
+    {
+        if(_hitPoint <= 0) return;
+
+        ChangeState(_damage);
+    }
+
+    // 体力が0になった時に呼び出す
+    private void OnDead()
+    {
+        ChangeState(_dead);
+    }
+
     // スティックの入力情報取得
     private void GetStickInput()
     {
@@ -142,5 +167,16 @@ public partial class PlayerState : MonoBehaviour
     // 回復しているかどうかの情報取得.
     public bool GetIsRecovery() { return _isRecovery; }
 
+    // 残り体力.
+    public float GetHitPoint() { return _hitPoint; }
+    // 体力最大値.
+    public float GetMaxHitPoint() { return _maxHitPoint; }
+    // 残りスタミナ.
+    public float GetStamina() { return _stamina; }
+    // スタミナ最大値.
+    public float GetMaxStamina() { return _maxStamina; }
+
+    // ダメージを与えた時の値.
+    public float GetHunterAttack() { return _AttackPower; }
 
 }

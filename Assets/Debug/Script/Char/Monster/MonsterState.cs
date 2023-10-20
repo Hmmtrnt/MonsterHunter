@@ -4,8 +4,9 @@ using UnityEngine;
 
 public partial class MonsterState : MonoBehaviour
 {
-    public static readonly MonsterStateIdle _idle = new();
-    public static readonly MonsterStateRun _run = new();
+    public static readonly MonsterStateIdle _idle = new();// アイドル.
+    public static readonly MonsterStateRun _run = new();// 移動.
+    public static readonly MonsterStateAt _at = new();// 攻撃(デバッグ用).
 
     // 現在のState.
     private StateBase _currentState = _idle;
@@ -25,6 +26,11 @@ public partial class MonsterState : MonoBehaviour
     private void FixedUpdate()
     {
         _currentState.OnFixedUpdate(this);
+
+        if(_debagHitPoint <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -56,4 +62,8 @@ public partial class MonsterState : MonoBehaviour
         _Hunter = GameObject.Find("Hunter");
     }
 
+    public float GetMonsterAttack()
+    {
+        return _debagAttackPower;
+    }
 }

@@ -32,23 +32,25 @@ public class HitPointUi : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _currentGauge = _Gauge.fillAmount;
+        _Gauge.fillAmount = _playerState.GetHitPoint() / _playerState.GetMaxHitPoint();
 
-        if(_playerState.GetIsRecovery() && _playerState.GetRecoveryTime() >= 50)
-        {
-            OnRecovery();
-        }
+        //_currentGauge = _Gauge.fillAmount;
+
+        //if(_playerState.GetIsRecovery() && _playerState.GetRecoveryTime() >= 50)
+        //{
+        //    OnRecovery();
+        //}
     }
 
     // ダメージを受けた時の体力変動.
-    private void OnDamage()
-    {
+    //private void OnDamage()
+    //{
 
-    }
+    //}
 
-    // 回復しているときの体力変動.
-    private void OnRecovery()
-    {
-        _Gauge.fillAmount += _increaseRecoveryGauge;
-    }
+    //// 回復しているときの体力変動.
+    //private void OnRecovery()
+    //{
+    //    _Gauge.fillAmount += _increaseRecoveryGauge;
+    //}
 }

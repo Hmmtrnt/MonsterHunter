@@ -31,7 +31,7 @@ public partial class MonsterState
         {
             if (testTime >= 120.0f)
             {
-                owner.ChangeState(_run);
+                owner.ChangeState(_idle);
             }
         }
     }

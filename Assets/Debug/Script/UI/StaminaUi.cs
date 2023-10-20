@@ -34,61 +34,63 @@ public class StaminaUi : MonoBehaviour
 
     void Update()
     {
-        if (_playerState.GetAvoidTime() != 1) return;
+        //if (_playerState.GetAvoidTime() != 1) return;
 
-        if (_playerState.GetIsAvoiding())
-        {
-            AvoidStaminaConsumption();
-        }
+        //if (_playerState.GetIsAvoiding())
+        //{
+        //    AvoidStaminaConsumption();
+        //}
     }
 
     private void FixedUpdate()
     {
-        _currentGauge = _Gauge.fillAmount;
+        _Gauge.fillAmount = _playerState.GetStamina() / _playerState.GetMaxStamina();
 
-        IsNoAutoRecovery();
+        //_currentGauge = _Gauge.fillAmount;
+
+        //IsNoAutoRecovery();
 
 
-        if (_playerState.GetIsDashing())
-        {
-            DashStaminaConsumption();
-        }
+        //if (_playerState.GetIsDashing())
+        //{
+        //    DashStaminaConsumption();
+        //}
 
-        if (!_isNoAutoRecovery)
-        {
-            AutoRecovery();
-        }
+        //if (!_isNoAutoRecovery)
+        //{
+        //    AutoRecovery();
+        //}
         
     }
 
     // 自動回復できるかどうか
-    private void IsNoAutoRecovery()
-    {
-        if(!_playerState.GetIsDashing() && !_playerState.GetIsAvoiding())
-        {
-            _isNoAutoRecovery = false;
-        }
-        else
-        {
-            _isNoAutoRecovery = true;
-        }
-    }
+    //private void IsNoAutoRecovery()
+    //{
+    //    if(!_playerState.GetIsDashing() && !_playerState.GetIsAvoiding())
+    //    {
+    //        _isNoAutoRecovery = false;
+    //    }
+    //    else
+    //    {
+    //        _isNoAutoRecovery = true;
+    //    }
+    //}
 
-    // 自動回復.
-    private void AutoRecovery()
-    {
-        _Gauge.fillAmount += _autoRecoveryGauge;
-    }
+    //// 自動回復.
+    //private void AutoRecovery()
+    //{
+    //    _Gauge.fillAmount += _autoRecoveryGauge;
+    //}
 
-    // ダッシュ時のスタミナ消費
-    private void DashStaminaConsumption()
-    {
-        _Gauge.fillAmount -= _decreaseDashGauge;
-    }
+    //// ダッシュ時のスタミナ消費
+    //private void DashStaminaConsumption()
+    //{
+    //    _Gauge.fillAmount -= _decreaseDashGauge;
+    //}
 
-    // 回避時のスタミナ消費
-    private void AvoidStaminaConsumption()
-    {
-        _Gauge.fillAmount -= _decreaseAvoidGauge;
-    }
+    //// 回避時のスタミナ消費
+    //private void AvoidStaminaConsumption()
+    //{
+    //    _Gauge.fillAmount -= _decreaseAvoidGauge;
+    //}
 }

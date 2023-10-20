@@ -39,8 +39,7 @@ public partial class MonsterState
         {
             if (owner._collisionTag == "Player")
             {
-                Debug.Log("dfaf");
-                owner.ChangeState(_idle);
+                owner.ChangeState(_at);
             }
         }
     }
