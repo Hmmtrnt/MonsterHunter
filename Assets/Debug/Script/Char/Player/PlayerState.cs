@@ -109,6 +109,7 @@ public partial class PlayerState : MonoBehaviour
         /*納刀*/
         _animator.SetBool("Idle", _idleMotion);
         _animator.SetBool("Run", _runMotion);
+        _animator.SetBool("Dash", _dashMotion);
         _animator.SetBool("Avoid", _avoidMotion);
 
         /*抜刀*/

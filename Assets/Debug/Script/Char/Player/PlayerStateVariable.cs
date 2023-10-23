@@ -13,6 +13,7 @@ public partial class PlayerState
     //--納刀状態--//
     private bool _idleMotion = false;
     private bool _runMotion = false;
+    private bool _dashMotion = false;
     private bool _avoidMotion = false;
 
     //--抜刀状態--//
