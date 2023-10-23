@@ -31,7 +31,7 @@ public partial class MonsterState : MonoBehaviour
 
         if(_debagHitPoint <= 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -87,6 +87,16 @@ public partial class MonsterState : MonoBehaviour
     private float GetOnDamager()
     {
         _debagHitPoint = _debagHitPoint - _state.GetHunterAttack();
+        return _debagHitPoint;
+    }
+
+    public void SetHitPoint(float hitPoint)
+    {
+        _debagHitPoint = hitPoint;
+    }
+
+    public float GetHitPoint()
+    {
         return _debagHitPoint;
     }
 }

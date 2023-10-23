@@ -42,7 +42,7 @@ public partial class PlayerState
             }
 
             // run状態.
-            if (owner._input._RBButtonUp)
+            if (owner._input._RBButtonUp || owner._stamina <= 0)
             {
                 owner.ChangeState(_running);
             }

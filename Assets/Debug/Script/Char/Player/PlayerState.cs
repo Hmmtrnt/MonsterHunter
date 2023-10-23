@@ -161,7 +161,7 @@ public partial class PlayerState : MonoBehaviour
     {
         if(_hitPoint <= 0) return;
 
-        ChangeState(_damage);
+        _hitPoint = _hitPoint - _MonsterState.GetMonsterAttack();
     }
 
     // 体力が0になった時に呼び出す

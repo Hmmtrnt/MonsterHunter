@@ -40,7 +40,7 @@ public partial class PlayerState
             }
 
             // ダッシュ状態へ.
-            if (owner._input._RBButton)
+            if (owner._input._RBButton && owner._stamina >= 0)
             {
                 owner.ChangeState(_dash);
             }
