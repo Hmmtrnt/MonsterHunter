@@ -113,7 +113,7 @@ public partial class PlayerState : MonoBehaviour
 
         /*抜刀*/
         _animator.SetBool("DrawnSword", _drawnSwordMotion);
-        _animator.SetBool("DrawIdle", _drawnIdleMotion);
+        _animator.SetBool("DrawnIdle", _drawnIdleMotion);
     }
 
     // 情報の代入.
