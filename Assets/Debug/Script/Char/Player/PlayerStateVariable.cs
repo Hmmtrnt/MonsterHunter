@@ -11,16 +11,13 @@ public partial class PlayerState
     private Animator _animator;
     // Setbool
     //--納刀状態--//
-    // アイドルモーション.
     private bool _idleMotion = false;
-    // 走りモーション.
     private bool _runMotion = false;
-    // 回避モーション.
     private bool _avoidMotion = false;
 
     //--抜刀状態--//
-    // 抜刀するモーション.
-    private bool _drawnSword = false;
+    private bool _drawnSwordMotion = false;
+    private bool _drawnIdleMotion = false;
 
     // プレイヤーのステータス.
     // 体力.

@@ -10,7 +10,7 @@ public partial class PlayerState
         private int MotionTransition = 0;
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            owner._drawnSword = false;
+            owner._drawnSwordMotion = false;
             MotionTransition = 0;
         }
 

@@ -9,6 +9,7 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
+            owner._drawnIdleMotion = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -23,6 +24,7 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
+            owner._drawnIdleMotion = false;
         }
 
         public override void OnChangeState(PlayerState owner)
