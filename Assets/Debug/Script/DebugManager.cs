@@ -18,7 +18,6 @@ public class DebugManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Debug.Log("通っている");
             _monsterState.SetHitPoint(300.0f);
             _Monster.transform.position = new Vector3(180.0f, 2.0f, 95.0f);
             _Monster.SetActive(true);
