@@ -7,6 +7,7 @@ TagManager:
   - Head
   - Manager
   - Monster
+  - Weapon
   layers:
   - Default
   - TransparentFX
