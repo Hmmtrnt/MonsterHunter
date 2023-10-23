@@ -59,6 +59,10 @@ public partial class PlayerState : MonoBehaviour
         {
             _stamina = _maxStamina;
         }
+        if(_stamina < 0)
+        {
+            _stamina = 0;
+        }
 
         if(_hitPoint <= 0)
         {
