@@ -22,6 +22,8 @@ public partial class PlayerState
         {
             Move(owner);
             RotateDirection(owner);
+
+            owner._stamina -= owner._isDashStaminaCost;
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)

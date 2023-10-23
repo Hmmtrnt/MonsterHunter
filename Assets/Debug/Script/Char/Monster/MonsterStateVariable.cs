@@ -6,7 +6,11 @@ public partial class MonsterState
 {
     // 以下デバッグ用
     // 目標のプレイヤー
-    private GameObject _Hunter;
+    private GameObject _hunter;
+    private Transform _trasnform;
+    private Rigidbody _rigidbody;
+    private PlayerState _state;
+
     // 追従スピード
     private float _followingSpeed = 1;
 

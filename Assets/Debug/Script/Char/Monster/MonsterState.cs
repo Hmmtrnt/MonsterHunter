@@ -35,7 +35,7 @@ public partial class MonsterState : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag == "Player")
+        if(collision.gameObject.tag == "Player")
         {
             _collisionTag = collision.transform.tag;
         }
@@ -43,9 +43,18 @@ public partial class MonsterState : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.transform.tag == "Player")
+        if(collision.gameObject.tag == "Player")
         {
             _collisionTag = null;
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Weapon")
+        {
+            GetOnDamager();
         }
     }
 
@@ -59,11 +68,20 @@ public partial class MonsterState : MonoBehaviour
 
     private void Initialization()
     {
-        _Hunter = GameObject.Find("Hunter");
+        _hunter = GameObject.Find("Hunter");
+        _trasnform = transform;
+        _rigidbody = GetComponent<Rigidbody>();
+        _state = _hunter.GetComponent<PlayerState>();
     }
 
     public float GetMonsterAttack()
     {
         return _debagAttackPower;
+    }
+
+    private float GetOnDamager()
+    {
+        _debagHitPoint = _debagHitPoint - _state.GetHunterAttack();
+        return _debagHitPoint;
     }
 }

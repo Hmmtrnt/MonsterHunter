@@ -10,6 +10,7 @@ public partial class PlayerState
         {
             owner._isAvoiding = true;
             owner._avoidMotion = true;
+            owner._stamina -= owner._avoidStaminaCost;
         }
 
         public override void OnUpdate(PlayerState owner)

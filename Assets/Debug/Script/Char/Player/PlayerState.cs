@@ -55,6 +55,11 @@ public partial class PlayerState : MonoBehaviour
         SubstituteVariable();
         _currentState.OnFixedUpdate(this);
 
+        if(_stamina >= _maxStamina)
+        {
+            _stamina = _maxStamina;
+        }
+
         if(_hitPoint <= 0)
         {
             OnDead();
@@ -63,7 +68,7 @@ public partial class PlayerState : MonoBehaviour
         if(_currentState != _dash &&
             _currentState != _avoid)
         {
-
+            AutoRecoveryStamina();
         }
     }
 
@@ -128,7 +133,13 @@ public partial class PlayerState : MonoBehaviour
 
     }
 
-    // ダメージを受けた時に遷移
+    // スタミナの自動回復.
+    private void AutoRecoveryStamina()
+    {
+        _stamina += _autoRecaveryStamina;
+    }
+
+    // ダメージを受けた時に遷移.
     private void OnDamage()
     {
         if(_hitPoint <= 0) return;

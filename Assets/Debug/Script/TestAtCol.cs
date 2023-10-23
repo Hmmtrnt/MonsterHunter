@@ -20,6 +20,5 @@ public class TestAtCol : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
     }
 }

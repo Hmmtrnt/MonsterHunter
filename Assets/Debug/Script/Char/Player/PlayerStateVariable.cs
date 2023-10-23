@@ -93,6 +93,9 @@ public partial class PlayerState
     private Vector3 _moveVelocity = new(0.0f, 0.0f, 0.0f);
     // ダッシュしているかどうか.
     private bool _isDashing = false;
+    // ダッシュしているときのスタミナ消費量
+    private float _isDashStaminaCost = 0.7f;
+
     // 重力.
     private float _gravity = -10.0f;
 
