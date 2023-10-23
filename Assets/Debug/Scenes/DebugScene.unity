@@ -35730,7 +35730,7 @@ GameObject:
   - component: {fileID: 997339880}
   m_Layer: 0
   m_Name: AtCol
-  m_TagString: Untagged
+  m_TagString: MonsterAtCol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

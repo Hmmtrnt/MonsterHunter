@@ -27,6 +27,8 @@ public partial class MonsterState : MonoBehaviour
     {
         _currentState.OnFixedUpdate(this);
 
+        _debugAttackCol.SetActive(_indicateAttackCol);
+
         if(_debagHitPoint <= 0)
         {
             Destroy(gameObject);
@@ -72,6 +74,9 @@ public partial class MonsterState : MonoBehaviour
         _trasnform = transform;
         _rigidbody = GetComponent<Rigidbody>();
         _state = _hunter.GetComponent<PlayerState>();
+
+        _debugAttackCol = GameObject.FindWithTag("MonsterAtCol");
+        
     }
 
     public float GetMonsterAttack()

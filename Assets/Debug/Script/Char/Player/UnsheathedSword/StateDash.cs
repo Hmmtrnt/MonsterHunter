@@ -48,7 +48,7 @@ public partial class PlayerState
             }
 
             // avoid状態.
-            if (owner._input._AButtonDown)
+            if (owner._input._AButtonDown && owner._stamina >= owner._maxStamina / 10)
             {
                 owner.ChangeState(_avoid);
             }

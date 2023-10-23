@@ -23,4 +23,9 @@ public partial class MonsterState
     // 攻撃力
     private float _debagAttackPower = 50;
 
+    // デバッグ用攻撃判定
+    private GameObject _debugAttackCol;
+    // デバッグ用攻撃判定を生成するかどうか
+    private bool _indicateAttackCol = false;
+
 }

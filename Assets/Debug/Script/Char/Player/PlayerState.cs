@@ -78,7 +78,15 @@ public partial class PlayerState : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Monster")
+        //if (collision.transform.tag == "Monster")
+        //{
+        //    OnDamage();
+        //}
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "MonsterAtCol")
         {
             OnDamage();
         }

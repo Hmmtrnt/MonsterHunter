@@ -11,6 +11,7 @@ public partial class MonsterState
         public override void OnEnter(MonsterState owner, StateBase prevState)
         {
             testTime = 0;
+            owner._indicateAttackCol = true;
         }
 
         public override void OnUpdate(MonsterState owner)
@@ -20,11 +21,16 @@ public partial class MonsterState
         public override void OnFixedUpdate(MonsterState owner)
         {
             testTime++;
+
+            if(testTime >= 5)
+            {
+                owner._indicateAttackCol = false;
+            }
         }
 
         public override void OnExit(MonsterState owner, StateBase nextState)
         {
-
+            
         }
 
         public override void OnChangeState(MonsterState owner)
