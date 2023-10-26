@@ -6,9 +6,12 @@ public partial class PlayerState
 {
     public class StateRecovery : StateBase
     {
+        private int _recoveryTime = 0;
+
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._isRecovery = true;
+            owner._healMotion = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -19,13 +22,21 @@ public partial class PlayerState
         public override void OnFixedUpdate(PlayerState owner)
         {
             owner._currentRecoveryTime++;
-            Recovery(owner);
+            _recoveryTime++;
+
+            if(_recoveryTime >= 50 && _recoveryTime <=110)
+            {
+                Recovery(owner);
+            }
+            
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
             owner._isRecovery = false;
             owner._currentRecoveryTime = 0;
+            _recoveryTime = 0;
+            owner._healMotion = false;
         }
 
         public override void OnChangeState(PlayerState owner)

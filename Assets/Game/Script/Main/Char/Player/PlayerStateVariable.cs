@@ -15,6 +15,7 @@ public partial class PlayerState
     private bool _runMotion = false;
     private bool _dashMotion = false;
     private bool _avoidMotion = false;
+    private bool _healMotion = false;
 
     //--抜刀状態--//
     private bool _drawnSwordMotion = false;
@@ -120,7 +121,7 @@ public partial class PlayerState
     // 最大回復時間.
     private int _maxRecoveryTime = 200;
     // 回復量.
-    private float _recoveryAmount = 0.5f;
+    private float _recoveryAmount = 0.8f;
 
 
     // 以下デバッグ用変数

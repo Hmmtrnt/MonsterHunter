@@ -123,6 +123,7 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("Run", _runMotion);
         _animator.SetBool("Dash", _dashMotion);
         _animator.SetBool("Avoid", _avoidMotion);
+        _animator.SetBool("Heal", _healMotion);
 
         /*抜刀*/
         _animator.SetBool("DrawnSword", _drawnSwordMotion);
