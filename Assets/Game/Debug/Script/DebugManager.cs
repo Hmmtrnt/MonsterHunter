@@ -6,6 +6,7 @@ public class DebugManager : MonoBehaviour
 {
     [SerializeField] private GameObject _Monster;
     private MonsterState _monsterState;
+    [SerializeField] private Vector3 _respawnPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class DebugManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             _monsterState.SetHitPoint(300.0f);
-            _Monster.transform.position = new Vector3(180.0f, 2.0f, 95.0f);
+            _Monster.transform.position = _respawnPosition;
             _Monster.SetActive(true);
         }
     }
