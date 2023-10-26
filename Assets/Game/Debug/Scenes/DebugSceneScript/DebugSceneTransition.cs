@@ -5,21 +5,21 @@ public class DebugSceneTransition : MonoBehaviour
 {
     public void DebugPlayScene()
     {
-        SceneTransitionManager.LoadScene("DebugPlayScene");
+        SceneManager.LoadScene("DebugPlayScene");
     }
 
     public void TitleScene()
     {
-        SceneTransitionManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("TitleScene");
     }
 
     public void MainScene()
     {
-        SceneTransitionManager.LoadScene("MainScene");
+        SceneManager.LoadScene("MainScene");
     }
 
     public void ResultScene()
     {
-        SceneTransitionManager.LoadScene("ResultScene");
+        SceneManager.LoadScene("ResultScene");
     }
 }
