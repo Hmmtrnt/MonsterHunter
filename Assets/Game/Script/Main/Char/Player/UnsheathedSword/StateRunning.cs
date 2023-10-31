@@ -38,22 +38,24 @@ public partial class PlayerState
             {
                 owner.ChangeState(_idle);
             }
-
             // ダッシュ状態へ.
-            if (owner._input._RBButton && owner._stamina >= 0)
+            else if (owner._input._RBButton && owner._stamina >= owner._maxStamina / 5)
             {
                 owner.ChangeState(_dash);
             }
-
+            // 疲労ダッシュ状態へ.
+            else if(owner._input._RBButton && owner._stamina <= owner._maxStamina / 5)
+            {
+                owner.ChangeState(_fatigueDash);
+            }
             // 回避状態へ.
-            if (owner._input._AButtonDown && owner._stamina >= owner._maxStamina / 10)
+            else if (owner._input._AButtonDown && owner._stamina >= owner._maxStamina / 10)
             {
                 owner.ChangeState(_avoid);
             }
-
             // 回復状態へ.
             // HACK:アイテムが選ばれている状態の条件も追加する
-            if (owner._input._XButtonDown && !owner._UnsheathedSword)
+            else if (owner._input._XButtonDown && !owner._UnsheathedSword)
             {
                 owner.ChangeState(_recovery);
             }

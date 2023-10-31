@@ -8,7 +8,7 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            Debug.Log("死");
+            //Debug.Log("死");
         }
 
         public override void OnUpdate(PlayerState owner)

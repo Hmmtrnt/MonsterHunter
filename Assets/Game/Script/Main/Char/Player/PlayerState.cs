@@ -9,6 +9,7 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateAvoid _avoid = new();// 回避.
     private static readonly StateRunning _running = new();// 走る.
     private static readonly StateDash _dash = new();// ダッシュ.
+    private static readonly StateFatigueDash _fatigueDash = new();// 疲労時のダッシュ.
     private static readonly StateRecovery _recovery = new();// 回復.
 
     //--抜刀状態--//
@@ -40,6 +41,7 @@ public partial class PlayerState : MonoBehaviour
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
 
+        // 納刀状態、抜刀状態遷移
         if (_input._YButtonDown)
         {
             _UnsheathedSword = true;
@@ -70,7 +72,8 @@ public partial class PlayerState : MonoBehaviour
         }
 
         if(_currentState != _dash &&
-            _currentState != _avoid)
+            _currentState != _avoid &&
+            _currentState != _fatigueDash)
         {
             AutoRecoveryStamina();
         }

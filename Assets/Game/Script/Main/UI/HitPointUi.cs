@@ -11,12 +11,6 @@ public class HitPointUi : MonoBehaviour
 
     // ゲージ.
     private Image _Gauge;
-    // 現在のスタミナゲージ.
-    private float _currentGauge;
-    // ダメージを食らった時の減少量.
-    private float _decreaseDashGauge = 0.0005f;
-    // 体力の回復量.
-    private float _increaseRecoveryGauge = 0.003f;
 
     void Start()
     {
@@ -33,24 +27,6 @@ public class HitPointUi : MonoBehaviour
     private void FixedUpdate()
     {
         _Gauge.fillAmount = _playerState.GetHitPoint() / _playerState.GetMaxHitPoint();
-
-        //_currentGauge = _Gauge.fillAmount;
-
-        //if(_playerState.GetIsRecovery() && _playerState.GetRecoveryTime() >= 50)
-        //{
-        //    OnRecovery();
-        //}
     }
 
-    // ダメージを受けた時の体力変動.
-    //private void OnDamage()
-    //{
-
-    //}
-
-    //// 回復しているときの体力変動.
-    //private void OnRecovery()
-    //{
-    //    _Gauge.fillAmount += _increaseRecoveryGauge;
-    //}
 }

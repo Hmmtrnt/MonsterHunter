@@ -2,17 +2,63 @@
 
 using UnityEngine;
 
-public class StateFatigueDash : MonoBehaviour
+public partial class PlayerState
 {
-    // Start is called before the first frame update
-    void Start()
+    public class StateFatigueDash : StateBase
     {
-        
-    }
+        public override void OnEnter(PlayerState owner, StateBase prevState)
+        {
+            owner._runMotion = true;
+            owner._moveVelocityMagnification = owner._moveVelocityFatigueDashMagnigication;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void OnUpdate(PlayerState owner)
+        {
+
+        }
+
+        public override void OnFixedUpdate(PlayerState owner)
+        {
+            Debug.Log("疲労ダッシュ");
+            Move(owner);
+            RotateDirection(owner);
+            owner._stamina -= owner._isDashStaminaCost;
+        }
+
+        public override void OnExit(PlayerState owner, StateBase nextState)
+        {
+            owner._runMotion = false;
+        }
+
+        public override void OnChangeState(PlayerState owner)
+        {
+            // idle状態.
+            if(owner._leftStickHorizontal == 0 &&
+                owner._leftStickVertical == 0)
+            {
+                owner.ChangeState(_idle);
+            }
+            // run状態.
+            else if (owner._input._RBButtonUp)
+            {
+                owner.ChangeState(_running);
+            }
+
+            
+        }
+
+
+        // 移動
+        private void Move(PlayerState owner)
+        {
+            owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + new Vector3(0.0f, owner._gravity, 0.0f);
+        }
+
+        // 移動している方向に回転
+        private void RotateDirection(PlayerState owner)
+        {
+            owner._transform.LookAt(owner._transform.position + owner._moveVelocity);
+        }
     }
 }
+

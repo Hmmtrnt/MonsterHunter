@@ -83,6 +83,9 @@ public partial class PlayerState
     private float _moveVelocityRunMagnification = 12;
     // ダッシュ時の移動倍率.
     private float _moveVelocityDashMagnigication = 20;
+    // 疲労ダッシュ時の移動倍率.
+    private float _moveVelocityFatigueDashMagnigication = 10;
+
     // 移動速度倍率.
     private float _moveVelocityMagnification = 12;
     // 回復しながらの移動倍率.
