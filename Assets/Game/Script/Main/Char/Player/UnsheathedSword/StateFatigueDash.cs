@@ -19,7 +19,6 @@ public partial class PlayerState
 
         public override void OnFixedUpdate(PlayerState owner)
         {
-            Debug.Log("疲労ダッシュ");
             Move(owner);
             RotateDirection(owner);
             owner._stamina -= owner._isDashStaminaCost;

@@ -36,10 +36,10 @@ public partial class PlayerState
     // 攻撃力.
     private float _AttackPower = 100;
 
-    private bool _isReceiveDamage = false;
+    //private bool _isReceiveDamage = false;
 
     // モーション値.
-    private float _MotionValue = 0;
+    //private float _MotionValue = 0;
 
     // Rigidbody.
     private Rigidbody _rigidbody;
@@ -67,9 +67,9 @@ public partial class PlayerState
     private bool _UnsheathedSword = false;
 
     // 現在の攻撃のモーション値.
-    private int _currentAttackMotionValue = 0;
+    //private int _currentAttackMotionValue = 0;
     // 最大攻撃のモーション値.
-    private int _maxAttackMotionValue = 0;
+    //private int _maxAttackMotionValue = 0;
 
     // 攻撃判定.
 
@@ -89,7 +89,7 @@ public partial class PlayerState
     // 移動速度倍率.
     private float _moveVelocityMagnification = 12;
     // 回復しながらの移動倍率.
-    private float _moveVelocityRecoveryMagnification = 10;
+    //private float _moveVelocityRecoveryMagnification = 10;
 
     // 移動速度.
     private Vector3 _moveVelocity = new(0.0f, 0.0f, 0.0f);

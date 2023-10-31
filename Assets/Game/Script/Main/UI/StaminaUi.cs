@@ -11,9 +11,6 @@ public class StaminaUi : MonoBehaviour
     // スタミナゲージ.
     private Image _gauge;
 
-    // スタミナが自動回復しないときtrue.
-    private bool _isNoAutoRecovery = false;
-
     [Header("点滅するときの最初の色")]
     [SerializeField] private Color32 _startColor = new Color32(255,255,0,255);
 

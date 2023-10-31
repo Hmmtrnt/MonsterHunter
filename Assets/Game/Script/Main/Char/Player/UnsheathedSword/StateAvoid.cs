@@ -6,11 +6,17 @@ public partial class PlayerState
 {
     public class StateAvoid : StateBase
     {
+        // 一度処理を通ったら二度は通らない.
+        private bool _isProcess;
+        // 回避した後の減速
+        private float _deceleration = 0.95f;
+
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
             owner._isAvoiding = true;
             owner._avoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
+            _isProcess = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -23,6 +29,7 @@ public partial class PlayerState
         {
             owner._avoidTime++;
             MoveAvoid(owner);
+            //Debug.Log(owner._rigidbody.velocity);
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -43,6 +50,11 @@ public partial class PlayerState
                 {
                     owner.ChangeState(_running);
                 }
+                else if(owner._leftStickHorizontal != 0 ||
+                    owner._leftStickVertical != 0 && owner._input._RBButton)
+                {
+                    owner.ChangeState(_dash);
+                }
                 else if (owner._leftStickHorizontal == 0 &&
                     owner._leftStickVertical == 0)
                 {
@@ -54,12 +66,20 @@ public partial class PlayerState
         private void MoveAvoid(PlayerState owner)
         {
             //owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);
-            owner._rigidbody.velocity = owner._avoidVelocity;
+            //owner._rigidbody.velocity = owner._avoidVelocity;
 
-            if(owner._avoidTime <= 10)
+            if (owner._avoidTime <= 10)
             {
-                owner._rigidbody.velocity *= 0.5f;
+                owner._rigidbody.velocity *= _deceleration;
             }
+
+            
+
+            if (!_isProcess) return;
+
+            owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);
+
+            _isProcess = false;
             
         }
     }
