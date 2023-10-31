@@ -15,10 +15,10 @@ public class StaminaUi : MonoBehaviour
     private bool _isNoAutoRecovery = false;
 
     [Header("点滅するときの最初の色")]
-    [SerializeField] private Color32 _startColor;
+    [SerializeField] private Color32 _startColor = new Color32(255,255,0,255);
 
     [Header("点滅するときの次の色")]
-    [SerializeField] private Color32 _endColor;
+    [SerializeField] private Color32 _endColor = new Color32(255,0,0,255);
 
     [Header("一回の点滅するときの長さ")]
     [SerializeField] private float _blinkingTime = 1.0f;

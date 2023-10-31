@@ -410,6 +410,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1741260145787527012, guid: cda1c36d0df3e664f93e6058e32515a2, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741260145787527012, guid: cda1c36d0df3e664f93e6058e32515a2, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2021809663722721133, guid: cda1c36d0df3e664f93e6058e32515a2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -493,6 +501,18 @@ PrefabInstance:
     - target: {fileID: 3443298121842390772, guid: cda1c36d0df3e664f93e6058e32515a2, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000997746333581572, guid: cda1c36d0df3e664f93e6058e32515a2, type: 3}
+      propertyPath: _blinkingTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000997746333581572, guid: cda1c36d0df3e664f93e6058e32515a2, type: 3}
+      propertyPath: _endColor.rgba
+      value: 4278190335
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000997746333581572, guid: cda1c36d0df3e664f93e6058e32515a2, type: 3}
+      propertyPath: _startColor.rgba
+      value: 4278255615
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -684,6 +704,10 @@ PrefabInstance:
     - target: {fileID: 168304816778294814, guid: 62c9e0bd850ada14f8211348133359a6, type: 3}
       propertyPath: m_Name
       value: MonsterIdle
+      objectReference: {fileID: 0}
+    - target: {fileID: 168304816778294814, guid: 62c9e0bd850ada14f8211348133359a6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 656998854977055908, guid: 62c9e0bd850ada14f8211348133359a6, type: 3}
       propertyPath: m_LocalPosition.x
