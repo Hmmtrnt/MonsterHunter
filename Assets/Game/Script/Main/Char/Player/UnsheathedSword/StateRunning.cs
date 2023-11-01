@@ -65,6 +65,10 @@ public partial class PlayerState
         private void Move(PlayerState owner)
         {
             owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + new Vector3(0.0f, owner._gravity, 0.0f);
+
+            
+
+            owner._currentRunSpeed = owner._rigidbody.velocity.magnitude / owner._moveVelocityMagnification;
         }
 
         // 移動している方向に回転

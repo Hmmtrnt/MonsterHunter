@@ -122,6 +122,10 @@ public partial class PlayerState : MonoBehaviour
         if (_animator == null) return;
 
         /*納刀*/
+        // float
+        _animator.SetFloat("Speed", _currentRunSpeed);
+
+        // bool
         _animator.SetBool("Idle", _idleMotion);
         _animator.SetBool("Run", _runMotion);
         _animator.SetBool("Dash", _dashMotion);
@@ -129,6 +133,7 @@ public partial class PlayerState : MonoBehaviour
         _animator.SetBool("Heal", _healMotion);
 
         /*抜刀*/
+        // bool
         _animator.SetBool("DrawnSword", _drawnSwordMotion);
         _animator.SetBool("DrawnIdle", _drawnIdleMotion);
     }

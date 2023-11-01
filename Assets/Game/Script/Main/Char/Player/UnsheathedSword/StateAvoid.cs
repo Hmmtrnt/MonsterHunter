@@ -36,21 +36,25 @@ public partial class PlayerState
         {
             owner._isAvoiding = false;
             owner._avoidMotion = false;
+            owner._avoidTime = 0;
+            owner._rigidbody.velocity = Vector3.zero;
         }
 
         public override void OnChangeState(PlayerState owner)
         {
+            // スティック傾けていたらRunに
+            if ((owner._leftStickHorizontal != 0 ||
+                    owner._leftStickVertical != 0) &&
+                    owner._avoidTime >= 30)
+            {
+                owner.ChangeState(_running);
+            }
+
             if (owner._avoidTime >= owner._avoidMaxTime)
             {
-                owner._avoidTime = 0;
-                owner._rigidbody.velocity = Vector3.zero;
-                // スティック傾けていたらRunに
-                if (owner._leftStickHorizontal != 0 ||
-                    owner._leftStickVertical != 0)
-                {
-                    owner.ChangeState(_running);
-                }
-                else if(owner._leftStickHorizontal != 0 ||
+                
+                
+                 if(owner._leftStickHorizontal != 0 ||
                     owner._leftStickVertical != 0 && owner._input._RBButton)
                 {
                     owner.ChangeState(_dash);
@@ -65,12 +69,16 @@ public partial class PlayerState
 
         private void MoveAvoid(PlayerState owner)
         {
-            //owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);
-            //owner._rigidbody.velocity = owner._avoidVelocity;
 
             if (owner._avoidTime <= 10)
             {
                 owner._rigidbody.velocity *= _deceleration;
+            }
+
+            if(owner._avoidTime >= 30)
+            {
+                //owner._rigidbody.velocity = new Vector3(0.0f,0.0f,0.0f);
+                owner._rigidbody.velocity *= 0.8f;
             }
 
             

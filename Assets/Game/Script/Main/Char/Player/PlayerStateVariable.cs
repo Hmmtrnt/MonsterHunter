@@ -9,8 +9,11 @@ public partial class PlayerState
 
     /*アニメーション*/
     private Animator _animator;
-    // Setbool
     //--納刀状態--//
+    // Setfloat
+    private float _currentRunSpeed = 0;// 現在の走る速度
+
+    // Setbool
     private bool _idleMotion = false;
     private bool _runMotion = false;
     private bool _dashMotion = false;
@@ -18,6 +21,7 @@ public partial class PlayerState
     private bool _healMotion = false;
 
     //--抜刀状態--//
+    // Setbool
     private bool _drawnSwordMotion = false;
     private bool _drawnIdleMotion = false;
 
@@ -99,7 +103,7 @@ public partial class PlayerState
     private float _isDashStaminaCost = 0.7f;
 
     // 重力.
-    private float _gravity = -10.0f;
+    private float _gravity = 0.0f;
 
     /*回避時の変数*/
     // 回避速度倍率.
@@ -109,7 +113,7 @@ public partial class PlayerState
     // 現在の回避フレーム.
     private int _avoidTime = 0;
     // 最大回避フレーム.
-    private int _avoidMaxTime = 30;
+    private int _avoidMaxTime = 45;
     // 回避時のスタミナ消費量.
     private float _avoidStaminaCost = 25;
 
