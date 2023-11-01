@@ -41,15 +41,7 @@ public partial class PlayerState : MonoBehaviour
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
 
-        // 納刀状態、抜刀状態遷移
-        if (_input._YButtonDown)
-        {
-            _UnsheathedSword = true;
-        }
-        if (_input._XButtonDown || _input._RBButtonDown)
-        {
-            _UnsheathedSword = false;
-        }
+        Debug.Log(_unsheathedSword);
     }
 
     private void FixedUpdate()
@@ -173,18 +165,24 @@ public partial class PlayerState : MonoBehaviour
         _hitPoint = _hitPoint - _MonsterState.GetMonsterAttack();
     }
 
-    // 体力が0になった時に呼び出す
+    // 体力が0になった時に呼び出す.
     private void OnDead()
     {
         ChangeState(_dead);
     }
 
-    // スティックの入力情報取得
+    // スティックの入力情報取得.
     private void GetStickInput()
     {
         // 入力情報代入.
         _leftStickHorizontal = _input._LeftStickHorizontal;
         _leftStickVertical = _input._LeftStickVertical;
+    }
+
+    // 移動時の回転処理.
+    private void RotateDirection()
+    {
+        transform.forward = Vector3.Slerp(transform.forward, _moveVelocity, Time.deltaTime * _rotateSpeed);
     }
 
 

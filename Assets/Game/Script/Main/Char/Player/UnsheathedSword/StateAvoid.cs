@@ -42,24 +42,25 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // スティック傾けていたらRunに
-            if ((owner._leftStickHorizontal != 0 ||
-                    owner._leftStickVertical != 0) &&
-                    owner._avoidTime >= 30)
+            if(owner._avoidTime >= 30)
             {
-                owner.ChangeState(_running);
+                // スティック傾けていたらRunに
+                if ((owner._leftStickHorizontal != 0 ||
+                    owner._leftStickVertical != 0) && !owner._input._RBButtonDown)
+                {
+                    owner.ChangeState(_running);
+                }
+
+                if ((owner._leftStickHorizontal != 0 ||
+                    owner._leftStickVertical != 0) && owner._input._RBButton)
+                {
+                    owner.ChangeState(_dash);
+                }
             }
 
             if (owner._avoidTime >= owner._avoidMaxTime)
             {
-                
-                
-                 if(owner._leftStickHorizontal != 0 ||
-                    owner._leftStickVertical != 0 && owner._input._RBButton)
-                {
-                    owner.ChangeState(_dash);
-                }
-                else if (owner._leftStickHorizontal == 0 &&
+                if (owner._leftStickHorizontal == 0 &&
                     owner._leftStickVertical == 0)
                 {
                     owner.ChangeState(_idle);

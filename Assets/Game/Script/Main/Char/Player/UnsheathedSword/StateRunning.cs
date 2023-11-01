@@ -20,7 +20,7 @@ public partial class PlayerState
         public override void OnFixedUpdate(PlayerState owner)
         {
             Move(owner);
-            RotateDirection(owner);
+            owner.RotateDirection();
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -55,7 +55,7 @@ public partial class PlayerState
             }
             // 回復状態へ.
             // HACK:アイテムが選ばれている状態の条件も追加する
-            else if (owner._input._XButtonDown && !owner._UnsheathedSword)
+            else if (owner._input._XButtonDown && !owner._unsheathedSword)
             {
                 owner.ChangeState(_recovery);
             }
@@ -69,12 +69,6 @@ public partial class PlayerState
             
 
             owner._currentRunSpeed = owner._rigidbody.velocity.magnitude / owner._moveVelocityMagnification;
-        }
-
-        // 移動している方向に回転
-        private void RotateDirection(PlayerState owner)
-        {
-            owner._transform.LookAt(owner._transform.position + owner._moveVelocity);
         }
     }
 }

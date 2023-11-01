@@ -45,6 +45,7 @@ public partial class PlayerState
             // のちに納刀ステートを入れる
             if (owner._input._XButtonDown || owner._input._RBButtonDown)
             {
+                owner._unsheathedSword = false;
                 owner.ChangeState(_sheathingSword);
             }
 

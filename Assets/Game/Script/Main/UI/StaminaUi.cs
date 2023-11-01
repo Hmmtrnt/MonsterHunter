@@ -10,6 +10,7 @@ public class StaminaUi : MonoBehaviour
 
     // スタミナゲージ.
     private Image _gauge;
+    private Image _underGauge;
 
     [Header("点滅するときの最初の色")]
     [SerializeField] private Color32 _startColor = new Color32(255,255,0,255);
@@ -22,7 +23,8 @@ public class StaminaUi : MonoBehaviour
 
     void Start()
     {
-        _gauge = GetComponent<Image>();
+        _gauge = GameObject.Find("StaminaGauge").GetComponent<Image>();
+        _underGauge = GetComponent<Image>();
         _gauge.fillAmount = 1.0f;
         _playerState = GameObject.Find("Hunter").GetComponent<PlayerState>();
     }
@@ -43,11 +45,11 @@ public class StaminaUi : MonoBehaviour
 
         if(_gauge.fillAmount <= 1.0f / 5)
         {
-            _gauge.color = Color.Lerp(_startColor, _endColor, Mathf.PingPong(Time.time / _blinkingTime, 1.0f));
+            _underGauge.color = Color.Lerp(_startColor, _endColor, Mathf.PingPong(Time.time / _blinkingTime, 1.0f));
         }
         else if(_gauge.fillAmount >= 1.0f / 5)
         {
-            _gauge.color = _startColor;
+            _underGauge.color = _startColor;
         }
     }
 }

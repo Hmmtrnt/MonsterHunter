@@ -21,7 +21,7 @@ public partial class PlayerState
         public override void OnFixedUpdate(PlayerState owner)
         {
             Move(owner);
-            RotateDirection(owner);
+            owner.RotateDirection();
 
             owner._stamina -= owner._isDashStaminaCost;
         }
@@ -57,7 +57,7 @@ public partial class PlayerState
             }
             // 回復状態へ.
             // HACK:アイテムが選ばれている状態の条件も追加する
-            else if (owner._input._XButtonDown && !owner._UnsheathedSword)
+            else if (owner._input._XButtonDown && !owner._unsheathedSword)
             {
                 owner.ChangeState(_recovery);
             }
@@ -67,12 +67,6 @@ public partial class PlayerState
         private void Move(PlayerState owner)
         {
             owner._rigidbody.velocity = owner._moveVelocity * owner._moveVelocityMagnification + new Vector3(0.0f, owner._gravity, 0.0f);
-        }
-
-        // 移動している方向に回転
-        private void RotateDirection(PlayerState owner)
-        {
-            owner._transform.LookAt(owner._transform.position + owner._moveVelocity);
         }
     }
 }

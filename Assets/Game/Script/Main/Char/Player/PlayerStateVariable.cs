@@ -68,7 +68,7 @@ public partial class PlayerState
     // 抜刀状態
     // true :抜刀.
     // false:納刀.
-    private bool _UnsheathedSword = false;
+    private bool _unsheathedSword = false;
 
     // 現在の攻撃のモーション値.
     //private int _currentAttackMotionValue = 0;
@@ -97,6 +97,9 @@ public partial class PlayerState
 
     // 移動速度.
     private Vector3 _moveVelocity = new(0.0f, 0.0f, 0.0f);
+    // 移動時の回転速度
+    private float _rotateSpeed = 10.0f;
+
     // ダッシュしているかどうか.
     private bool _isDashing = false;
     // ダッシュしているときのスタミナ消費量

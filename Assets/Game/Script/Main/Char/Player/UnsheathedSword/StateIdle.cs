@@ -48,7 +48,7 @@ public partial class PlayerState
             }
 
             // HACK:のちにアイテムが何を選ばれているか.
-            if (owner._input._XButtonDown && !owner._UnsheathedSword)
+            if (owner._input._XButtonDown && !owner._unsheathedSword)
             {
                 // 回復.
                 owner.ChangeState(_recovery);
