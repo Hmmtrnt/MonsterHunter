@@ -41,7 +41,7 @@ public partial class PlayerState : MonoBehaviour
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
 
-        Debug.Log(_unsheathedSword);
+        //Debug.Log(_unsheathedSword);
     }
 
     private void FixedUpdate()
@@ -128,6 +128,10 @@ public partial class PlayerState : MonoBehaviour
         // bool
         _animator.SetBool("DrawnSword", _drawnSwordMotion);
         _animator.SetBool("DrawnIdle", _drawnIdleMotion);
+
+        /*共通*/
+        // bool
+        _animator.SetBool("Damage", _damageMotion);
     }
 
     // 情報の代入.
@@ -163,6 +167,8 @@ public partial class PlayerState : MonoBehaviour
         if(_hitPoint <= 0) return;
 
         _hitPoint = _hitPoint - _MonsterState.GetMonsterAttack();
+
+        ChangeState(_damage);
     }
 
     // 体力が0になった時に呼び出す.
@@ -171,7 +177,7 @@ public partial class PlayerState : MonoBehaviour
         ChangeState(_dead);
     }
 
-    // スティックの入力情報取得.
+    // 左スティックの入力情報取得.
     private void GetStickInput()
     {
         // 入力情報代入.

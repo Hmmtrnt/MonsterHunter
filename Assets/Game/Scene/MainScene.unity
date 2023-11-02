@@ -878,6 +878,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 73255852727975561, guid: 3d9de063ff6fce2488834b2a348276e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 73255852727975561, guid: 3d9de063ff6fce2488834b2a348276e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 73255852727975561, guid: 3d9de063ff6fce2488834b2a348276e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 1935832388134967661, guid: 3d9de063ff6fce2488834b2a348276e6, type: 3}
       propertyPath: m_Name
       value: CM vcam1
@@ -889,6 +901,10 @@ PrefabInstance:
     - target: {fileID: 3888755738078639391, guid: 3d9de063ff6fce2488834b2a348276e6, type: 3}
       propertyPath: m_LookAt
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6712196305385435682, guid: 3d9de063ff6fce2488834b2a348276e6, type: 3}
+      propertyPath: m_VerticalAxis.Value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6712196305385435682, guid: 3d9de063ff6fce2488834b2a348276e6, type: 3}
       propertyPath: m_VerticalAxis.m_MaxSpeed

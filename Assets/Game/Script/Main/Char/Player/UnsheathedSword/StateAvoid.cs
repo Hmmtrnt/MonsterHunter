@@ -6,8 +6,6 @@ public partial class PlayerState
 {
     public class StateAvoid : StateBase
     {
-        // 一度処理を通ったら二度は通らない.
-        private bool _isProcess;
         // 回避した後の減速
         private float _deceleration = 0.95f;
 
@@ -16,7 +14,7 @@ public partial class PlayerState
             owner._isAvoiding = true;
             owner._avoidMotion = true;
             owner._stamina -= owner._avoidStaminaCost;
-            _isProcess = true;
+            owner._isProcess = true;
         }
 
         public override void OnUpdate(PlayerState owner)
@@ -84,11 +82,11 @@ public partial class PlayerState
 
             
 
-            if (!_isProcess) return;
+            if (!owner._isProcess) return;
 
             owner._rigidbody.AddForce(owner._avoidVelocity, ForceMode.Impulse);
 
-            _isProcess = false;
+            owner._isProcess = false;
             
         }
     }

@@ -25,6 +25,10 @@ public partial class PlayerState
     private bool _drawnSwordMotion = false;
     private bool _drawnIdleMotion = false;
 
+    //--共通モーション--//
+    // Setbool
+    private bool _damageMotion = false;
+
     // プレイヤーのステータス.
     // 体力.
     private float _hitPoint = 200;
@@ -69,6 +73,9 @@ public partial class PlayerState
     // true :抜刀.
     // false:納刀.
     private bool _unsheathedSword = false;
+
+    // 一度通ったら二度は通らない
+    private bool _isProcess = false;
 
     // 現在の攻撃のモーション値.
     //private int _currentAttackMotionValue = 0;
