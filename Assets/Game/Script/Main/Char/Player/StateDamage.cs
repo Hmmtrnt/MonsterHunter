@@ -57,7 +57,7 @@ public partial class PlayerState
             // 敵の中心点からベクトルを取得
             Vector3 dir = owner._transform.position - owner._Monster.transform.position;
             dir = dir.normalized;
-            owner._rigidbody.AddForce(dir, ForceMode.Impulse);
+            owner._rigidbody.AddForce(dir * 20, ForceMode.Impulse);
             owner._isProcess = false;
         }
     }

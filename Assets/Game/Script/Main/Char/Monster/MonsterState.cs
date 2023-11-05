@@ -7,8 +7,9 @@ public partial class MonsterState : MonoBehaviour
     public static readonly MonsterStateIdle _idle = new();// アイドル.
     public static readonly MonsterStateRun _run = new();// 移動.
     public static readonly MonsterStateAt _at = new();// 攻撃(デバッグ用).
+    public static readonly MonsterStateRotateAttack _rotate = new();// 回転攻撃.
 
-    // 現在のState.
+    // Stateの初期化.
     private StateBase _currentState = _idle;
 
     private void Start()
@@ -27,6 +28,7 @@ public partial class MonsterState : MonoBehaviour
     {
         _currentState.OnFixedUpdate(this);
 
+        // 攻撃判定の生成
         _debugAttackCol.SetActive(_indicateAttackCol);
 
         if(_debagHitPoint <= 0)
