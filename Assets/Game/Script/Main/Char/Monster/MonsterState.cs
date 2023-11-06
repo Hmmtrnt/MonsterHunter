@@ -1,6 +1,7 @@
 ﻿/*モンスターステート*/
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public partial class MonsterState : MonoBehaviour
 {
@@ -76,6 +77,8 @@ public partial class MonsterState : MonoBehaviour
         _trasnform = transform;
         _rigidbody = GetComponent<Rigidbody>();
         _state = _hunter.GetComponent<PlayerState>();
+        _line = GetComponent<LineRenderer>();
+        _text = GameObject.Find("DebugText").GetComponent<Text>();
 
         _debugAttackCol = GameObject.FindWithTag("MonsterAtCol");
         

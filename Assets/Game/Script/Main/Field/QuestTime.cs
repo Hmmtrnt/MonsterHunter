@@ -16,7 +16,7 @@ public class QuestTime : MonoBehaviour
     {
         float m = Time.time;
         m = m / 60.0f;
-        GameObject.Find("LongHand").transform.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * m);
+        transform.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * m);
         GameObject.Find("HourHand").transform.localEulerAngles = new Vector3(0, 0, -360 / 60.0f * 50.0f);
     }
 }

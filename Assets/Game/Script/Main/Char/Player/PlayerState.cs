@@ -77,7 +77,6 @@ public partial class PlayerState : MonoBehaviour
             AutoRecoveryStamina();
         }
 
-        Debug.Log(_hitPoint);
     }
 
     private void OnCollisionEnter(Collision collision)

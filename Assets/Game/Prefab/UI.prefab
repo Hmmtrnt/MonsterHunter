@@ -105,7 +105,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5000535187038373409}
-  - {fileID: 1610674897111907076}
   m_Father: {fileID: 5808491130896762613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1025,6 +1024,7 @@ RectTransform:
   m_Children:
   - {fileID: 5100402762975285000}
   - {fileID: 1121509658822295316}
+  - {fileID: 1610674897111907076}
   - {fileID: 2865005857859058127}
   - {fileID: 5924137496058099683}
   m_Father: {fileID: 2021809663722721133}
@@ -1061,10 +1061,10 @@ RectTransform:
   m_GameObject: {fileID: 3917142763607882329}
   m_LocalRotation: {x: -0, y: -0, z: 0.508652, w: 0.8609723}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.08457998, y: 0.25976232, z: 0.4999999}
+  m_LocalScale: {x: 0.08457997, y: 0.2597623, z: 0.49999988}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2865005857859058127}
+  m_Father: {fileID: 5808491130896762613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 16.148}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2728,6 +2728,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a376815b49aa9dd448fa3fbb571d8a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startColor:
+    serializedVersion: 2
+    rgba: 4278255615
+  _endColor:
+    serializedVersion: 2
+    rgba: 4278190335
+  _blinkingTime: 1
 --- !u!1 &9195753926173168709
 GameObject:
   m_ObjectHideFlags: 0

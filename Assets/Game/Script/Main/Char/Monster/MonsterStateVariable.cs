@@ -1,6 +1,7 @@
 ﻿// モンスターのState変数
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public partial class MonsterState
 {
@@ -17,6 +18,8 @@ public partial class MonsterState
     // 当たったオブジェクトのタグ取得
     private string _collisionTag = null;
 
+    // 以下デバッグ用
+
     // デバッグ用ステータス
     // 体力
     private float _debagHitPoint = 300;
@@ -27,5 +30,11 @@ public partial class MonsterState
     private GameObject _debugAttackCol;
     // デバッグ用攻撃判定を生成するかどうか
     private bool _indicateAttackCol = false;
+
+    
+    private LineRenderer _line;
+
+    // デバッグ用テキスト
+    private Text _text;
 
 }
