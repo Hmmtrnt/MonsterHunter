@@ -35,15 +35,17 @@ public partial class PlayerState
             {
                 owner.ChangeState(_runDrawnSword);
             }
-
             // 踏み込み斬り
-            if (owner._input._YButtonDown)
+            else if (owner._input._YButtonDown)
             {
                 owner.ChangeState(_steppingSlash);
             }
-
+            else if(owner._input._BButtonDown)
+            {
+                owner.ChangeState(_piercing);
+            }
             // のちに納刀ステートを入れる
-            if (owner._input._XButtonDown || owner._input._RBButtonDown)
+            else if (owner._input._XButtonDown || owner._input._RBButtonDown)
             {
                 owner._unsheathedSword = false;
                 owner.ChangeState(_sheathingSword);
