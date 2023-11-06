@@ -21,7 +21,7 @@ public partial class MonsterState
     // 体力
     private float _debagHitPoint = 300;
     // 攻撃力
-    private float _debagAttackPower = 50;
+    private float _debagAttackPower = 1;
 
     // デバッグ用攻撃判定
     private GameObject _debugAttackCol;

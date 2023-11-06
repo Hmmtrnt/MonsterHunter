@@ -40,11 +40,17 @@ public partial class PlayerState
             {
                 owner.ChangeState(_steppingSlash);
             }
+            // 突き.
             else if(owner._input._BButtonDown)
             {
                 owner.ChangeState(_piercing);
             }
-            // のちに納刀ステートを入れる
+            // 気刃斬り1.
+            else if(owner._input._RightTrigger >= 0.5)
+            {
+                owner.ChangeState(_spiritBlade1);
+            }
+            // のちに納刀ステートを入れる.
             else if (owner._input._XButtonDown || owner._input._RBButtonDown)
             {
                 owner._unsheathedSword = false;

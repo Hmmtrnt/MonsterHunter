@@ -21,7 +21,6 @@ public partial class PlayerState
         public override void OnFixedUpdate(PlayerState owner)
         {
             owner._attackFrame++;
-            Debug.Log("突き");
         }
 
         public override void OnExit(PlayerState owner, StateBase nextState)
@@ -45,7 +44,7 @@ public partial class PlayerState
             // 気刃斬り1.
             else if (owner._attackFrame >= 40 && owner._input._RightTrigger >= 0.5)
             {
-
+                owner.ChangeState(_spiritBlade1);
             }
 
         }

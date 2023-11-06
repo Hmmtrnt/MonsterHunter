@@ -1,10 +1,10 @@
-﻿/*斬り上げ*/
+﻿/*気刃大回転斬り*/
 
 using UnityEngine;
 
 public partial class PlayerState
 {
-    public class StateSlashUp : StateBase
+    public class StateRoundSlash : StateBase
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
@@ -31,23 +31,13 @@ public partial class PlayerState
 
         public override void OnChangeState(PlayerState owner)
         {
-            // アイドル.
+            // 納刀アイドル.
             if (owner._attackFrame >= 60)
             {
-                owner.ChangeState(_idleDrawnSword);
+                owner.ChangeState(_idle);
             }
-            // 突き.
-            else if (owner._attackFrame >= 40 && (owner._input._YButtonDown || owner._input._BButtonDown))
-            {
-                owner.ChangeState(_piercing);
-            }
-            // 気刃斬り1.
-            else if (owner._attackFrame >= 40 && owner._input._RightTrigger >= 0.5)
-            {
-                owner.ChangeState(_spiritBlade1);
-            }
-
         }
     }
 }
+
 

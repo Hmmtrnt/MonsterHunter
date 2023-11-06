@@ -21,6 +21,10 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateSteppingSlash _steppingSlash = new();// 踏み込み斬り.
     private static readonly StatePiercing _piercing = new();// 突き.
     private static readonly StateSlashUp _slashUp = new();// 斬り上げ.
+    private static readonly StateSpiritBlade1 _spiritBlade1 = new();// 気刃斬り1.
+    private static readonly StateSpiritBlade2 _spiritBlade2 = new();// 気刃斬り2.
+    private static readonly StateSpiritBlade3 _spiritBlade3 = new();// 気刃斬り3.
+    private static readonly StateRoundSlash _roundSlash = new();// 気刃大回転斬り.
 
     //--共通状態--//
     private static readonly StateDead _dead = new();// やられた.
@@ -72,6 +76,8 @@ public partial class PlayerState : MonoBehaviour
         {
             AutoRecoveryStamina();
         }
+
+        Debug.Log(_hitPoint);
     }
 
     private void OnCollisionEnter(Collision collision)
