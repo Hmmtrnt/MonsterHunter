@@ -28,7 +28,7 @@ public partial class PlayerState
             _testTime++;
             //Debug.Log(_testTime);
             if (!owner._isProcess) return;
-            Debug.Log("通った");
+            //Debug.Log("通った");
             KnockBack(owner);
         }
 

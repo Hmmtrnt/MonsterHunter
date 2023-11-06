@@ -8,6 +8,7 @@ public partial class PlayerState
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
+            owner._drawnIdleMotion = true;
             owner._moveVelocityMagnification = owner._moveVelocityRunMagnification;
         }
 
@@ -24,7 +25,7 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-
+            owner._drawnIdleMotion = false;
         }
 
         public override void OnChangeState(PlayerState owner)
@@ -35,11 +36,15 @@ public partial class PlayerState
             {
                 owner.ChangeState(_idleDrawnSword);
             }
-
             // 踏み込み斬り
-            if (owner._input._YButtonDown)
+            else if (owner._input._YButtonDown)
             {
                 owner.ChangeState(_steppingSlash);
+            }
+            // 回避
+            else if(owner._input._AButtonDown)
+            {
+                owner.ChangeState(_avoidDrawnSword);
             }
         }
 

@@ -43,6 +43,8 @@ public partial class PlayerState
 
     // 攻撃力.
     private float _AttackPower = 100;
+    // 攻撃フレーム数
+    private int _attackFrame = 0;
 
     //private bool _isReceiveDamage = false;
 

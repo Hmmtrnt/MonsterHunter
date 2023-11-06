@@ -59,6 +59,10 @@ public partial class PlayerState
             {
                 owner.ChangeState(_recovery);
             }
+            else if(owner._input._YButtonDown)
+            {
+                owner.ChangeState(_steppingSlash);
+            }
         }
 
         // 移動

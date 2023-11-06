@@ -18,6 +18,6 @@ public class AttackCol : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("当たった");
+        //Debug.Log("当たった");
     }
 }

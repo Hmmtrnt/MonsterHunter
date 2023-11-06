@@ -16,6 +16,7 @@ public partial class PlayerState : MonoBehaviour
     private static readonly StateDrawnSwordTransition _drawSwordTransition = new();// 抜刀している.
     private static readonly StateIdleDrawnSword _idleDrawnSword = new();// アイドル.
     private static readonly StateRunDrawnSword _runDrawnSword = new();// 走る.
+    private static readonly StateAvoidDrawSword _avoidDrawnSword = new();// 抜刀回避.
     private static readonly StateSheathingSword _sheathingSword = new();// 納刀する.
     private static readonly StateSteppingSlash _steppingSlash = new();// 踏み込み斬り.
 

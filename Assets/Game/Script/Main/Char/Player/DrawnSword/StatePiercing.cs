@@ -1,21 +1,15 @@
-﻿/*踏み込み斬り*/
+﻿/*突き*/
 
 using UnityEngine;
 
 public partial class PlayerState
 {
-    public class StateSteppingSlash : StateBase
+    public class StatePiercing : StateBase
     {
         public override void OnEnter(PlayerState owner, StateBase prevState)
         {
-            if(prevState == _running)
-            {
-                owner._drawnSwordMotion = true;
-            }
-            else
-            {
-                owner._drawnIdleMotion = true;
-            }
+            owner._drawnIdleMotion = true;
+
             owner._attackFrame = 0;
 
             //owner._AtCol.SetActive(true);
@@ -26,7 +20,7 @@ public partial class PlayerState
 
         public override void OnUpdate(PlayerState owner)
         {
-            
+
         }
 
         public override void OnFixedUpdate(PlayerState owner)
@@ -38,10 +32,6 @@ public partial class PlayerState
 
         public override void OnExit(PlayerState owner, StateBase nextState)
         {
-            if(owner._drawnSwordMotion)
-            {
-                owner._drawnSwordMotion = false;
-            }
             owner._drawnIdleMotion = false;
             owner._AtCol.SetActive(false);
             owner._attackFrame = 0;
@@ -50,23 +40,22 @@ public partial class PlayerState
         public override void OnChangeState(PlayerState owner)
         {
             // アイドル.
-            if(owner._attackFrame >= 60)
+            if (owner._attackFrame >= 60)
             {
                 owner.ChangeState(_idleDrawnSword);
             }
             // 突き.
-            else if(owner._attackFrame >= 40 && owner._input._YButtonDown)
-            {
-                
-            }
-            // 気刃斬り1.
-            else if(owner._attackFrame >= 40 && owner._input._RightTrigger >= 0.5)
+            else if (owner._attackFrame >= 40 && owner._input._YButtonDown)
             {
 
             }
-            
+            // 気刃斬り1.
+            else if (owner._attackFrame >= 40 && owner._input._RightTrigger >= 0.5)
+            {
+
+            }
+
         }
     }
 }
-
 

@@ -22,7 +22,7 @@ public partial class MonsterState
         {
             testTime++;
 
-            if(testTime >= 5)
+            if(testTime >= 2)
             {
                 owner._indicateAttackCol = false;
             }
