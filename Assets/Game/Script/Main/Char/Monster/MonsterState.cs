@@ -23,6 +23,7 @@ public partial class MonsterState : MonoBehaviour
     {
         _currentState.OnUpdate(this);
         _currentState.OnChangeState(this);
+        ViewAngle();
     }
 
     private void FixedUpdate()
@@ -36,6 +37,10 @@ public partial class MonsterState : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        PositionalRelationship();
+
+        Debug.Log(GetDistance());
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -71,6 +76,7 @@ public partial class MonsterState : MonoBehaviour
         _currentState = nextState;
     }
 
+    // 初期化.
     private void Initialization()
     {
         _hunter = GameObject.Find("Hunter");
@@ -82,6 +88,142 @@ public partial class MonsterState : MonoBehaviour
 
         _debugAttackCol = GameObject.FindWithTag("MonsterAtCol");
         
+        for(int i = 0; i < (int)viewDirection.MAX; i++)
+        {
+            _viewDirection[i] = false;
+        }
+    }
+
+    // プレイヤーとモンスター同士の角度、距離によって処理を変更
+    private void PositionalRelationship()
+    {
+        // 正面
+        if (_viewDirection[(int)viewDirection.FORWARD])
+        {
+            if(GetDistance() <= _shortDistance)
+            {
+                _text.text = "正面近距離";
+            }
+            else if(GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
+            {
+                _text.text = "正面遠距離";
+            }
+        }
+        // 背後
+        else if(_viewDirection[(int)viewDirection.BACKWARD])
+        {
+            if(GetDistance() <= _shortDistance)
+            {
+                _text.text = "背後近距離";
+            }
+            else if(GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
+            {
+                _text.text = "背後遠距離";
+            }
+        }
+        // 右
+        else if(_viewDirection[(int)viewDirection.RIGHT])
+        {
+            if(GetDistance() <= _shortDistance)
+            {
+                _text.text = "右近距離";
+            }
+            else if(GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
+            {
+                _text.text = "右遠距離";
+            }
+        }
+        // 左
+        else if(_viewDirection[(int)viewDirection.LEFT])
+        {
+            if(GetDistance() <= _shortDistance)
+            {
+                _text.text = "左近距離";
+            }
+            else if(GetDistance() >= _shortDistance && GetDistance() <= _longDistance)
+            {
+                _text.text = "左遠距離";
+
+            }
+        }
+        else
+        {
+            _text.text = "NONE";
+        }
+
+
+    }
+
+    // プレイヤーが今モンスターから見てどこにいるのかを取得する
+    private void ViewAngle()
+    {
+        Vector3 direction = _hunter.transform.position - _trasnform.position;
+        // オブジェクトとプレイヤーのベクトルのなす角
+        // オブジェクトの正面.
+        float forwardAngle = Vector3.Angle(direction, _trasnform.forward);
+        // オブジェクトの側面.
+        float sideAngle = Vector3.Angle(direction, _trasnform.right);
+
+        RaycastHit hit;
+        bool ray = Physics.Raycast(_trasnform.position, direction.normalized, out hit);
+
+        bool viewFlag = ray && hit.collider.gameObject == _hunter;
+
+        if (!viewFlag) return;
+
+        // 正面.
+        if (forwardAngle < 90 * 0.5f )
+        {
+            FoundFlag((int)viewDirection.FORWARD);
+        }
+        // 後ろ
+        else if(forwardAngle > 135 && forwardAngle < 180)
+        {
+            FoundFlag((int)viewDirection.BACKWARD);
+        }
+        // 右
+        else if(sideAngle < 90 * 0.5f)
+        {
+            FoundFlag((int)viewDirection.RIGHT);
+        }
+        // 左
+        else if (sideAngle > 135 && sideAngle < 180)
+        {
+            FoundFlag((int)viewDirection.LEFT);
+        }
+
+        //Debug.Log(forwardAngle);
+        //Debug.Log(sideAngle);
+        
+
+        _line.SetPosition(0, transform.position);
+        _line.SetPosition(1, _hunter.transform.position);
+    }
+
+    /// <summary>
+    /// 見つかっているかの値を返す
+    /// </summary>
+    /// <param name="foundNum">プレイヤーの位置を示す番号</param>
+    private void FoundFlag(int foundNum)
+    {
+        for(int i = 0; i < (int)viewDirection.MAX; i++)
+        {
+            if(i == foundNum)
+            {
+                _viewDirection[i] = true;
+            }
+            else
+            {
+                _viewDirection[i] = false;
+            }
+        }
+    }
+
+    private float GetDistance()
+    {
+        _currentDistance = (_hunter.transform.position - _trasnform.position).magnitude;
+
+        return _currentDistance;
     }
 
     public float GetMonsterAttack()

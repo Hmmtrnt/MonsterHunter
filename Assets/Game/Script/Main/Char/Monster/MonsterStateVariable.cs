@@ -5,7 +5,15 @@ using UnityEngine.UI;
 
 public partial class MonsterState
 {
-    // 以下デバッグ用
+    enum viewDirection
+    {
+        FORWARD,
+        BACKWARD,
+        RIGHT,
+        LEFT,
+        MAX
+    }
+
     // 目標のプレイヤー
     private GameObject _hunter;
     private Transform _trasnform;
@@ -17,6 +25,15 @@ public partial class MonsterState
 
     // 当たったオブジェクトのタグ取得
     private string _collisionTag = null;
+    // ハンターがモンスターのどの向きにいるかを取得
+    private bool[] _viewDirection = new bool[5];
+
+    // 現在のプレイヤーとモンスターの距離
+    private float _currentDistance = 0;
+    // 近距離
+    private float _shortDistance = 20;
+    // 遠距離
+    private float _longDistance = 50;
 
     // 以下デバッグ用
 
