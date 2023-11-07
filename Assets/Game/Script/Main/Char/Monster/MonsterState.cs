@@ -88,7 +88,7 @@ public partial class MonsterState : MonoBehaviour
 
         _debugAttackCol = GameObject.FindWithTag("MonsterAtCol");
         
-        for(int i = 0; i < (int)viewDirection.MAX; i++)
+        for(int i = 0; i < (int)viewDirection.NONE; i++)
         {
             _viewDirection[i] = false;
         }
@@ -146,7 +146,7 @@ public partial class MonsterState : MonoBehaviour
 
             }
         }
-        else
+        else if(_viewDirection[(int)viewDirection.NONE] && GetDistance() >= _longDistance)
         {
             _text.text = "NONE";
         }
@@ -191,6 +191,10 @@ public partial class MonsterState : MonoBehaviour
         {
             FoundFlag((int)viewDirection.LEFT);
         }
+        else
+        {
+            FoundFlag((int)viewDirection.NONE);
+        }
 
         //Debug.Log(forwardAngle);
         //Debug.Log(sideAngle);
@@ -206,7 +210,7 @@ public partial class MonsterState : MonoBehaviour
     /// <param name="foundNum">プレイヤーの位置を示す番号</param>
     private void FoundFlag(int foundNum)
     {
-        for(int i = 0; i < (int)viewDirection.MAX; i++)
+        for(int i = 0; i < (int)viewDirection.NONE; i++)
         {
             if(i == foundNum)
             {

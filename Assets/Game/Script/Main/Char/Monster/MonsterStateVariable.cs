@@ -11,7 +11,7 @@ public partial class MonsterState
         BACKWARD,
         RIGHT,
         LEFT,
-        MAX
+        NONE
     }
 
     // 目標のプレイヤー
